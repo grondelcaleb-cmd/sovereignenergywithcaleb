@@ -1115,6 +1115,15 @@
   </section>
 
 
+  <!-- Referral CTA -->
+  <div class="mid-cta">
+    <div class="container">
+      <h3 class="reveal">Know Someone Who's Tired of Rising Bills?</h3>
+      <p class="reveal">Refer a friend and receive <strong>$500</strong> if they qualify.</p>
+      <a href="#qualify" class="btn reveal">Refer a Friend</a>
+    </div>
+  </div>
+
   <!-- CTA Form -->
   <section id="qualify" class="cta">
     <div class="container">
@@ -1253,7 +1262,8 @@
     if (new URLSearchParams(window.location.search).get('submitted') === 'true') {
       var form = document.getElementById('leadForm');
       if (form) {
-        form.innerHTML = '<div class="form-success"><span class="checkmark">&#10003;</span><span>You\'re all set. Caleb will reach out within 24 hours.</span></div>';
+        form.innerHTML = '<div class="form-success"><span class="checkmark">&#10003;</span><span>You\'re all set. Caleb will reach out within 24 hours.</span></div>' +
+          '<p style="margin-top:1.5rem;font-size:1rem;color:var(--text-muted);">Know someone who could use lower energy bills? <strong>Refer a friend and receive $500</strong> if they qualify.</p>';
       }
     }
   </script>
