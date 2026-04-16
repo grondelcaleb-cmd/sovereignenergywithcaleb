@@ -10,6 +10,15 @@
   <meta property="og:description" content="Your Home. Your Power. Your Rules. You're at the mercy of your utility. It doesn't have to stay that way.">
   <meta property="og:image" content="https://grondelcaleb-cmd.github.io/sovereignenergywithcaleb/images/tesla-scaled.jpg">
   <meta property="og:type" content="website">
+
+  <!-- Google Ads: replace AW-XXXXXXXXXX below (appears twice) with your real conversion ID from Google Ads -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=AW-XXXXXXXXXX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'AW-XXXXXXXXXX');
+  </script>
   <style>
     :root {
       --bg: #ffffff;
@@ -1135,7 +1144,7 @@
           <form action="https://api.web3forms.com/submit" method="POST" class="reveal" id="leadForm">
             <input type="hidden" name="access_key" value="3d6f88bc-279f-4339-99a4-99fe3e4334ef">
             <input type="hidden" name="subject" value="New Solar Lead — Sovereign Energy">
-            <input type="hidden" name="redirect" value="https://grondelcaleb-cmd.github.io/sovereignenergywithcaleb/sovereign-energy-caleb.html?submitted=true#qualify">
+            <input type="hidden" name="redirect" value="https://grondelcaleb-cmd.github.io/sovereignenergywithcaleb/thank-you.html">
             <div class="form-group">
               <label for="name">Full Name</label>
               <input type="text" id="name" name="name" placeholder="John Smith" required>
@@ -1256,16 +1265,6 @@
       window.carouselNav = function (dir) { goTo(current + dir); };
       resetTimer();
     })();
-  </script>
-
-  <script>
-    if (new URLSearchParams(window.location.search).get('submitted') === 'true') {
-      var form = document.getElementById('leadForm');
-      if (form) {
-        form.innerHTML = '<div class="form-success"><span class="checkmark">&#10003;</span><span>You\'re all set. Caleb will reach out within 24 hours.</span></div>' +
-          '<p style="margin-top:1.5rem;font-size:1rem;color:var(--text-muted);">Know someone who could use lower energy bills? <strong>Refer a friend and receive $500</strong> if they qualify.</p>';
-      }
-    }
   </script>
 
 </body>
