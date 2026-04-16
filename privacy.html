@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Thank You | Sovereign Energy with Caleb</title>
-  <meta name="description" content="Thanks for requesting a consultation. Caleb will be in touch within 24 hours.">
+  <title>Privacy Policy | Sovereign Energy with Caleb</title>
+  <meta name="description" content="Privacy policy for Sovereign NRG — how we collect, use, and protect your information.">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚡</text></svg>">
 
   <!-- Google tag (gtag.js) -->
@@ -53,6 +53,12 @@
 
     .container {
       max-width: var(--max);
+      margin: 0 auto;
+      padding: 0 clamp(1.5rem, 4vw, 6rem);
+    }
+
+    .container-narrow {
+      max-width: 760px;
       margin: 0 auto;
       padding: 0 clamp(1.5rem, 4vw, 6rem);
     }
@@ -114,9 +120,9 @@
       font-size: 0.85rem;
     }
 
-    /* ── HEADER BLOCK ── */
-    .ty-hero {
-      padding: clamp(9rem, 16vw, 14rem) 0 clamp(3rem, 6vw, 5rem);
+    /* ── HEADER ── */
+    .pp-hero {
+      padding: clamp(9rem, 16vw, 12rem) 0 clamp(2rem, 4vw, 3rem);
     }
 
     .section-label {
@@ -128,75 +134,62 @@
       margin-bottom: 1.5rem;
     }
 
-    .ty-hero h1 {
-      font-size: clamp(2.4rem, 6vw, 4.75rem);
+    .pp-hero h1 {
+      font-size: clamp(2.4rem, 5.5vw, 4rem);
       font-weight: 600;
       letter-spacing: -0.04em;
       line-height: 1;
-      margin-bottom: 1.5rem;
-      max-width: 22ch;
-    }
-
-    .ty-hero .sub {
-      font-size: clamp(1.05rem, 1.4vw, 1.35rem);
-      color: var(--text-muted);
-      max-width: 38rem;
-    }
-
-    /* ── STEPS ── */
-    .steps {
-      padding: clamp(2rem, 4vw, 4rem) 0 clamp(4rem, 8vw, 7rem);
-    }
-
-    .solution-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 1.25rem;
-    }
-
-    .solution-card {
-      padding: clamp(2.5rem, 4vw, 4rem);
-      color: #ffffff;
-      min-height: 22rem;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      transition: transform 0.8s var(--ease);
-    }
-
-    .solution-card:hover {
-      transform: translateY(-6px);
-    }
-
-    .solution-card.purple { background: var(--purple); }
-    .solution-card.teal   { background: var(--teal); }
-    .solution-card.orange { background: var(--orange); }
-
-    .solution-card .num {
-      font-size: 1.4rem;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
       margin-bottom: 1rem;
     }
 
-    .solution-card h3 {
-      font-size: clamp(2rem, 3vw, 2.75rem);
+    .pp-hero .effective {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+    }
+
+    /* ── CONTENT ── */
+    .pp-content {
+      padding: clamp(2rem, 4vw, 3rem) 0 clamp(5rem, 10vw, 8rem);
+    }
+
+    .pp-content h2 {
+      font-size: clamp(1.4rem, 2.2vw, 1.75rem);
       font-weight: 600;
-      letter-spacing: -0.03em;
-      line-height: 1;
-      margin-top: 5rem;
-      margin-bottom: 1.25rem;
+      letter-spacing: -0.02em;
+      margin-top: 3rem;
+      margin-bottom: 1rem;
     }
 
-    .solution-card p {
-      font-size: 1rem;
-      line-height: 1.5;
-      max-width: 32ch;
+    .pp-content h2:first-of-type {
+      margin-top: 0;
     }
 
-    .back-cta {
-      margin-top: clamp(3rem, 6vw, 5rem);
+    .pp-content p,
+    .pp-content li {
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: var(--text);
+      margin-bottom: 1rem;
+      max-width: 62ch;
+    }
+
+    .pp-content ul {
+      padding-left: 1.25rem;
+      margin-bottom: 1rem;
+    }
+
+    .pp-content li {
+      margin-bottom: 0.5rem;
+    }
+
+    .pp-content a {
+      color: var(--text);
+      text-decoration: underline;
+    }
+
+    .pp-content strong {
+      font-weight: 700;
     }
 
     /* ── FOOTER ── */
@@ -291,13 +284,6 @@
       max-width: 32rem;
       line-height: 1.5;
     }
-
-    @media (min-width: 812px) {
-      .solution-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 1rem;
-      }
-    }
   </style>
 </head>
 <body>
@@ -311,34 +297,68 @@
   </nav>
 
   <!-- Header -->
-  <section class="ty-hero">
-    <div class="container">
-      <span class="section-label">Thank You</span>
-      <h1>Got it. I'll be in touch within 24 hours.</h1>
-      <p class="sub">Here's what happens next.</p>
+  <section class="pp-hero">
+    <div class="container-narrow">
+      <span class="section-label">Legal</span>
+      <h1>Privacy Policy</h1>
+      <p class="effective">Effective April 2026</p>
     </div>
   </section>
 
-  <!-- Steps -->
-  <section class="steps">
-    <div class="container">
-      <div class="solution-grid">
-        <div class="solution-card purple">
-          <span class="num">01 / Review</span>
-          <p>I'll run a custom sun and savings analysis on your home using satellite data and your SCE usage.</p>
-        </div>
-        <div class="solution-card teal">
-          <span class="num">02 / Call</span>
-          <p>I'll personally reach out within 24 hours to walk you through the results. No pressure, no pitch — just straight answers.</p>
-        </div>
-        <div class="solution-card orange">
-          <span class="num">03 / Decide</span>
-          <p>If it makes sense, we move forward. If it doesn't, you walk away with real numbers you can use.</p>
-        </div>
-      </div>
-      <div class="back-cta">
-        <a href="/" class="btn">Back to Home</a>
-      </div>
+  <!-- Content -->
+  <section class="pp-content">
+    <div class="container-narrow">
+      <p>This Privacy Policy describes how <strong>Sovereign NRG</strong>, operated by Caleb Grondel ("we," "us," or "our"), collects, uses, and shares information about you when you visit <a href="https://sovereignnrg.com">sovereignnrg.com</a> (the "Site") or submit a quote request through our lead form.</p>
+
+      <h2>1. Information We Collect</h2>
+      <p>When you submit our quote form, we collect the following personal information:</p>
+      <ul>
+        <li>Your full name</li>
+        <li>Your phone number</li>
+        <li>Your email address (if provided)</li>
+        <li>Your average monthly Southern California Edison (SCE) bill range</li>
+      </ul>
+      <p>We also automatically collect limited technical data through cookies and tracking pixels, such as your IP address, device type, browser, referring URL, and interactions with the Site.</p>
+
+      <h2>2. Why We Collect It</h2>
+      <p>We use the information you provide solely to:</p>
+      <ul>
+        <li>Contact you about your solar and battery storage consultation request</li>
+        <li>Prepare a custom sun and savings analysis for your home</li>
+        <li>Respond to questions or communications you send us</li>
+        <li>Measure the effectiveness of our advertising campaigns</li>
+      </ul>
+
+      <h2>3. Who We Share It With</h2>
+      <p>We share your information only with <strong>Sunrun Inc.</strong>, our installation partner, so that your quote and system design can be prepared and delivered.</p>
+      <p><strong>We do not sell your personal information to any third party.</strong> We do not rent, trade, or license your data for marketing purposes.</p>
+
+      <h2>4. Cookies and Advertising</h2>
+      <p>The Site uses Google Ads tracking (gtag.js) to measure conversions from our advertising campaigns and to improve ad targeting. This helps us understand which ads lead to quote requests. Google may use the collected data in accordance with its own privacy policy.</p>
+      <p>You can opt out of Google's personalized advertising by visiting <a href="https://adssettings.google.com" target="_blank" rel="noopener">adssettings.google.com</a>.</p>
+
+      <h2>5. Your California Privacy Rights (CCPA)</h2>
+      <p>If you are a California resident, the California Consumer Privacy Act (CCPA) gives you the following rights regarding your personal information:</p>
+      <ul>
+        <li><strong>Right to Know</strong> — you may request details about the personal information we have collected about you over the past 12 months.</li>
+        <li><strong>Right to Delete</strong> — you may request that we delete personal information we have collected about you, subject to certain exceptions.</li>
+        <li><strong>Right to Opt Out</strong> — you may request that we do not share your personal information with third parties. (Note: we do not sell personal information.)</li>
+        <li><strong>Right to Non-Discrimination</strong> — we will not discriminate against you for exercising any of these rights.</li>
+      </ul>
+      <p>To exercise any of these rights, contact us using the information in the Contact section below.</p>
+
+      <h2>6. Data Retention and Security</h2>
+      <p>We retain your personal information only as long as necessary to provide the services you requested and to comply with our legal obligations. We take reasonable technical and organizational measures to protect your information against unauthorized access, loss, or disclosure.</p>
+
+      <h2>7. Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time. The "Effective" date above will reflect when the policy was last revised. Continued use of the Site after any changes means you accept the updated policy.</p>
+
+      <h2>8. Contact Us</h2>
+      <p>For questions about this Privacy Policy, to exercise your CCPA rights, or for any other privacy-related request, contact:</p>
+      <!-- Replace the email below with Caleb's real privacy-contact email when available -->
+      <p><strong>Caleb Grondel</strong><br>
+      Sovereign NRG<br>
+      Email: <a href="mailto:privacy@sovereignnrg.com">privacy@sovereignnrg.com</a></p>
     </div>
   </section>
 
@@ -368,13 +388,6 @@
       </div>
     </div>
   </footer>
-
-  <!-- Google Ads conversion event: replace YYYYYYYYY below with your real conversion label from Google Ads -->
-  <script>
-    gtag('event', 'conversion', {
-      'send_to': 'AW-18094396177/YYYYYYYYY'
-    });
-  </script>
 
 </body>
 </html>
