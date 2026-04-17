@@ -497,16 +497,6 @@
     }
 
     /* ── REVIEW CARDS ── */
-    .reviews-section {
-      background: #111;
-      color: #fff;
-    }
-
-    .reviews-section .section-label,
-    .reviews-section .section-heading {
-      color: #fff;
-    }
-
     .reviews-track-wrap {
       position: relative;
     }
@@ -528,12 +518,13 @@
     .review-card {
       flex: 0 0 100%;
       scroll-snap-align: start;
-      background: #1a1a1a;
-      border-radius: 8px;
-      padding: clamp(1.5rem, 3vw, 2.5rem);
+      background: #f7f7f7;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 10px;
+      padding: clamp(1.5rem, 3vw, 2.25rem);
       display: flex;
       flex-direction: column;
-      gap: 1.25rem;
+      gap: 1rem;
     }
 
     .review-header {
@@ -546,10 +537,11 @@
       font-size: 1.1rem;
       font-weight: 700;
       letter-spacing: -0.01em;
+      color: var(--text);
     }
 
     .review-stars {
-      color: #facc15;
+      color: #f59e0b;
       font-size: 0.95rem;
       letter-spacing: 2px;
     }
@@ -559,34 +551,33 @@
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.5);
+      color: var(--text-muted);
     }
 
     .review-text {
       font-size: 0.95rem;
       line-height: 1.6;
-      color: rgba(255, 255, 255, 0.85);
+      color: var(--text);
     }
 
     .review-photos {
-      display: flex;
-      gap: 0.75rem;
-      overflow-x: auto;
-      scrollbar-width: none;
-      -webkit-overflow-scrolling: touch;
-      padding-bottom: 0.25rem;
-    }
-
-    .review-photos::-webkit-scrollbar {
-      display: none;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, 90px);
+      gap: 0.5rem;
     }
 
     .review-photos img {
-      height: 200px;
-      width: auto;
-      border-radius: 6px;
+      width: 90px;
+      height: 90px;
+      border-radius: 8px;
       object-fit: cover;
-      flex-shrink: 0;
+      cursor: pointer;
+      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+    }
+
+    .review-photos img:hover {
+      transform: scale(1.05);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
     }
 
     .reviews-nav {
@@ -600,9 +591,9 @@
       width: 3rem;
       height: 3rem;
       border-radius: 50%;
-      border: 1px solid rgba(255, 255, 255, 0.4);
+      border: 1px solid var(--line);
       background: transparent;
-      color: #fff;
+      color: var(--text);
       font-size: 1.2rem;
       cursor: pointer;
       display: inline-flex;
@@ -612,8 +603,8 @@
     }
 
     .reviews-nav button:hover {
-      background: #fff;
-      color: #000;
+      background: var(--text);
+      color: var(--bg);
     }
 
     .reviews-link {
@@ -626,16 +617,86 @@
       font-weight: 600;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: #fff;
+      color: var(--text);
       text-decoration: none;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+      border-bottom: 1px solid var(--text);
       padding-bottom: 0.4rem;
       transition: opacity 0.4s var(--ease);
     }
 
     .reviews-link a:hover {
-      opacity: 0.7;
+      opacity: 0.6;
     }
+
+    /* ── LIGHTBOX ── */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      background: rgba(0, 0, 0, 0.92);
+      align-items: center;
+      justify-content: center;
+    }
+
+    .lightbox.open {
+      display: flex;
+    }
+
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 6px;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 1.5rem;
+      right: 1.5rem;
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: transparent;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+
+    .lightbox-close:hover {
+      background: rgba(255, 255, 255, 0.15);
+    }
+
+    .lightbox-arrow {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      background: rgba(0, 0, 0, 0.4);
+      color: #fff;
+      font-size: 1.3rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+      backdrop-filter: blur(6px);
+    }
+
+    .lightbox-arrow:hover {
+      background: rgba(255, 255, 255, 0.2);
+    }
+
+    .lightbox-prev { left: 1.5rem; }
+    .lightbox-next { right: 1.5rem; }
 
     /* ── STATS ── */
     .stats-grid {
@@ -1036,7 +1097,7 @@
   <!-- Mid-page CTA removed -->
 
   <!-- Real Installs -->
-  <section class="reviews-section">
+  <section>
     <div class="container">
       <span class="section-label reveal">Our Work</span>
       <h2 class="section-heading reveal">Real Installs</h2>
@@ -1286,6 +1347,14 @@
     </div>
   </section>
 
+  <!-- Lightbox -->
+  <div class="lightbox" id="lightbox">
+    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">&times;</button>
+    <button class="lightbox-arrow lightbox-prev" onclick="lightboxNav(-1)" aria-label="Previous">&#8249;</button>
+    <img id="lightboxImg" src="" alt="Install photo">
+    <button class="lightbox-arrow lightbox-next" onclick="lightboxNav(1)" aria-label="Next">&#8250;</button>
+  </div>
+
   <!-- Footer -->
   <footer>
     <div class="container">
@@ -1375,6 +1444,46 @@
       var scrollAmt = (card.offsetWidth + 20) * dir;
       track.scrollBy({ left: scrollAmt, behavior: 'smooth' });
     };
+
+    // Lightbox
+    (function () {
+      var lbEl = document.getElementById('lightbox');
+      var lbImg = document.getElementById('lightboxImg');
+      var siblings = [];
+      var idx = 0;
+
+      document.querySelectorAll('.review-photos img').forEach(function (img) {
+        img.addEventListener('click', function () {
+          var parent = img.closest('.review-photos');
+          siblings = Array.from(parent.querySelectorAll('img'));
+          idx = siblings.indexOf(img);
+          lbImg.src = siblings[idx].src;
+          lbEl.classList.add('open');
+          document.body.style.overflow = 'hidden';
+        });
+      });
+
+      window.closeLightbox = function () {
+        lbEl.classList.remove('open');
+        document.body.style.overflow = '';
+      };
+
+      window.lightboxNav = function (dir) {
+        idx = (idx + dir + siblings.length) % siblings.length;
+        lbImg.src = siblings[idx].src;
+      };
+
+      lbEl.addEventListener('click', function (e) {
+        if (e.target === lbEl) closeLightbox();
+      });
+
+      document.addEventListener('keydown', function (e) {
+        if (!lbEl.classList.contains('open')) return;
+        if (e.key === 'Escape') closeLightbox();
+        if (e.key === 'ArrowLeft') lightboxNav(-1);
+        if (e.key === 'ArrowRight') lightboxNav(1);
+      });
+    })();
   </script>
 
 </body>
