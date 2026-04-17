@@ -589,23 +589,36 @@
 
     .reviews-link {
       margin-top: 3rem;
-      text-align: left;
+      display: flex;
+      align-items: center;
+      gap: 2rem;
+      flex-wrap: wrap;
     }
 
-    .reviews-link a {
+    .reviews-link .reviews-link-secondary {
       font-size: 0.85rem;
-      font-weight: 600;
-      letter-spacing: 0.15em;
+      font-weight: 500;
+      letter-spacing: 0.1em;
       text-transform: uppercase;
-      color: var(--text);
+      color: var(--text-muted);
       text-decoration: none;
-      border-bottom: 1px solid var(--text);
-      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--text-muted);
+      padding-bottom: 0.3rem;
       transition: opacity 0.4s var(--ease);
     }
 
-    .reviews-link a:hover {
+    .reviews-link .reviews-link-secondary:hover {
       opacity: 0.6;
+    }
+
+    @media (max-width: 767px) {
+      .reviews-link {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      .reviews-link .btn {
+        text-align: center;
+      }
     }
 
 
@@ -1060,9 +1073,8 @@
       </div>
 
       <div class="reviews-link reveal">
-        <a href="/gallery.html">View Install Gallery &rarr;</a>
-        <span style="display:inline-block;width:2rem"></span>
-        <a href="https://www.google.com/search?q=Sunrun+Santa+Fe+Springs" target="_blank" rel="noopener">Read All Reviews on Google &rarr;</a>
+        <a href="/gallery.html" class="btn">View Install Gallery</a>
+        <a href="https://www.google.com/search?q=Sunrun+Santa+Fe+Springs" target="_blank" rel="noopener" class="reviews-link-secondary">Read All Reviews on Google &rarr;</a>
       </div>
     </div>
   </section>
