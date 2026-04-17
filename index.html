@@ -476,7 +476,7 @@
       text-align: center;
       border-top: 1px solid var(--line);
       border-bottom: 1px solid var(--line);
-      background: #f9f9f9;
+      background: var(--bg);
     }
 
     .mid-cta h3 {
@@ -560,26 +560,6 @@
       color: var(--text);
     }
 
-    .review-photos {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, 90px);
-      gap: 0.5rem;
-    }
-
-    .review-photos img {
-      width: 90px;
-      height: 90px;
-      border-radius: 8px;
-      object-fit: cover;
-      cursor: pointer;
-      transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
-    }
-
-    .review-photos img:hover {
-      transform: scale(1.05);
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
-    }
-
     .reviews-nav {
       display: flex;
       justify-content: center;
@@ -628,75 +608,6 @@
       opacity: 0.6;
     }
 
-    /* ── LIGHTBOX ── */
-    .lightbox {
-      display: none;
-      position: fixed;
-      inset: 0;
-      z-index: 300;
-      background: rgba(0, 0, 0, 0.92);
-      align-items: center;
-      justify-content: center;
-    }
-
-    .lightbox.open {
-      display: flex;
-    }
-
-    .lightbox img {
-      max-width: 90vw;
-      max-height: 85vh;
-      object-fit: contain;
-      border-radius: 6px;
-    }
-
-    .lightbox-close {
-      position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-      width: 3rem;
-      height: 3rem;
-      border-radius: 50%;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      background: transparent;
-      color: #fff;
-      font-size: 1.5rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.3s;
-    }
-
-    .lightbox-close:hover {
-      background: rgba(255, 255, 255, 0.15);
-    }
-
-    .lightbox-arrow {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 3rem;
-      height: 3rem;
-      border-radius: 50%;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      background: rgba(0, 0, 0, 0.4);
-      color: #fff;
-      font-size: 1.3rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.3s;
-      backdrop-filter: blur(6px);
-    }
-
-    .lightbox-arrow:hover {
-      background: rgba(255, 255, 255, 0.2);
-    }
-
-    .lightbox-prev { left: 1.5rem; }
-    .lightbox-next { right: 1.5rem; }
 
     /* ── STATS ── */
     .stats-grid {
@@ -1110,11 +1021,6 @@
             <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <span class="review-badge">Verified Google Review</span>
             <p class="review-text">"Great work from Caleb Grondel and the whole team from the beginning to the end of the process!!"</p>
-            <div class="review-photos">
-              <img src="images/reviews/luiz1.jpg" alt="Luiz P. solar install" loading="lazy">
-              <img src="images/reviews/luiz2.jpg" alt="Luiz P. solar install" loading="lazy">
-              <img src="images/reviews/luiz3.jpg" alt="Luiz P. solar install" loading="lazy">
-            </div>
           </div>
 
           <!-- 2. Chai -->
@@ -1123,13 +1029,6 @@
             <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <span class="review-badge">Verified Google Review</span>
             <p class="review-text">"We heard from our neighbor across the street. The rep guy Caleb was so detailed and thorough explaining the whole process. The people who installed were good and explained also from installing all the way. It was indeed a good experience! We are excited for the power to be up."</p>
-            <div class="review-photos">
-              <img src="images/reviews/chai1.jpg" alt="Chai solar install" loading="lazy">
-              <img src="images/reviews/chai2.jpg" alt="Chai solar install" loading="lazy">
-              <img src="images/reviews/chai3.jpg" alt="Chai solar install" loading="lazy">
-              <img src="images/reviews/chai4.png" alt="Chai solar install" loading="lazy">
-              <img src="images/reviews/chai5.png" alt="Chai solar install" loading="lazy">
-            </div>
           </div>
 
           <!-- 3. Rosa C. -->
@@ -1138,12 +1037,6 @@
             <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <span class="review-badge">Verified Google Review</span>
             <p class="review-text">"Had our system put up a few weeks ago with Sunrun and Caleb helped us get it set up. My niece introduced us, and the process was not as bad as I thought it was going to be. I've had issues with programs like this in the past, but even the install day and install team was very good and professional. Initially we couldn't qualify because our electric box was old but Caleb and his assistant Finn were able to help us get it fixed and upgraded."</p>
-            <div class="review-photos">
-              <img src="images/reviews/rosa1.jpg" alt="Rosa C. solar install" loading="lazy">
-              <img src="images/reviews/rosa2.jpg" alt="Rosa C. solar install" loading="lazy">
-              <img src="images/reviews/rosa3.jpg" alt="Rosa C. solar install" loading="lazy">
-              <img src="images/reviews/rosa4.jpg" alt="Rosa C. solar install" loading="lazy">
-            </div>
           </div>
 
           <!-- 4. Angel I. -->
@@ -1152,13 +1045,6 @@
             <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <span class="review-badge">Verified Google Review</span>
             <p class="review-text">"We met Caleb not too long ago and the process has been amazing. We have even referred him to many friends and they say the same thing! We would not have done it if we did not trust Caleb! Sunrun did a great job too with the installation, it was done in a day and they cleaned up everything! We looked into getting a system in the past but didn't want to pay too much money to get it. We also heard many bad things about solar from neighbors. We had no issues, the process was very easy, and we are saving money even with the Tesla Battery!"</p>
-            <div class="review-photos">
-              <img src="images/reviews/angel1.jpg" alt="Angel I. solar install" loading="lazy">
-              <img src="images/reviews/angel2.jpg" alt="Angel I. solar install" loading="lazy">
-              <img src="images/reviews/angel3.jpg" alt="Angel I. solar install" loading="lazy">
-              <img src="images/reviews/angel4.jpg" alt="Angel I. solar install" loading="lazy">
-              <img src="images/reviews/angel5.jpg" alt="Angel I. solar install" loading="lazy">
-            </div>
           </div>
 
           <!-- 5. Karlo B. -->
@@ -1167,13 +1053,6 @@
             <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <span class="review-badge">Verified Google Review</span>
             <p class="review-text">"Great service. Caleb G. did a great job."</p>
-            <div class="review-photos">
-              <img src="images/reviews/karlo1.jpg" alt="Karlo B. solar install" loading="lazy">
-              <img src="images/reviews/karlo2.jpg" alt="Karlo B. solar install" loading="lazy">
-              <img src="images/reviews/karlo3.jpg" alt="Karlo B. solar install" loading="lazy">
-              <img src="images/reviews/karlo4.jpg" alt="Karlo B. solar install" loading="lazy">
-              <img src="images/reviews/karlo5.jpg" alt="Karlo B. solar install" loading="lazy">
-            </div>
           </div>
 
           <!-- 6. Benny G. -->
@@ -1182,13 +1061,6 @@
             <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <span class="review-badge">Verified Google Review</span>
             <p class="review-text">"Working with Caleb from Sunrun has been a wonderful experience. Caleb is very knowledgeable about rooftop solar systems. Not just technical aspects but also including required state as well as local regulations. Caleb was able to answer all my concerns as well as anything that came up during the planning stages. He earned my trust 100%. Once all necessary documentation was ironed out, our solar system was installed professionally in just a day and a half. We are looking forward to enjoying our new solar system and reaping the benefits of savings we gain. I highly recommend Caleb to anyone!"</p>
-            <div class="review-photos">
-              <img src="images/reviews/benny1.jpg" alt="Benny G. solar install" loading="lazy">
-              <img src="images/reviews/benny2.jpg" alt="Benny G. solar install" loading="lazy">
-              <img src="images/reviews/benny3.jpg" alt="Benny G. solar install" loading="lazy">
-              <img src="images/reviews/benny4.jpg" alt="Benny G. solar install" loading="lazy">
-              <img src="images/reviews/benny5.jpg" alt="Benny G. solar install" loading="lazy">
-            </div>
           </div>
 
           <!-- 7. Lifestyle Board & Care -->
@@ -1197,11 +1069,6 @@
             <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <span class="review-badge">Verified Google Review</span>
             <p class="review-text">"We own a care home and were referred by a friend to work with Caleb Grondel! I have a few homes that I have installed solar and I wish I would have always done it with Sunrun. The process was easy and Caleb made it very clear and answered all my questions. Install was today and the install crew was also incredible, they cleaned up when they were done and the system looks great! Our Care home requires back up power and we are excited for what the Tesla Powerwall can do for our home too. All of this amazing equipment and we are saving money compared to what we are paying Southern California Edison right now. Will be referring him to my friends and other care homes that need better monthly power bills and batteries for when the power goes out! Thank you Caleb and Sunrun!"</p>
-            <div class="review-photos">
-              <img src="images/reviews/lifestyle1.jpg" alt="Lifestyle Board &amp; Care solar install" loading="lazy">
-              <img src="images/reviews/lifestyle2.jpg" alt="Lifestyle Board &amp; Care solar install" loading="lazy">
-              <img src="images/reviews/lifestyle3.jpg" alt="Lifestyle Board &amp; Care solar install" loading="lazy">
-            </div>
           </div>
 
           <!-- 8. Irineo M. -->
@@ -1210,11 +1077,6 @@
             <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <span class="review-badge">Verified Google Review</span>
             <p class="review-text">"All good."</p>
-            <div class="review-photos">
-              <img src="images/reviews/irineo1.jpg" alt="Irineo M. solar install" loading="lazy">
-              <img src="images/reviews/irineo2.jpg" alt="Irineo M. solar install" loading="lazy">
-              <img src="images/reviews/irineo3.jpg" alt="Irineo M. solar install" loading="lazy">
-            </div>
           </div>
 
           <!-- 9. Jacinta B. -->
@@ -1223,10 +1085,6 @@
             <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <span class="review-badge">Verified Google Review</span>
             <p class="review-text">"Caleb Grondel was our consultant and he made sure we were taken care of. He walked us through all of the details as well as changes that came up. Since the power would be out during the installation, he made sure we were reimbursed for a hotel room so I could continue to work and my son could nap in a quiet space. Overall, a great experience with Caleb and the installers."</p>
-            <div class="review-photos">
-              <img src="images/reviews/jacinta1.jpg" alt="Jacinta B. solar install" loading="lazy">
-              <img src="images/reviews/jacinta2.jpg" alt="Jacinta B. solar install" loading="lazy">
-            </div>
           </div>
 
           <!-- 10. Gary -->
@@ -1251,24 +1109,13 @@
             <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <span class="review-badge">Verified Google Review</span>
             <p class="review-text">"Met Caleb back in August and my biggest worry was having to pay money upfront. He was patient and the process went so smooth, they even helped us get our main panel upgraded. Have recommended him to 2 neighbors and the process has been good for themselves as well. Grateful for the work of Sunrun and Caleb!"</p>
-            <div class="review-photos">
-              <img src="images/reviews/armando1.png" alt="Armando P. solar install" loading="lazy">
-              <img src="images/reviews/armando2.jpg" alt="Armando P. solar install" loading="lazy">
-              <img src="images/reviews/armando3.jpg" alt="Armando P. solar install" loading="lazy">
-            </div>
           </div>
 
-          <!-- 13. Moe Z. (text TBD) -->
+          <!-- 13. Moe Z. -->
           <div class="review-card">
             <div class="review-header"><span class="review-name">Moe Z.</span></div>
             <div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
             <span class="review-badge">Verified Google Review</span>
-            <div class="review-photos">
-              <img src="images/reviews/moe1.jpg" alt="Moe Z. solar install" loading="lazy">
-              <img src="images/reviews/moe2.jpg" alt="Moe Z. solar install" loading="lazy">
-              <img src="images/reviews/moe3.png" alt="Moe Z. solar install" loading="lazy">
-              <img src="images/reviews/moe4.jpg" alt="Moe Z. solar install" loading="lazy">
-            </div>
           </div>
 
         </div>
@@ -1280,6 +1127,8 @@
       </div>
 
       <div class="reviews-link reveal">
+        <a href="/gallery.html">View Install Gallery &rarr;</a>
+        <span style="display:inline-block;width:2rem"></span>
         <a href="https://www.google.com/search?q=Sunrun+Santa+Fe+Springs" target="_blank" rel="noopener">Read All Reviews on Google &rarr;</a>
       </div>
     </div>
@@ -1346,14 +1195,6 @@
       </div>
     </div>
   </section>
-
-  <!-- Lightbox -->
-  <div class="lightbox" id="lightbox">
-    <button class="lightbox-close" onclick="closeLightbox()" aria-label="Close">&times;</button>
-    <button class="lightbox-arrow lightbox-prev" onclick="lightboxNav(-1)" aria-label="Previous">&#8249;</button>
-    <img id="lightboxImg" src="" alt="Install photo">
-    <button class="lightbox-arrow lightbox-next" onclick="lightboxNav(1)" aria-label="Next">&#8250;</button>
-  </div>
 
   <!-- Footer -->
   <footer>
@@ -1445,45 +1286,6 @@
       track.scrollBy({ left: scrollAmt, behavior: 'smooth' });
     };
 
-    // Lightbox
-    (function () {
-      var lbEl = document.getElementById('lightbox');
-      var lbImg = document.getElementById('lightboxImg');
-      var siblings = [];
-      var idx = 0;
-
-      document.querySelectorAll('.review-photos img').forEach(function (img) {
-        img.addEventListener('click', function () {
-          var parent = img.closest('.review-photos');
-          siblings = Array.from(parent.querySelectorAll('img'));
-          idx = siblings.indexOf(img);
-          lbImg.src = siblings[idx].src;
-          lbEl.classList.add('open');
-          document.body.style.overflow = 'hidden';
-        });
-      });
-
-      window.closeLightbox = function () {
-        lbEl.classList.remove('open');
-        document.body.style.overflow = '';
-      };
-
-      window.lightboxNav = function (dir) {
-        idx = (idx + dir + siblings.length) % siblings.length;
-        lbImg.src = siblings[idx].src;
-      };
-
-      lbEl.addEventListener('click', function (e) {
-        if (e.target === lbEl) closeLightbox();
-      });
-
-      document.addEventListener('keydown', function (e) {
-        if (!lbEl.classList.contains('open')) return;
-        if (e.key === 'Escape') closeLightbox();
-        if (e.key === 'ArrowLeft') lightboxNav(-1);
-        if (e.key === 'ArrowRight') lightboxNav(1);
-      });
-    })();
   </script>
 
 </body>
