@@ -141,6 +141,38 @@
       margin-bottom: 1.5rem;
     }
 
+    .section-number {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #bbb;
+      margin-bottom: 1.5rem;
+    }
+
+    /* ── PHOTO BREAKS ── */
+    .photo-break {
+      width: 100%;
+      max-height: 400px;
+      overflow: hidden;
+      margin: 0;
+    }
+
+    .photo-break img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    @media (max-width: 767px) {
+      .photo-break img {
+        height: 250px;
+      }
+    }
+
     .section-heading {
       font-size: clamp(2.25rem, 6vw, 5rem);
       font-weight: 600;
@@ -163,10 +195,8 @@
 
     /* ── STATUS BAR ── */
     .status-bar {
-      position: fixed;
+      position: sticky;
       top: 0;
-      left: 0;
-      right: 0;
       background: var(--text);
       color: var(--bg);
       z-index: 101;
@@ -180,6 +210,14 @@
 
     .status-bar + nav {
       top: 2.1rem;
+    }
+
+    @media (max-width: 767px) {
+      .status-bar {
+        font-size: 0.65rem;
+        letter-spacing: 0.08em;
+        padding: 0.45rem 0.5rem;
+      }
     }
 
     .status-bar ~ .client-hero {
@@ -295,17 +333,56 @@
       }
     }
 
-    /* ── T-CHART ── */
+    /* ── RATE CHART ── */
+    .rate-chart-container {
+      max-width: 700px;
+      margin: 2.5rem 0;
+      padding: 2rem 0;
+    }
+
+    .rate-chart-title {
+      font-size: 0.8125rem;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      color: #666;
+      margin-bottom: 1rem;
+    }
+
+    .rate-chart {
+      width: 100%;
+      height: auto;
+    }
+
+    .rate-chart-source {
+      font-size: 0.6875rem;
+      color: #bbb;
+      font-style: italic;
+      margin-top: 0.75rem;
+    }
+
+    @media (max-width: 767px) {
+      .rate-chart-container {
+        margin: 1.5rem -0.5rem;
+        padding: 1.5rem 0;
+      }
+    }
+
+    /* ── T-CHART (dark) ── */
     .tchart-section {
       width: 100%;
       padding: clamp(3rem, 8vw, 5rem) 0;
-      border-top: 1px solid var(--line);
+      background: #1a1a1a;
     }
 
     .tchart-inner {
       max-width: 1200px;
       margin: 0 auto;
       padding: 0 clamp(1.5rem, 4vw, 3rem);
+      text-align: center;
+    }
+
+    .tchart-section .section-number {
+      color: #555;
     }
 
     .tchart-heading {
@@ -315,11 +392,12 @@
       line-height: 1;
       margin-bottom: 1rem;
       text-align: center;
+      color: #ffffff;
     }
 
     .tchart-subheading {
       font-size: clamp(1.05rem, 1.4vw, 1.3rem);
-      color: var(--text-muted);
+      color: #888;
       text-align: center;
       margin-bottom: clamp(2.5rem, 5vw, 4rem);
     }
@@ -329,36 +407,39 @@
       grid-template-columns: 1fr 1fr;
     }
 
-    /* LEFT — Edison (the uncomfortable side) */
+    /* LEFT — Edison (the uncomfortable side, dark on dark) */
     .tchart-edison {
-      background: #f2f2f2;
+      background: #2a2a2a;
       padding: clamp(2rem, 4vw, 2.75rem);
       border-radius: 4px 0 0 4px;
+      text-align: left;
     }
 
-    /* RIGHT — New Plan (the clean side) */
+    /* RIGHT — New Plan (the clean side, glows against the dark) */
     .tchart-newplan {
       background: #ffffff;
       padding: clamp(2rem, 4vw, 2.75rem);
       border-left: 3px solid var(--teal);
       border-radius: 0 4px 4px 0;
+      text-align: left;
     }
 
     .tchart-col-header {
       font-size: 1.25rem;
       margin-bottom: 2rem;
       padding-bottom: 1rem;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
 
     .tchart-edison .tchart-col-header {
       font-weight: 400;
-      color: #888;
+      color: #777;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
     .tchart-newplan .tchart-col-header {
       font-weight: 700;
       color: #1a1a1a;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
 
     .tchart-label {
@@ -381,7 +462,11 @@
     }
 
     .tchart-edison .tchart-content {
-      color: #555;
+      color: #999;
+    }
+
+    .tchart-edison .tchart-label {
+      color: #666;
     }
 
     .tchart-newplan .tchart-content {
@@ -392,7 +477,7 @@
       text-align: center;
       font-size: clamp(1.1rem, 1.5vw, 1.2rem);
       font-style: italic;
-      color: #888;
+      color: #666;
       padding: clamp(2.5rem, 5vw, 3.5rem) 1.5rem 0;
     }
 
@@ -420,7 +505,7 @@
         text-align: center;
         padding: 1rem 0;
         font-size: 0.85rem;
-        color: #aaa;
+        color: #555;
         letter-spacing: 0.15em;
         text-transform: uppercase;
         font-weight: 600;
@@ -554,6 +639,21 @@
       padding: 0 1rem;
       display: flex;
       flex-direction: column;
+    }
+
+    .review-photo {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 4px;
+      margin-bottom: 1.25rem;
+      display: block;
+    }
+
+    @media (min-width: 812px) {
+      .review-photo {
+        height: 160px;
+      }
     }
 
     .review-text {
@@ -997,7 +1097,7 @@
   <section class="client-hero no-border">
     <div class="container">
       <div class="client-hero-text">
-        <span class="section-label reveal">Your Status</span>
+        <div class="section-number reveal">01 / Your Status</div>
         <h1 class="section-heading reveal">You Made a Move.</h1>
         <p class="section-intro reveal">Most homeowners know Edison's rates are out of control. Most of them won't do anything about it. You did. Now we find out if your home qualifies.</p>
       </div>
@@ -1011,7 +1111,7 @@
   <section>
     <div class="container">
       <div class="leaving-behind-inner">
-        <span class="section-label reveal">The Reality</span>
+        <div class="section-number reveal">02 / The Reality</div>
         <h2 class="section-heading reveal">What You're Leaving Behind</h2>
 
         <!-- Block 1: The Rate -->
@@ -1026,6 +1126,56 @@
             <a href="https://www.cpuc.ca.gov/news-and-updates/all-news/southern-california-edison-2025-general-rate-case" target="_blank" rel="noopener">CPUC 2025 Rate Case Decision</a> ·
             <a href="https://www.energytoolbase.com/blog/utility-rates/electric-utility-bill-inflation-in-california/" target="_blank" rel="noopener">Energy Toolbase Rate Analysis</a>
           </div>
+        </div>
+
+        <!-- Edison Rate Chart -->
+        <div class="rate-chart-container reveal">
+          <div class="rate-chart-title">SCE Average Residential Rate (¢/kWh)</div>
+          <svg class="rate-chart" viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" aria-label="Line chart showing SCE residential rates rising from 17.5 cents per kilowatt-hour in 2015 to 34.5 cents in 2026, with a dashed projection line to 40 cents by 2028.">
+            <line x1="60" y1="40" x2="660" y2="40" stroke="#eee" stroke-width="1"/>
+            <line x1="60" y1="100" x2="660" y2="100" stroke="#eee" stroke-width="1"/>
+            <line x1="60" y1="160" x2="660" y2="160" stroke="#eee" stroke-width="1"/>
+            <line x1="60" y1="220" x2="660" y2="220" stroke="#eee" stroke-width="1"/>
+
+            <text x="50" y="44" text-anchor="end" fill="#999" font-size="11" font-family="system-ui, -apple-system, sans-serif">40¢</text>
+            <text x="50" y="104" text-anchor="end" fill="#999" font-size="11" font-family="system-ui, -apple-system, sans-serif">30¢</text>
+            <text x="50" y="164" text-anchor="end" fill="#999" font-size="11" font-family="system-ui, -apple-system, sans-serif">20¢</text>
+            <text x="50" y="224" text-anchor="end" fill="#999" font-size="11" font-family="system-ui, -apple-system, sans-serif">10¢</text>
+
+            <polyline points="60,175 109,169 158,163 207,159 256,154 305,145 354,131 403,115 452,97 501,83 550,69 599,73"
+                      fill="none" stroke="#e63946" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+
+            <polyline points="599,73 635,55 660,40"
+                      fill="none" stroke="#e63946" stroke-width="2" stroke-dasharray="6,4" stroke-linecap="round" opacity="0.6"/>
+
+            <circle cx="60" cy="175" r="3" fill="#e63946"/>
+            <circle cx="109" cy="169" r="3" fill="#e63946"/>
+            <circle cx="158" cy="163" r="3" fill="#e63946"/>
+            <circle cx="207" cy="159" r="3" fill="#e63946"/>
+            <circle cx="256" cy="154" r="3" fill="#e63946"/>
+            <circle cx="305" cy="145" r="3" fill="#e63946"/>
+            <circle cx="354" cy="131" r="3" fill="#e63946"/>
+            <circle cx="403" cy="115" r="3" fill="#e63946"/>
+            <circle cx="452" cy="97" r="3" fill="#e63946"/>
+            <circle cx="501" cy="83" r="3" fill="#e63946"/>
+            <circle cx="550" cy="69" r="3" fill="#e63946"/>
+            <circle cx="599" cy="73" r="3" fill="#e63946"/>
+
+            <circle cx="635" cy="55" r="3" fill="none" stroke="#e63946" stroke-width="1.5" opacity="0.6"/>
+            <circle cx="660" cy="40" r="3" fill="none" stroke="#e63946" stroke-width="1.5" opacity="0.6"/>
+
+            <text x="60" y="250" text-anchor="middle" fill="#999" font-size="10" font-family="system-ui, -apple-system, sans-serif">'15</text>
+            <text x="158" y="250" text-anchor="middle" fill="#999" font-size="10" font-family="system-ui, -apple-system, sans-serif">'17</text>
+            <text x="256" y="250" text-anchor="middle" fill="#999" font-size="10" font-family="system-ui, -apple-system, sans-serif">'19</text>
+            <text x="354" y="250" text-anchor="middle" fill="#999" font-size="10" font-family="system-ui, -apple-system, sans-serif">'21</text>
+            <text x="452" y="250" text-anchor="middle" fill="#999" font-size="10" font-family="system-ui, -apple-system, sans-serif">'23</text>
+            <text x="550" y="250" text-anchor="middle" fill="#999" font-size="10" font-family="system-ui, -apple-system, sans-serif">'25</text>
+            <text x="635" y="250" text-anchor="middle" fill="#999" font-size="10" font-family="system-ui, -apple-system, sans-serif">'27</text>
+
+            <text x="647" y="34" text-anchor="middle" fill="#e63946" font-size="9" font-family="system-ui, -apple-system, sans-serif" opacity="0.6">projected</text>
+            <text x="599" y="63" text-anchor="middle" fill="#e63946" font-size="11" font-weight="600" font-family="system-ui, -apple-system, sans-serif">34.5¢</text>
+          </svg>
+          <div class="rate-chart-source">Sources: SCE Rate Advisory · CPUC General Rate Case Filings · U.S. Energy Information Administration</div>
         </div>
 
         <!-- Block 2: Wildfire Liability -->
@@ -1062,9 +1212,15 @@
     </div>
   </section>
 
+  <!-- Photo Break 1 -->
+  <div class="photo-break">
+    <img src="images/reviews/angel3.jpg" alt="Solar panels installed on a Southern California home" loading="lazy">
+  </div>
+
   <!-- T-Chart: The Two Plans -->
   <div class="tchart-section">
     <div class="tchart-inner">
+      <div class="section-number reveal">03 / The Two Plans</div>
       <h2 class="tchart-heading reveal">The Two Plans</h2>
       <p class="tchart-subheading reveal">One you were on. One you chose.</p>
 
@@ -1137,10 +1293,15 @@
     </div>
   </div>
 
+  <!-- Photo Break 2 -->
+  <div class="photo-break">
+    <img src="images/reviews/lifestyle2.jpg" alt="Tesla Powerwall battery installed on a residential garage wall" loading="lazy">
+  </div>
+
   <!-- Section 3: Timeline -->
   <section>
     <div class="container">
-      <span class="section-label reveal">The Process</span>
+      <div class="section-number reveal">04 / The Process</div>
       <h2 class="section-heading reveal">Where We Are</h2>
       <div class="timeline">
 
@@ -1199,7 +1360,7 @@
   <!-- Section 4: What's Included -->
   <section>
     <div class="container">
-      <span class="section-label reveal">If Approved</span>
+      <div class="section-number reveal">05 / What's Included</div>
       <h2 class="section-heading reveal">What's Included If Your Home Qualifies</h2>
       <div class="included-grid">
         <div class="included-card reveal">
@@ -1225,42 +1386,49 @@
   <!-- Section 5: Reviews (copied from index.html) -->
   <section>
     <div class="container">
-      <span class="section-label reveal">From Approved Homeowners</span>
+      <div class="section-number reveal">06 / From Approved Homeowners</div>
       <h2 class="section-heading reveal">Homes That Made It Through</h2>
       <div class="reviews-track-wrap reveal">
         <div class="reviews-track" id="reviewsTrack">
 
           <div class="review-card">
+            <img class="review-photo" src="images/reviews/angel1.jpg" alt="Completed solar install — Angel" loading="lazy">
             <p class="review-text">"We met Caleb not too long ago and the process has been amazing. We have even referred him to many friends and they say the same thing! We would not have done it if we did not trust Caleb! Sunrun did a great job too with the installation, it was done in a day and they cleaned up everything!"</p>
             <div class="review-meta"><span class="review-name">Angel I.</span><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span class="review-badge">Verified Google Review</span></div>
           </div>
 
           <div class="review-card">
+            <img class="review-photo" src="images/reviews/armando2.jpg" alt="Completed solar install — Armando" loading="lazy">
             <p class="review-text">"Met Caleb back in August and my biggest worry was having to pay money upfront. He was patient and the process went so smooth, they even helped us get our main panel upgraded. Have recommended him to 2 neighbors and the process has been good for themselves as well."</p>
             <div class="review-meta"><span class="review-name">Armando P.</span><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span class="review-badge">Verified Google Review</span></div>
           </div>
 
           <div class="review-card">
+            <img class="review-photo" src="images/reviews/rosa1.jpg" alt="Completed solar install — Rosa" loading="lazy">
             <p class="review-text">"I've had issues with programs like this in the past, so I was hesitant. Caleb took the time to explain everything and made sure I understood what I was getting into. No pressure, no rush. I'm glad I gave it another shot."</p>
             <div class="review-meta"><span class="review-name">Rosa C.</span><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span class="review-badge">Verified Google Review</span></div>
           </div>
 
           <div class="review-card">
+            <img class="review-photo" src="images/reviews/lifestyle1.jpg" alt="Completed solar install — Lifestyle Board &amp; Care" loading="lazy">
             <p class="review-text">"We own a care home and were referred by a friend to work with Caleb Grondel! The process was easy and Caleb made it very clear and answered all my questions. Our Care home requires back up power and we are excited for what the Tesla Powerwall can do for our home. We are saving money compared to what we are paying Southern California Edison right now."</p>
             <div class="review-meta"><span class="review-name">Lifestyle Board &amp; Care</span><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span class="review-badge">Verified Google Review</span></div>
           </div>
 
           <div class="review-card">
+            <img class="review-photo" src="images/reviews/jacinta1.jpg" alt="Completed solar install — Jacinta" loading="lazy">
             <p class="review-text">"Caleb Grondel was our consultant and he made sure we were taken care of. He walked us through all of the details as well as changes that came up. Since the power would be out during the installation, he made sure we were reimbursed for a hotel room so I could continue to work. Overall, a great experience with Caleb and the installers."</p>
             <div class="review-meta"><span class="review-name">Jacinta B.</span><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span class="review-badge">Verified Google Review</span></div>
           </div>
 
           <div class="review-card">
+            <img class="review-photo" src="images/reviews/benny1.jpg" alt="Completed solar install — Benny" loading="lazy">
             <p class="review-text">"Working with Caleb from Sunrun has been a wonderful experience. Caleb is very knowledgeable about rooftop solar systems. He earned my trust 100%. Our solar system was installed professionally in just a day and a half. I highly recommend Caleb to anyone!"</p>
             <div class="review-meta"><span class="review-name">Benny G.</span><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span class="review-badge">Verified Google Review</span></div>
           </div>
 
           <div class="review-card">
+            <img class="review-photo" src="images/reviews/moe1.jpg" alt="Completed solar install — Moe" loading="lazy">
             <p class="review-text">"Caleb is an amazing guy. Very fast in replying. Easy to get hold of him and very swiftly takes care of your concerns. Overall this experience was fantastic, went smoothly. Will recommend these guys 100%!"</p>
             <div class="review-meta"><span class="review-name">Moe Z.</span><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span class="review-badge">Verified Google Review</span></div>
           </div>
@@ -1280,11 +1448,16 @@
     </div>
   </section>
 
+  <!-- Photo Break 3 -->
+  <div class="photo-break">
+    <img src="images/reviews/moe2.jpg" alt="Completed solar installation on an Orange County home" loading="lazy">
+  </div>
+
   <!-- Section 6: Common Concerns -->
   <section>
     <div class="container">
       <div class="concerns-inner">
-        <span class="section-label reveal">Real Talk</span>
+        <div class="section-number reveal">07 / Honest Answers</div>
         <h2 class="section-heading reveal">Honest Answers</h2>
         <p class="concerns-subheading reveal">The concerns most people might have but not sure how to ask.</p>
 
@@ -1368,7 +1541,7 @@
   <!-- Section 7: Your Consultant -->
   <section>
     <div class="container">
-      <span class="section-label reveal">Your Consultant</span>
+      <div class="section-number reveal">08 / Your Consultant</div>
       <h2 class="section-heading reveal">From Caleb</h2>
       <div class="about-layout">
         <div class="about-image reveal"><img src="images/IMG_6645.jpg" alt="Caleb Grondel"></div>
