@@ -161,6 +161,31 @@
       font-weight: 700;
     }
 
+    /* ── STATUS BAR ── */
+    .status-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      background: var(--text);
+      color: var(--bg);
+      z-index: 101;
+      padding: 0.55rem 0;
+      font-size: 0.72rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+
+    .status-bar + nav {
+      top: 2.1rem;
+    }
+
+    .status-bar ~ .client-hero {
+      padding-top: clamp(11rem, 18vw, 16rem);
+    }
+
     /* ── CLIENT HERO ── */
     .client-hero {
       padding-top: clamp(9rem, 16vw, 14rem);
@@ -198,6 +223,53 @@
         max-height: 250px;
         object-fit: cover;
       }
+    }
+
+    /* ── LEAVING BEHIND ── */
+    .leaving-behind-stats {
+      max-width: 42rem;
+    }
+
+    .leaving-behind-stats p {
+      font-size: clamp(1.15rem, 1.6vw, 1.4rem);
+      line-height: 1.5;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.5rem;
+    }
+
+    .leaving-behind-stats p strong {
+      font-weight: 700;
+    }
+
+    .leaving-behind-stats .source {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      letter-spacing: 0.05em;
+      margin-top: -0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .leaving-behind-stats .kicker {
+      margin-top: 2.5rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--line);
+      font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.35;
+    }
+
+    /* ── PULL QUOTE ── */
+    .pull-quote {
+      max-width: 42rem;
+      margin-top: 4rem;
+      padding-top: 2.5rem;
+      border-top: 1px solid var(--line);
+      font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      line-height: 1.35;
+      color: var(--text);
     }
 
     /* ── COMPARISON TABLE ── */
@@ -802,6 +874,11 @@
 </head>
 <body>
 
+  <!-- Status Bar -->
+  <div class="status-bar">
+    <span id="statusCity"></span>Status: Application Submitted · Next Step: Site Survey · Your Consultant: Caleb Grondel
+  </div>
+
   <!-- Nav -->
   <nav>
     <div class="container">
@@ -815,12 +892,27 @@
     <div class="container">
       <div class="client-hero-text">
         <span class="section-label reveal">Your Status</span>
-        <h1 class="section-heading reveal">Your Home Is in the Queue.</h1>
-        <p class="section-intro reveal">We've started the qualification process. Here's what we're looking at and what to expect over the next few weeks.</p>
+        <h1 class="section-heading reveal">You Made a Move.</h1>
+        <p class="section-intro reveal" id="heroIntro">Most homeowners know Edison's rates are out of control. Most of them won't do anything about it. You did. Now we find out if your home qualifies.</p>
       </div>
       <video class="client-hero-video reveal" autoplay muted loop playsinline>
         <source src="Poweroutage.mp4" type="video/mp4">
       </video>
+    </div>
+  </section>
+
+  <!-- What You're Leaving Behind -->
+  <section>
+    <div class="container">
+      <span class="section-label reveal">The Reality</span>
+      <h2 class="section-heading reveal">What You're Leaving Behind</h2>
+      <div class="leaving-behind-stats">
+        <p class="reveal"><strong>SCE rates have increased 83% in the last decade.</strong></p>
+        <p class="source reveal">CA Public Advocates Office</p>
+        <p class="reveal">More increases are already approved through 2028.</p>
+        <p class="reveal">The average SCE household has no rate cap, no backup power, and no alternative.</p>
+        <p class="kicker reveal">That's the plan you were on. The one you never agreed to.</p>
+      </div>
     </div>
   </section>
 
@@ -840,8 +932,8 @@
 
         <div class="compare-row">
           <div class="compare-row-label">Monthly Cost</div>
-          <div class="compare-cell--approved">One flat rate, January through December</div>
-          <div class="compare-cell--current">Variable rate that changes by season, time of day, and tier</div>
+          <div class="compare-cell--approved">One flat rate. Same in January. Same in August.</div>
+          <div class="compare-cell--current">Changes by season, time of day, and tier. You never know what's coming.</div>
         </div>
 
         <div class="compare-row">
@@ -858,10 +950,11 @@
 
         <div class="compare-row">
           <div class="compare-row-label">Maintenance &amp; Liability</div>
-          <div class="compare-cell--approved">Sunrun monitors, maintains, warrantees, and insures everything</div>
-          <div class="compare-cell--current">You own nothing but you're still at their mercy</div>
+          <div class="compare-cell--approved">Sunrun monitors, maintains, warrantees, and insures everything. Something breaks, they fix it. No call, no invoice.</div>
+          <div class="compare-cell--current">You own nothing. You control nothing. You pay whatever they decide.</div>
         </div>
       </div>
+      <p class="pull-quote reveal">The right side of that chart is where you were yesterday. The left side is where you're headed.</p>
     </div>
   </section>
 
@@ -932,19 +1025,19 @@
       <div class="included-grid">
         <div class="included-card reveal">
           <h3>Monitoring</h3>
-          <p>Sunrun tracks your system performance 24/7. If something drops, they know before you do.</p>
+          <p>Sunrun watches your system 24/7. If production drops, they know before you do.</p>
         </div>
         <div class="included-card reveal">
           <h3>Maintenance</h3>
-          <p>Any repairs or part replacements are handled and covered by Sunrun.</p>
+          <p>Something breaks. Sunrun fixes it. You don't call anyone. You don't pay anything.</p>
         </div>
         <div class="included-card reveal">
           <h3>Warranty</h3>
-          <p>Full equipment warranty for the life of your agreement.</p>
+          <p>Full equipment coverage for the life of your agreement. Not a year. Not five years. The whole thing.</p>
         </div>
         <div class="included-card reveal">
           <h3>Insurance</h3>
-          <p>Your system is insured by Sunrun. Damage from weather, accidents, or equipment failure is covered.</p>
+          <p>Hail, wind, equipment failure — Sunrun covers damage to your system. Not your homeowner's policy.</p>
         </div>
       </div>
     </div>
@@ -959,23 +1052,23 @@
         <div class="reviews-track" id="reviewsTrack">
 
           <div class="review-card">
-            <p class="review-text">"We own a care home and were referred by a friend to work with Caleb Grondel! The process was easy and Caleb made it very clear and answered all my questions. Our Care home requires back up power and we are excited for what the Tesla Powerwall can do for our home. We are saving money compared to what we are paying Southern California Edison right now."</p>
-            <div class="review-meta"><span class="review-name">Lifestyle Board &amp; Care</span><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span class="review-badge">Verified Google Review</span></div>
-          </div>
-
-          <div class="review-card">
-            <p class="review-text">"Working with Caleb from Sunrun has been a wonderful experience. Caleb is very knowledgeable about rooftop solar systems. He earned my trust 100%. Our solar system was installed professionally in just a day and a half. I highly recommend Caleb to anyone!"</p>
-            <div class="review-meta"><span class="review-name">Benny G.</span><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span class="review-badge">Verified Google Review</span></div>
-          </div>
-
-          <div class="review-card">
             <p class="review-text">"We met Caleb not too long ago and the process has been amazing. We have even referred him to many friends and they say the same thing! We would not have done it if we did not trust Caleb! Sunrun did a great job too with the installation, it was done in a day and they cleaned up everything!"</p>
             <div class="review-meta"><span class="review-name">Angel I.</span><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span class="review-badge">Verified Google Review</span></div>
           </div>
 
           <div class="review-card">
-            <p class="review-text">"We heard from our neighbor across the street. The rep guy Caleb was so detailed and thorough explaining the whole process. The people who installed were good and explained also from installing all the way. It was indeed a good experience! We are excited for the power to be up."</p>
-            <div class="review-meta"><span class="review-name">Chai</span><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span class="review-badge">Verified Google Review</span></div>
+            <p class="review-text">"Met Caleb back in August and my biggest worry was having to pay money upfront. He was patient and the process went so smooth, they even helped us get our main panel upgraded. Have recommended him to 2 neighbors and the process has been good for themselves as well."</p>
+            <div class="review-meta"><span class="review-name">Armando P.</span><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span class="review-badge">Verified Google Review</span></div>
+          </div>
+
+          <div class="review-card">
+            <p class="review-text">"I've had issues with programs like this in the past, so I was hesitant. Caleb took the time to explain everything and made sure I understood what I was getting into. No pressure, no rush. I'm glad I gave it another shot."</p>
+            <div class="review-meta"><span class="review-name">Rosa C.</span><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span class="review-badge">Verified Google Review</span></div>
+          </div>
+
+          <div class="review-card">
+            <p class="review-text">"We own a care home and were referred by a friend to work with Caleb Grondel! The process was easy and Caleb made it very clear and answered all my questions. Our Care home requires back up power and we are excited for what the Tesla Powerwall can do for our home. We are saving money compared to what we are paying Southern California Edison right now."</p>
+            <div class="review-meta"><span class="review-name">Lifestyle Board &amp; Care</span><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span class="review-badge">Verified Google Review</span></div>
           </div>
 
           <div class="review-card">
@@ -984,8 +1077,8 @@
           </div>
 
           <div class="review-card">
-            <p class="review-text">"Met Caleb back in August and my biggest worry was having to pay money upfront. He was patient and the process went so smooth, they even helped us get our main panel upgraded. Have recommended him to 2 neighbors and the process has been good for themselves as well."</p>
-            <div class="review-meta"><span class="review-name">Armando P.</span><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span class="review-badge">Verified Google Review</span></div>
+            <p class="review-text">"Working with Caleb from Sunrun has been a wonderful experience. Caleb is very knowledgeable about rooftop solar systems. He earned my trust 100%. Our solar system was installed professionally in just a day and a half. I highly recommend Caleb to anyone!"</p>
+            <div class="review-meta"><span class="review-name">Benny G.</span><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span class="review-badge">Verified Google Review</span></div>
           </div>
 
           <div class="review-card">
@@ -1093,16 +1186,11 @@
   <section>
     <div class="container">
       <span class="section-label reveal">Your Consultant</span>
-      <h2 class="section-heading reveal">Caleb Grondel</h2>
+      <h2 class="section-heading reveal">From Caleb</h2>
       <div class="about-layout">
         <div class="about-image reveal"><img src="images/IMG_6645.jpg" alt="Caleb Grondel"></div>
         <div class="about-content reveal">
-          <p>I'm your point of contact through the entire evaluation and beyond. If anything comes up — questions, timeline updates, or you just want to know where things stand — reach out directly.</p>
-          <div class="credentials">
-            <span class="credential-badge">Sunrun Certified</span>
-            <span class="credential-badge">Tesla Powerwall Certified</span>
-            <span class="credential-badge">Licensed &amp; Insured</span>
-          </div>
+          <p>I'm tracking your file personally. If the survey turns up anything unexpected, I'll call you before anyone else does. If you have questions at 10pm on a Tuesday, text me. This is my number, and I actually answer it.</p>
           <div class="consultant-contact">
             <div>
               <span class="contact-label">Call</span>
@@ -1113,6 +1201,11 @@
               <a href="sms:+15625551234">(562) 555-1234</a>
             </div>
           </div>
+          <div class="credentials">
+            <span class="credential-badge">Sunrun Certified</span>
+            <span class="credential-badge">Tesla Powerwall Certified</span>
+            <span class="credential-badge">Licensed &amp; Insured</span>
+          </div>
         </div>
       </div>
     </div>
@@ -1121,9 +1214,9 @@
   <!-- Section 8: Referral CTA -->
   <div class="mid-cta">
     <div class="container">
-      <h3 class="reveal">Know Someone Who Should Get Evaluated?</h3>
-      <p class="reveal">If they qualify, you both benefit.</p>
-      <a href="/" class="btn reveal">Refer Someone</a>
+      <h3 class="reveal">Your Neighbor Is Going to Ask.</h3>
+      <p class="reveal">When the crew shows up, people notice. When they ask, send them my way. If they qualify and get approved, you get $500. Not a credit. Cash.</p>
+      <a href="/" class="btn reveal">Refer Someone — $500</a>
     </div>
   </div>
 
@@ -1191,6 +1284,24 @@
       });
       if (!wasOpen) item.classList.add('open');
     };
+
+    // City personalization
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var city = params.get('city');
+      if (!city) return;
+      city = decodeURIComponent(city);
+      // Update hero intro
+      var heroIntro = document.getElementById('heroIntro');
+      if (heroIntro) {
+        heroIntro.textContent = "Most homeowners know Edison\u2019s rates are out of control. Most of them won\u2019t do anything about it. You did. Now we find out if your home in " + city + " qualifies.";
+      }
+      // Update status bar
+      var statusCity = document.getElementById('statusCity');
+      if (statusCity) {
+        statusCity.textContent = city + ' \u00B7 ';
+      }
+    })();
   </script>
 
 </body>
