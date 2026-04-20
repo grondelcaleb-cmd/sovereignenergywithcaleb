@@ -151,28 +151,6 @@
       margin-bottom: 1.5rem;
     }
 
-    /* ── PHOTO BREAKS ── */
-    .photo-break {
-      width: 100%;
-      max-height: 400px;
-      overflow: hidden;
-      margin: 0;
-    }
-
-    .photo-break img {
-      width: 100%;
-      height: 400px;
-      object-fit: cover;
-      object-position: center;
-      display: block;
-    }
-
-    @media (max-width: 767px) {
-      .photo-break img {
-        height: 250px;
-      }
-    }
-
     .section-heading {
       font-size: clamp(2.25rem, 6vw, 5rem);
       font-weight: 600;
@@ -639,21 +617,6 @@
       padding: 0 1rem;
       display: flex;
       flex-direction: column;
-    }
-
-    .review-photo {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-radius: 4px;
-      margin-bottom: 1.25rem;
-      display: block;
-    }
-
-    @media (min-width: 812px) {
-      .review-photo {
-        height: 160px;
-      }
     }
 
     .review-text {
@@ -1212,11 +1175,6 @@
     </div>
   </section>
 
-  <!-- Photo Break 1 -->
-  <div class="photo-break">
-    <img src="images/reviews/angel3.jpg" alt="Solar panels installed on a Southern California home" loading="lazy">
-  </div>
-
   <!-- T-Chart: The Two Plans -->
   <div class="tchart-section">
     <div class="tchart-inner">
@@ -1291,11 +1249,6 @@
 
       <div class="tchart-closing reveal">Same home. Same appliances. Different deal.</div>
     </div>
-  </div>
-
-  <!-- Photo Break 2 -->
-  <div class="photo-break">
-    <img src="images/reviews/lifestyle2.jpg" alt="Tesla Powerwall battery installed on a residential garage wall" loading="lazy">
   </div>
 
   <!-- Section 3: Timeline -->
@@ -1392,43 +1345,36 @@
         <div class="reviews-track" id="reviewsTrack">
 
           <div class="review-card">
-            <img class="review-photo" src="images/reviews/angel1.jpg" alt="Completed solar install — Angel" loading="lazy">
             <p class="review-text">"We met Caleb not too long ago and the process has been amazing. We have even referred him to many friends and they say the same thing! We would not have done it if we did not trust Caleb! Sunrun did a great job too with the installation, it was done in a day and they cleaned up everything!"</p>
             <div class="review-meta"><span class="review-name">Angel I.</span><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span class="review-badge">Verified Google Review</span></div>
           </div>
 
           <div class="review-card">
-            <img class="review-photo" src="images/reviews/armando2.jpg" alt="Completed solar install — Armando" loading="lazy">
             <p class="review-text">"Met Caleb back in August and my biggest worry was having to pay money upfront. He was patient and the process went so smooth, they even helped us get our main panel upgraded. Have recommended him to 2 neighbors and the process has been good for themselves as well."</p>
             <div class="review-meta"><span class="review-name">Armando P.</span><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span class="review-badge">Verified Google Review</span></div>
           </div>
 
           <div class="review-card">
-            <img class="review-photo" src="images/reviews/rosa1.jpg" alt="Completed solar install — Rosa" loading="lazy">
             <p class="review-text">"I've had issues with programs like this in the past, so I was hesitant. Caleb took the time to explain everything and made sure I understood what I was getting into. No pressure, no rush. I'm glad I gave it another shot."</p>
             <div class="review-meta"><span class="review-name">Rosa C.</span><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span class="review-badge">Verified Google Review</span></div>
           </div>
 
           <div class="review-card">
-            <img class="review-photo" src="images/reviews/lifestyle1.jpg" alt="Completed solar install — Lifestyle Board &amp; Care" loading="lazy">
             <p class="review-text">"We own a care home and were referred by a friend to work with Caleb Grondel! The process was easy and Caleb made it very clear and answered all my questions. Our Care home requires back up power and we are excited for what the Tesla Powerwall can do for our home. We are saving money compared to what we are paying Southern California Edison right now."</p>
             <div class="review-meta"><span class="review-name">Lifestyle Board &amp; Care</span><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span class="review-badge">Verified Google Review</span></div>
           </div>
 
           <div class="review-card">
-            <img class="review-photo" src="images/reviews/jacinta1.jpg" alt="Completed solar install — Jacinta" loading="lazy">
             <p class="review-text">"Caleb Grondel was our consultant and he made sure we were taken care of. He walked us through all of the details as well as changes that came up. Since the power would be out during the installation, he made sure we were reimbursed for a hotel room so I could continue to work. Overall, a great experience with Caleb and the installers."</p>
             <div class="review-meta"><span class="review-name">Jacinta B.</span><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span class="review-badge">Verified Google Review</span></div>
           </div>
 
           <div class="review-card">
-            <img class="review-photo" src="images/reviews/benny1.jpg" alt="Completed solar install — Benny" loading="lazy">
             <p class="review-text">"Working with Caleb from Sunrun has been a wonderful experience. Caleb is very knowledgeable about rooftop solar systems. He earned my trust 100%. Our solar system was installed professionally in just a day and a half. I highly recommend Caleb to anyone!"</p>
             <div class="review-meta"><span class="review-name">Benny G.</span><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span class="review-badge">Verified Google Review</span></div>
           </div>
 
           <div class="review-card">
-            <img class="review-photo" src="images/reviews/moe1.jpg" alt="Completed solar install — Moe" loading="lazy">
             <p class="review-text">"Caleb is an amazing guy. Very fast in replying. Easy to get hold of him and very swiftly takes care of your concerns. Overall this experience was fantastic, went smoothly. Will recommend these guys 100%!"</p>
             <div class="review-meta"><span class="review-name">Moe Z.</span><div class="review-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div><span class="review-badge">Verified Google Review</span></div>
           </div>
@@ -1447,11 +1393,6 @@
       </div>
     </div>
   </section>
-
-  <!-- Photo Break 3 -->
-  <div class="photo-break">
-    <img src="images/reviews/moe2.jpg" alt="Completed solar installation on an Orange County home" loading="lazy">
-  </div>
 
   <!-- Section 6: Common Concerns -->
   <section>
