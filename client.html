@@ -354,17 +354,18 @@
       }
     }
 
-    /* ── T-CHART (dark) ── */
+    /* ── T-CHART (dark, flat grid) ── */
     .tchart-section {
       width: 100%;
-      padding: clamp(3rem, 8vw, 5rem) 0;
+      padding: clamp(4rem, 10vw, 12rem) 0;
       background: #1a1a1a;
+      border-top: none;
     }
 
     .tchart-inner {
-      max-width: 1200px;
+      max-width: var(--max);
       margin: 0 auto;
-      padding: 0 clamp(1.5rem, 4vw, 3rem);
+      padding: 0 clamp(1.5rem, 4vw, 6rem);
       text-align: center;
     }
 
@@ -378,88 +379,116 @@
       letter-spacing: -0.03em;
       line-height: 1;
       margin-bottom: 1rem;
-      text-align: center;
       color: #ffffff;
     }
 
     .tchart-subheading {
       font-size: clamp(1.05rem, 1.4vw, 1.3rem);
+      line-height: 1.5;
       color: #888;
-      text-align: center;
-      margin-bottom: clamp(2.5rem, 5vw, 4rem);
+      margin-bottom: clamp(3rem, 6vw, 4rem);
     }
 
+    /* Flat grid — each Edison/NewPlan pair shares a grid row so heights stay aligned */
     .tchart-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
+      max-width: 1200px;
+      margin: 0 auto;
+      text-align: left;
     }
 
-    /* LEFT — Edison (the uncomfortable side, dark on dark) */
-    .tchart-edison {
+    .tchart-cell {
+      padding: clamp(1.25rem, 2.5vw, 1.75rem) clamp(1.5rem, 3vw, 2.75rem);
+    }
+
+    .tchart-edison-cell {
       background: #2a2a2a;
-      padding: clamp(2rem, 4vw, 2.75rem);
-      border-radius: 4px 0 0 4px;
-      text-align: left;
     }
 
-    /* RIGHT — New Plan (the clean side, glows against the dark) */
-    .tchart-newplan {
+    .tchart-newplan-cell {
       background: #ffffff;
-      padding: clamp(2rem, 4vw, 2.75rem);
       border-left: 3px solid var(--teal);
-      border-radius: 0 4px 4px 0;
-      text-align: left;
     }
 
+    .tchart-header-cell {
+      padding-top: clamp(2rem, 3vw, 2.75rem);
+      padding-bottom: 0;
+    }
+
+    .tchart-last-cell {
+      padding-bottom: clamp(2rem, 3vw, 2.75rem);
+    }
+
+    /* Corner radii (desktop) */
+    .tchart-grid > .tchart-cell:first-child {
+      border-radius: 4px 0 0 0;
+    }
+
+    .tchart-grid > .tchart-cell:nth-child(2) {
+      border-radius: 0 4px 0 0;
+    }
+
+    .tchart-grid > .tchart-cell:nth-last-child(2) {
+      border-radius: 0 0 0 4px;
+    }
+
+    .tchart-grid > .tchart-cell:last-child {
+      border-radius: 0 0 4px 0;
+    }
+
+    /* Column headers (row 1) */
     .tchart-col-header {
       font-size: 1.25rem;
-      margin-bottom: 2rem;
       padding-bottom: 1rem;
+      margin-bottom: 0;
     }
 
-    .tchart-edison .tchart-col-header {
+    .tchart-edison-cell .tchart-col-header {
       font-weight: 400;
       color: #777;
       border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    .tchart-newplan .tchart-col-header {
+    .tchart-newplan-cell .tchart-col-header {
       font-weight: 700;
       color: #1a1a1a;
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
 
+    /* Row labels — match unified page label system (.section-number / .fact-label) */
     .tchart-label {
-      font-size: 0.68rem;
-      letter-spacing: 0.15em;
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: #999;
-      margin-bottom: 0.5rem;
       font-weight: 600;
+      margin-bottom: 0.5rem;
     }
 
-    .tchart-content {
-      font-size: 1rem;
-      line-height: 1.7;
-      margin-bottom: 1.75rem;
-    }
-
-    .tchart-row:last-child .tchart-content {
-      margin-bottom: 0;
-    }
-
-    .tchart-edison .tchart-content {
-      color: #999;
-    }
-
-    .tchart-edison .tchart-label {
+    .tchart-edison-cell .tchart-label {
       color: #666;
     }
 
-    .tchart-newplan .tchart-content {
+    .tchart-newplan-cell .tchart-label {
+      color: #999;
+    }
+
+    /* Row content */
+    .tchart-content {
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+
+    .tchart-edison-cell .tchart-content {
+      color: #aaa;
+    }
+
+    .tchart-newplan-cell .tchart-content {
       color: #1a1a1a;
     }
 
+    /* Closing tagline */
     .tchart-closing {
       text-align: center;
       font-size: clamp(1.1rem, 1.5vw, 1.2rem);
@@ -468,34 +497,30 @@
       padding: clamp(2.5rem, 5vw, 3.5rem) 1.5rem 0;
     }
 
-    .tchart-divider {
-      display: none;
-    }
-
+    /* Mobile — single column, alternating Edison/New Plan pairs */
     @media (max-width: 767px) {
       .tchart-grid {
         grid-template-columns: 1fr;
       }
 
-      .tchart-edison {
+      .tchart-grid > .tchart-cell:first-child,
+      .tchart-grid > .tchart-cell:nth-child(2),
+      .tchart-grid > .tchart-cell:nth-last-child(2),
+      .tchart-grid > .tchart-cell:last-child {
+        border-radius: 0;
+      }
+
+      .tchart-grid > .tchart-cell:first-child {
         border-radius: 4px 4px 0 0;
       }
 
-      .tchart-newplan {
-        border-left: none;
-        border-top: 3px solid var(--teal);
+      .tchart-grid > .tchart-cell:last-child {
         border-radius: 0 0 4px 4px;
       }
 
-      .tchart-divider {
-        display: block;
-        text-align: center;
-        padding: 1rem 0;
-        font-size: 0.85rem;
-        color: #555;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        font-weight: 600;
+      .tchart-newplan-cell {
+        border-left: none;
+        border-top: 3px solid var(--teal);
       }
 
       .tchart-content {
@@ -1188,80 +1213,75 @@
   </section>
 
   <!-- T-Chart: The Two Plans -->
-  <div class="tchart-section">
+  <section class="tchart-section">
     <div class="tchart-inner">
       <div class="section-number reveal">03 / The Two Plans</div>
       <h2 class="tchart-heading reveal">The Two Plans</h2>
       <p class="tchart-subheading reveal">One you were on. One you chose.</p>
 
       <div class="tchart-grid reveal">
-        <!-- LEFT COLUMN — EDISON -->
-        <div class="tchart-edison">
+        <!-- Row 1: Column headers -->
+        <div class="tchart-cell tchart-edison-cell tchart-header-cell">
           <div class="tchart-col-header">What You Were On</div>
-
-          <div class="tchart-row">
-            <div class="tchart-label">Monthly Rate</div>
-            <div class="tchart-content">A time-of-use plan where you're charged different rates depending on the hour, the season, and how much you've already used. No way to know what your bill will be until it shows up.</div>
-          </div>
-
-          <div class="tchart-row">
-            <div class="tchart-label">Rate Protection</div>
-            <div class="tchart-content">No cap on how much Edison can raise your rate. They've averaged over 8% a year for the last decade, and more increases are already approved through 2028. You find out after it happens.</div>
-          </div>
-
-          <div class="tchart-row">
-            <div class="tchart-label">Power Outages</div>
-            <div class="tchart-content">When the grid goes down, your power goes with it. No backup. No estimate for when it comes back. You wait like everyone else.</div>
-          </div>
-
-          <div class="tchart-row">
-            <div class="tchart-label">Warranty &amp; Maintenance</div>
-            <div class="tchart-content">There's nothing to maintain because there's nothing you own. But you're still paying for a grid that's aging, catching fire, and getting more expensive to prop up every year.</div>
-          </div>
-
-          <div class="tchart-row">
-            <div class="tchart-label">Equipment &amp; Liability</div>
-            <div class="tchart-content">You own nothing on Edison's side. No equipment. No asset. Just a bill every month for power you have no control over, at a price you didn't set.</div>
-          </div>
+        </div>
+        <div class="tchart-cell tchart-newplan-cell tchart-header-cell">
+          <div class="tchart-col-header">Your New Plan</div>
         </div>
 
-        <!-- MOBILE DIVIDER -->
-        <div class="tchart-divider">vs.</div>
+        <!-- Row 2: Monthly Rate -->
+        <div class="tchart-cell tchart-edison-cell">
+          <div class="tchart-label">Monthly Rate</div>
+          <div class="tchart-content">A time-of-use plan where you're charged different rates depending on the hour, the season, and how much you've already used. No way to know what your bill will be until it shows up.</div>
+        </div>
+        <div class="tchart-cell tchart-newplan-cell">
+          <div class="tchart-label">Monthly Rate</div>
+          <div class="tchart-content" id="tchart-rate-right">One flat rate. Same in January, same in August. You know exactly what you're paying before the month starts.</div>
+        </div>
 
-        <!-- RIGHT COLUMN — NEW PLAN -->
-        <div class="tchart-newplan">
-          <div class="tchart-col-header">Your New Plan</div>
+        <!-- Row 3: Rate Protection -->
+        <div class="tchart-cell tchart-edison-cell">
+          <div class="tchart-label">Rate Protection</div>
+          <div class="tchart-content">No cap on how much Edison can raise your rate. They've averaged over 8% a year for the last decade, and more increases are already approved through 2028. You find out after it happens.</div>
+        </div>
+        <div class="tchart-cell tchart-newplan-cell">
+          <div class="tchart-label">Rate Protection</div>
+          <div class="tchart-content">Your rate is locked with a 3.5% annual cap. It's written into your agreement. No surprises. No catching up to a number you didn't agree to.</div>
+        </div>
 
-          <div class="tchart-row">
-            <div class="tchart-label">Monthly Rate</div>
-            <div class="tchart-content" id="tchart-rate-right">One flat rate. Same in January, same in August. You know exactly what you're paying before the month starts.</div>
-          </div>
+        <!-- Row 4: Power Outages -->
+        <div class="tchart-cell tchart-edison-cell">
+          <div class="tchart-label">Power Outages</div>
+          <div class="tchart-content">When the grid goes down, your power goes with it. No backup. No estimate for when it comes back. You wait like everyone else.</div>
+        </div>
+        <div class="tchart-cell tchart-newplan-cell">
+          <div class="tchart-label">Power Outages</div>
+          <div class="tchart-content">Tesla Powerwall battery that kicks in the moment the grid drops. Charges during the day so it's ready if the outage lasts more than one night. Your lights stay on.</div>
+        </div>
 
-          <div class="tchart-row">
-            <div class="tchart-label">Rate Protection</div>
-            <div class="tchart-content">Your rate is locked with a 3.5% annual cap. It's written into your agreement. No surprises. No catching up to a number you didn't agree to.</div>
-          </div>
+        <!-- Row 5: Warranty & Maintenance -->
+        <div class="tchart-cell tchart-edison-cell">
+          <div class="tchart-label">Warranty &amp; Maintenance</div>
+          <div class="tchart-content">There's nothing to maintain because there's nothing you own. But you're still paying for a grid that's aging, catching fire, and getting more expensive to prop up every year.</div>
+        </div>
+        <div class="tchart-cell tchart-newplan-cell">
+          <div class="tchart-label">Warranty &amp; Maintenance</div>
+          <div class="tchart-content">Sunrun monitors your system around the clock. If something drops, they catch it. If something breaks, they fix it. Parts, labor, and workmanship covered for 25 years. No call from you. No bill.</div>
+        </div>
 
-          <div class="tchart-row">
-            <div class="tchart-label">Power Outages</div>
-            <div class="tchart-content">Tesla Powerwall battery that kicks in the moment the grid drops. Charges during the day so it's ready if the outage lasts more than one night. Your lights stay on.</div>
-          </div>
-
-          <div class="tchart-row">
-            <div class="tchart-label">Warranty &amp; Maintenance</div>
-            <div class="tchart-content">Sunrun monitors your system around the clock. If something drops, they catch it. If something breaks, they fix it. Parts, labor, and workmanship covered for 25 years. No call from you. No bill.</div>
-          </div>
-
-          <div class="tchart-row">
-            <div class="tchart-label">Equipment &amp; Liability</div>
-            <div class="tchart-content">Sunrun owns the system and insures it. Hail, wind, equipment failure — all covered by them. Not on your homeowner's policy. Not your liability.</div>
-          </div>
+        <!-- Row 6: Equipment & Liability (last row) -->
+        <div class="tchart-cell tchart-edison-cell tchart-last-cell">
+          <div class="tchart-label">Equipment &amp; Liability</div>
+          <div class="tchart-content">You own nothing on Edison's side. No equipment. No asset. Just a bill every month for power you have no control over, at a price you didn't set.</div>
+        </div>
+        <div class="tchart-cell tchart-newplan-cell tchart-last-cell">
+          <div class="tchart-label">Equipment &amp; Liability</div>
+          <div class="tchart-content">Sunrun owns the system and insures it. Hail, wind, equipment failure — all covered by them. Not on your homeowner's policy. Not your liability.</div>
         </div>
       </div>
 
       <div class="tchart-closing reveal">Same home. Same appliances. Different deal.</div>
     </div>
-  </div>
+  </section>
 
   <!-- Section 3: Timeline -->
   <section>
