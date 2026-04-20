@@ -876,7 +876,7 @@
 
   <!-- Status Bar -->
   <div class="status-bar">
-    <span id="statusCity"></span>Status: Application Submitted · Next Step: Site Survey · Your Consultant: Caleb Grondel
+    Status: Application Submitted · Next Step: Site Survey · Your Consultant: Caleb Grondel
   </div>
 
   <!-- Nav -->
@@ -893,7 +893,7 @@
       <div class="client-hero-text">
         <span class="section-label reveal">Your Status</span>
         <h1 class="section-heading reveal">You Made a Move.</h1>
-        <p class="section-intro reveal" id="heroIntro">Most homeowners know Edison's rates are out of control. Most of them won't do anything about it. You did. Now we find out if your home qualifies.</p>
+        <p class="section-intro reveal">Most homeowners know Edison's rates are out of control. Most of them won't do anything about it. You did. Now we find out if your home qualifies.</p>
       </div>
       <video class="client-hero-video reveal" autoplay muted loop playsinline>
         <source src="Poweroutage.mp4" type="video/mp4">
@@ -1285,23 +1285,6 @@
       if (!wasOpen) item.classList.add('open');
     };
 
-    // City personalization
-    (function () {
-      var params = new URLSearchParams(window.location.search);
-      var city = params.get('city');
-      if (!city) return;
-      city = decodeURIComponent(city);
-      // Update hero intro
-      var heroIntro = document.getElementById('heroIntro');
-      if (heroIntro) {
-        heroIntro.textContent = "Most homeowners know Edison\u2019s rates are out of control. Most of them won\u2019t do anything about it. You did. Now we find out if your home in " + city + " qualifies.";
-      }
-      // Update status bar
-      var statusCity = document.getElementById('statusCity');
-      if (statusCity) {
-        statusCity.textContent = city + ' \u00B7 ';
-      }
-    })();
   </script>
 
 </body>
