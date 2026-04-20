@@ -354,11 +354,10 @@
       }
     }
 
-    /* ── TWO PLANS SECTION (v4 — hero + range + stack + t-chart + closer) ── */
+    /* ── TWO PLANS SECTION (v5 — hero phrases + 12-month chart + t-chart + closer) ── */
     .two-plans-section {
       --accent: #45b9b2;
       --accent-dark: #3a9a94;
-      --accent-bg: #E6F7F5;
       --two-plans-text: #1F2937;
       --two-plans-text-muted: #6B7280;
       --two-plans-text-dim: #9CA3AF;
@@ -367,7 +366,7 @@
       --two-plans-bg: #F5F5F5;
       --card-bg: #FFFFFF;
       --edison: #991B1B;
-      --edison-soft: #FEF2F2;
+      --edison-bar: #DC2626;
       --shadow-soft: 0 1px 3px rgba(0,0,0,0.08);
       --shadow-lift: 0 4px 12px rgba(0,0,0,0.08);
 
@@ -379,10 +378,7 @@
 
     .two-plans-section * { box-sizing: border-box; }
 
-    .two-plans-inner {
-      max-width: 1000px;
-      margin: 0 auto;
-    }
+    .two-plans-inner { max-width: 1000px; margin: 0 auto; }
 
     .two-plans-section .section-eyebrow {
       font-size: 12px;
@@ -413,7 +409,7 @@
       margin: 0 auto 48px;
     }
 
-    /* HERO NUMBERS */
+    /* HERO PHRASES */
     .two-plans-section .hero-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -436,7 +432,8 @@
 
     .two-plans-section .hero-col.edison {
       border-top: 3px solid var(--edison);
-      opacity: 0.92;
+      background: linear-gradient(180deg, #FAFAFA 0%, var(--card-bg) 100px);
+      opacity: 0.94;
     }
 
     .two-plans-section .hero-label {
@@ -450,168 +447,43 @@
     .two-plans-section .hero-label.edison { color: var(--edison); }
     .two-plans-section .hero-label.plan { color: var(--accent); }
 
-    .two-plans-section .hero-number {
-      font-size: clamp(32px, 4vw, 40px);
+    .two-plans-section .hero-phrase {
+      font-size: clamp(24px, 3vw, 30px);
       font-weight: 700;
       letter-spacing: -0.02em;
-      line-height: 1.1;
-      color: var(--two-plans-text);
+      line-height: 1.2;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
       flex-wrap: wrap;
+      margin-bottom: 12px;
     }
 
-    .two-plans-section .hero-col.edison .hero-number { color: var(--two-plans-text-muted); }
+    .two-plans-section .hero-col.edison .hero-phrase { color: var(--two-plans-text-muted); }
+    .two-plans-section .hero-col.plan .hero-phrase { color: var(--two-plans-text); }
 
-    .two-plans-section .hero-number .suffix {
-      font-size: 16px;
-      font-weight: 500;
-      color: var(--two-plans-text-muted);
-    }
-
-    .two-plans-section .hero-number .trend {
+    .two-plans-section .hero-phrase .trend {
       font-size: 22px;
       font-weight: 600;
       color: var(--edison);
-      margin-left: 2px;
     }
 
     .two-plans-section .lock-icon {
       width: 22px;
       height: 22px;
       color: var(--accent);
-      margin-left: 4px;
-    }
-
-    .two-plans-section .hero-daily {
-      font-size: 15px;
-      color: var(--two-plans-text);
-      margin: 14px 0 8px;
-      line-height: 1.5;
-    }
-
-    .two-plans-section .hero-daily strong {
-      color: var(--accent);
-      font-weight: 700;
+      flex-shrink: 0;
     }
 
     .two-plans-section .hero-sub {
       font-size: 14px;
-      line-height: 1.55;
+      line-height: 1.6;
       color: var(--two-plans-text-muted);
-      margin-top: 6px;
+      margin: 0;
     }
 
-    /* RANGE BAR */
-    .two-plans-section .range-panel {
-      background: var(--card-bg);
-      border: 1px solid var(--two-plans-border);
-      border-radius: 12px;
-      padding: 32px;
-      margin-bottom: 20px;
-      box-shadow: var(--shadow-soft);
-    }
-
-    .two-plans-section .range-panel-head {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      margin-bottom: 36px;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .two-plans-section .range-panel-title {
-      font-size: 12px;
-      font-weight: 600;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--two-plans-text-muted);
-    }
-
-    .two-plans-section .range-panel-note {
-      font-size: 13px;
-      color: var(--two-plans-text-dim);
-    }
-
-    .two-plans-section .range-wrap { position: relative; padding: 0 4px; }
-
-    .two-plans-section .range-line-labels {
-      display: flex;
-      justify-content: space-between;
-      font-size: 13px;
-      color: var(--two-plans-text-muted);
-      margin-bottom: 10px;
-    }
-
-    .two-plans-section .range-bar {
-      position: relative;
-      height: 10px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, #FEF2F2 0%, #FECACA 50%, #DC2626 100%);
-    }
-
-    .two-plans-section .range-bar-caption {
-      margin-top: 14px;
-      text-align: center;
-      font-size: 11px;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--edison);
-    }
-
-    .two-plans-section .range-marker {
-      position: absolute;
-      top: -52px;
-      transform: translateX(-50%);
-      text-align: center;
-      pointer-events: none;
-    }
-
-    .two-plans-section .range-marker-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: var(--accent);
-      color: #FFFFFF;
-      font-size: 14px;
-      font-weight: 700;
-      letter-spacing: -0.01em;
-      padding: 8px 14px;
-      border-radius: 999px;
-      white-space: nowrap;
-      box-shadow: 0 0 0 4px rgba(69, 185, 178, 0.18);
-    }
-
-    .two-plans-section .lock-icon-sm {
-      width: 14px;
-      height: 14px;
-      color: #FFFFFF;
-    }
-
-    .two-plans-section .range-marker-stem {
-      width: 2px;
-      height: 28px;
-      background: var(--accent);
-      margin: 2px auto 0;
-    }
-
-    .two-plans-section .range-marker-dot {
-      position: absolute;
-      top: 82px;
-      left: 50%;
-      width: 16px;
-      height: 16px;
-      border-radius: 50%;
-      background: var(--accent);
-      transform: translate(-50%, -50%);
-      box-shadow: 0 0 0 4px rgba(69, 185, 178, 0.22), 0 0 0 1px var(--card-bg) inset;
-    }
-
-    /* 5-YEAR STACK */
-    .two-plans-section .stack-panel {
+    /* MONTH-BY-MONTH CHART */
+    .two-plans-section .chart-panel {
       background: var(--card-bg);
       border: 1px solid var(--two-plans-border);
       border-radius: 12px;
@@ -620,61 +492,94 @@
       box-shadow: var(--shadow-soft);
     }
 
-    .two-plans-section .stack-head { margin-bottom: 20px; }
+    .two-plans-section .chart-head {
+      margin-bottom: 28px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
 
-    .two-plans-section .stack-title {
+    .two-plans-section .chart-title {
       font-size: 18px;
       font-weight: 700;
       letter-spacing: -0.01em;
       color: var(--two-plans-text);
-      margin-bottom: 6px;
     }
 
-    .two-plans-section .stack-sub {
-      font-size: 14px;
-      color: var(--two-plans-text-muted);
-      line-height: 1.5;
+    .two-plans-section .chart-note {
+      font-size: 13px;
+      color: var(--two-plans-text-dim);
     }
 
-    .two-plans-section .stack-table { border-top: 1px solid var(--two-plans-border-soft); }
-
-    .two-plans-section .stack-row {
+    .two-plans-section .chart-row {
       display: grid;
-      grid-template-columns: 1.2fr 1fr 1fr;
-      align-items: center;
-      padding: 14px 4px;
-      border-bottom: 1px solid var(--two-plans-border-soft);
-      font-size: 15px;
+      grid-template-columns: 120px 1fr;
+      align-items: end;
+      gap: 20px;
+      margin-bottom: 16px;
     }
 
-    .two-plans-section .stack-row:last-child { border-bottom: none; }
-
-    .two-plans-section .stack-row.stack-header {
-      font-size: 11px;
+    .two-plans-section .chart-row-label {
+      font-size: 12px;
       font-weight: 600;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: var(--two-plans-text-muted);
-      padding-top: 12px;
-      padding-bottom: 12px;
+      padding-bottom: 4px;
+      align-self: end;
     }
 
-    .two-plans-section .stack-col-month { color: var(--two-plans-text); font-weight: 500; }
-    .two-plans-section .stack-col-edison {
-      color: var(--edison);
+    .two-plans-section .chart-row-label.edison { color: var(--edison); }
+    .two-plans-section .chart-row-label.plan { color: var(--accent); }
+
+    .two-plans-section .chart-bars {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 5px;
+      height: 110px;
+      align-items: end;
+    }
+
+    .two-plans-section .bar {
+      border-radius: 3px 3px 0 0;
+      width: 100%;
+      min-height: 4px;
+      transition: height 0.3s ease;
+    }
+
+    .two-plans-section .bar.edison {
+      background: var(--edison-bar);
+      opacity: 0.82;
+    }
+
+    .two-plans-section .bar.plan {
+      background: var(--accent);
+    }
+
+    .two-plans-section .chart-months {
+      padding-left: 140px; /* matches 120px label column + 20px gap */
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 5px;
+      margin-top: 8px;
+    }
+
+    .two-plans-section .chart-months span {
+      display: block;
+      text-align: center;
+      font-size: 11px;
       font-weight: 600;
-      font-variant-numeric: tabular-nums;
+      letter-spacing: 0.08em;
+      color: var(--two-plans-text-dim);
     }
-    .two-plans-section .stack-col-plan {
-      color: var(--accent-dark);
-      font-weight: 700;
-      font-variant-numeric: tabular-nums;
-    }
-    .two-plans-section .stack-row.stack-header .stack-col-month,
-    .two-plans-section .stack-row.stack-header .stack-col-edison,
-    .two-plans-section .stack-row.stack-header .stack-col-plan {
+
+    .two-plans-section .chart-caption {
+      font-size: 14px;
       color: var(--two-plans-text-muted);
-      font-weight: 600;
+      text-align: center;
+      margin: 24px 0 0;
+      font-style: italic;
     }
 
     /* T-CHART */
@@ -798,16 +703,12 @@
       .two-plans-section .tchart { grid-template-columns: 1fr; gap: 16px; }
       .two-plans-section .hero-col,
       .two-plans-section .col,
-      .two-plans-section .range-panel,
-      .two-plans-section .stack-panel { padding: 24px; }
-      .two-plans-section .range-panel-head { flex-direction: column; align-items: flex-start; gap: 6px; margin-bottom: 28px; }
-      .two-plans-section .stack-row {
-        grid-template-columns: 1.4fr 1fr 1fr;
-        font-size: 14px;
-        padding: 12px 2px;
-      }
-      .two-plans-section .hero-number { font-size: 30px; }
-      .two-plans-section .lock-icon { width: 20px; height: 20px; }
+      .two-plans-section .chart-panel { padding: 24px; }
+      .two-plans-section .chart-row { grid-template-columns: 70px 1fr; gap: 12px; }
+      .two-plans-section .chart-months { padding-left: 82px; gap: 3px; }
+      .two-plans-section .chart-row-label { font-size: 11px; }
+      .two-plans-section .chart-bars { height: 80px; gap: 3px; }
+      .two-plans-section .chart-head { flex-direction: column; align-items: flex-start; }
     }
 
     /* ── TIMELINE ── */
@@ -1494,109 +1395,87 @@
     </div>
   </section>
 
-  <!-- Two Plans: hero + range + stack + t-chart + closer -->
+  <!-- Two Plans: hero phrases + 12-month chart + t-chart + closer -->
   <section class="two-plans-section">
     <div class="two-plans-inner">
 
       <div class="section-eyebrow">03 / THE TWO PLANS</div>
       <h2 class="section-title">The Two Plans</h2>
-      <p class="section-sub">You were already paying this much some months. Now you always will.</p>
+      <p class="section-sub">One you were on. One you chose.</p>
 
-      <!-- HERO NUMBERS -->
+      <!-- HERO PHRASES (no dollars) -->
       <div class="hero-row">
         <div class="hero-col edison">
-          <div class="hero-label edison">What You Were Paying Edison</div>
-          <div class="hero-number">
-            $240&ndash;$510<span class="suffix">/mo</span><span class="trend">↗</span>
+          <div class="hero-label edison">What Edison Was Giving You</div>
+          <div class="hero-phrase">
+            A different bill every month.<span class="trend">↗</span>
           </div>
-          <p class="hero-sub">Depends on the month, the hour, the weather. Rising 6&ndash;9% every year, through 2028 and beyond.</p>
+          <p class="hero-sub">Higher every summer. Rising every year. Different every time it shows up.</p>
         </div>
 
         <div class="hero-col plan">
           <div class="hero-label plan">Your New Plan</div>
-          <div class="hero-number">
-            $290<span class="suffix">/mo</span>
+          <div class="hero-phrase">
+            One number.
             <svg class="lock-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <rect x="4" y="11" width="16" height="10" rx="2"></rect>
               <path d="M8 11V7a4 4 0 0 1 8 0v4"></path>
             </svg>
           </div>
-          <p class="hero-daily"><strong>$9.67 a day.</strong> Locked for 25 years.</p>
-          <p class="hero-sub">One flat rate. Same number every month. 3.5% annual cap, in writing, for the life of the agreement.</p>
+          <p class="hero-sub">Same in January. Same in August. Locked for 25 years.</p>
         </div>
       </div>
 
-      <!-- RANGE BAR -->
-      <div class="range-panel">
-        <div class="range-panel-head">
-          <div class="range-panel-title">The Range You Were Already Living In</div>
-          <div class="range-panel-note">$290 sits inside what Edison was already charging you some months.</div>
+      <!-- MONTH-BY-MONTH CHART -->
+      <div class="chart-panel">
+        <div class="chart-head">
+          <div class="chart-title">Your Year, Month by Month</div>
+          <div class="chart-note">No bill amounts. Just the shape of the year you already know.</div>
         </div>
 
-        <div class="range-wrap">
-          <div class="range-line-labels">
-            <span>$240</span>
-            <span>$375</span>
-            <span>$510</span>
-          </div>
-
-          <div class="range-bar">
-            <div class="range-marker" style="left: 18.5%;">
-              <div class="range-marker-pill">
-                <svg class="lock-icon-sm" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <rect x="4" y="11" width="16" height="10" rx="2"></rect>
-                  <path d="M8 11V7a4 4 0 0 1 8 0v4"></path>
-                </svg>
-                $290 locked
-              </div>
-              <div class="range-marker-stem"></div>
-              <div class="range-marker-dot"></div>
-            </div>
-          </div>
-
-          <div class="range-bar-caption">Edison. Different bill every month.</div>
-        </div>
-      </div>
-
-      <!-- 5-YEAR STACK -->
-      <div class="stack-panel">
-        <div class="stack-head">
-          <div class="stack-title">Same Month. Five Years Out.</div>
-          <div class="stack-sub">Edison's rate rises about 8% a year. Yours is capped at 3.5%.</div>
-        </div>
-
-        <div class="stack-table">
-          <div class="stack-row stack-header">
-            <span class="stack-col-month">Month</span>
-            <span class="stack-col-edison">Edison</span>
-            <span class="stack-col-plan">Your Plan</span>
-          </div>
-          <div class="stack-row">
-            <span class="stack-col-month">May 2026</span>
-            <span class="stack-col-edison">$340</span>
-            <span class="stack-col-plan">$290</span>
-          </div>
-          <div class="stack-row">
-            <span class="stack-col-month">May 2027</span>
-            <span class="stack-col-edison">$367</span>
-            <span class="stack-col-plan">$300</span>
-          </div>
-          <div class="stack-row">
-            <span class="stack-col-month">May 2028</span>
-            <span class="stack-col-edison">$397</span>
-            <span class="stack-col-plan">$311</span>
-          </div>
-          <div class="stack-row">
-            <span class="stack-col-month">May 2029</span>
-            <span class="stack-col-edison">$428</span>
-            <span class="stack-col-plan">$322</span>
-          </div>
-          <div class="stack-row">
-            <span class="stack-col-month">May 2030</span>
-            <span class="stack-col-edison">$463</span>
-            <span class="stack-col-plan">$333</span>
+        <div class="chart-row">
+          <div class="chart-row-label edison">Edison</div>
+          <div class="chart-bars" aria-label="Edison bills: varying heights each month">
+            <div class="bar edison" style="height: 42%;"></div>
+            <div class="bar edison" style="height: 30%;"></div>
+            <div class="bar edison" style="height: 38%;"></div>
+            <div class="bar edison" style="height: 48%;"></div>
+            <div class="bar edison" style="height: 58%;"></div>
+            <div class="bar edison" style="height: 72%;"></div>
+            <div class="bar edison" style="height: 88%;"></div>
+            <div class="bar edison" style="height: 100%;"></div>
+            <div class="bar edison" style="height: 78%;"></div>
+            <div class="bar edison" style="height: 85%;"></div>
+            <div class="bar edison" style="height: 50%;"></div>
+            <div class="bar edison" style="height: 68%;"></div>
           </div>
         </div>
+
+        <div class="chart-row">
+          <div class="chart-row-label plan">Your New Plan</div>
+          <div class="chart-bars" aria-label="Your new plan: same height every month">
+            <div class="bar plan" style="height: 60%;"></div>
+            <div class="bar plan" style="height: 60%;"></div>
+            <div class="bar plan" style="height: 60%;"></div>
+            <div class="bar plan" style="height: 60%;"></div>
+            <div class="bar plan" style="height: 60%;"></div>
+            <div class="bar plan" style="height: 60%;"></div>
+            <div class="bar plan" style="height: 60%;"></div>
+            <div class="bar plan" style="height: 60%;"></div>
+            <div class="bar plan" style="height: 60%;"></div>
+            <div class="bar plan" style="height: 60%;"></div>
+            <div class="bar plan" style="height: 60%;"></div>
+            <div class="bar plan" style="height: 60%;"></div>
+          </div>
+        </div>
+
+        <div class="chart-months" aria-hidden="true">
+          <span>J</span><span>F</span><span>M</span><span>A</span>
+          <span>M</span><span>J</span><span>J</span><span>A</span>
+          <span>S</span><span>O</span><span>N</span><span>D</span>
+        </div>
+
+        <p class="chart-caption">Same house. Same appliances. Two completely different experiences.</p>
       </div>
 
       <!-- T-CHART -->
@@ -1671,7 +1550,7 @@
       <!-- CLOSING LINE -->
       <div class="closer">
         <p class="closer-line">Same home. Same appliances.<br><span class="accent">Different deal.</span></p>
-        <p class="closer-sub">The number you were hoping to pay — every month.</p>
+        <p class="closer-sub">The one you chose. The one you keep.</p>
       </div>
 
     </div>
