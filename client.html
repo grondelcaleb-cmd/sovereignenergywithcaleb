@@ -226,37 +226,73 @@
     }
 
     /* ── LEAVING BEHIND ── */
-    .leaving-behind-stats {
-      max-width: 42rem;
+    .leaving-behind-inner {
+      max-width: 720px;
     }
 
-    .leaving-behind-stats p {
-      font-size: clamp(1.15rem, 1.6vw, 1.4rem);
-      line-height: 1.5;
-      letter-spacing: -0.01em;
-      margin-bottom: 1.5rem;
+    .leaving-block {
+      margin-bottom: 3.5rem;
     }
 
-    .leaving-behind-stats p strong {
+    .leaving-stat {
+      font-size: 2.125rem; /* 34px — big, stops the scroll */
       font-weight: 700;
-    }
-
-    .leaving-behind-stats .source {
-      font-size: 0.75rem;
-      color: var(--text-muted);
-      letter-spacing: 0.05em;
-      margin-top: -0.75rem;
-      margin-bottom: 1.5rem;
-    }
-
-    .leaving-behind-stats .kicker {
-      margin-top: 2.5rem;
-      padding-top: 2rem;
-      border-top: 1px solid var(--line);
-      font-size: clamp(1.25rem, 1.8vw, 1.5rem);
-      font-weight: 600;
       letter-spacing: -0.02em;
-      line-height: 1.35;
+      line-height: 1.25;
+      color: var(--text);
+      margin-bottom: 1.25rem;
+    }
+
+    .leaving-context {
+      font-size: 1rem; /* 16px — supporting evidence */
+      line-height: 1.7;
+      color: #444;
+      margin-bottom: 0.75rem;
+    }
+
+    .leaving-source {
+      font-size: 0.75rem; /* 12px — footnote */
+      color: #aaa;
+      font-style: italic;
+      letter-spacing: 0.02em;
+      margin-top: 1rem;
+    }
+
+    .leaving-source a {
+      color: #aaa;
+      text-decoration: underline;
+      text-decoration-color: #ccc;
+      text-underline-offset: 2px;
+      transition: color 0.2s var(--ease);
+    }
+
+    .leaving-source a:hover {
+      color: #666;
+    }
+
+    .leaving-closing {
+      font-size: 1.25rem; /* 20px */
+      font-weight: 700;
+      letter-spacing: -0.015em;
+      line-height: 1.4;
+      padding-top: 2.5rem;
+      margin-top: 1rem;
+      border-top: 1px solid var(--line);
+      color: var(--text);
+    }
+
+    @media (max-width: 767px) {
+      .leaving-stat {
+        font-size: 1.5rem; /* 24px */
+      }
+
+      .leaving-context {
+        font-size: 0.9375rem; /* 15px */
+      }
+
+      .leaving-block {
+        margin-bottom: 2.75rem;
+      }
     }
 
     /* ── T-CHART ── */
@@ -293,15 +329,19 @@
       grid-template-columns: 1fr 1fr;
     }
 
-    .tchart-left {
-      background: #fff;
-      padding: clamp(2rem, 4vw, 2.75rem);
-      border-left: 3px solid var(--teal);
-    }
-
-    .tchart-right {
+    /* LEFT — Edison (the uncomfortable side) */
+    .tchart-edison {
       background: #f2f2f2;
       padding: clamp(2rem, 4vw, 2.75rem);
+      border-radius: 4px 0 0 4px;
+    }
+
+    /* RIGHT — New Plan (the clean side) */
+    .tchart-newplan {
+      background: #ffffff;
+      padding: clamp(2rem, 4vw, 2.75rem);
+      border-left: 3px solid var(--teal);
+      border-radius: 0 4px 4px 0;
     }
 
     .tchart-col-header {
@@ -311,14 +351,14 @@
       border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     }
 
-    .tchart-left .tchart-col-header {
-      font-weight: 700;
-      color: #1a1a1a;
-    }
-
-    .tchart-right .tchart-col-header {
+    .tchart-edison .tchart-col-header {
       font-weight: 400;
       color: #888;
+    }
+
+    .tchart-newplan .tchart-col-header {
+      font-weight: 700;
+      color: #1a1a1a;
     }
 
     .tchart-label {
@@ -332,7 +372,7 @@
 
     .tchart-content {
       font-size: 1rem;
-      line-height: 1.6;
+      line-height: 1.7;
       margin-bottom: 1.75rem;
     }
 
@@ -340,12 +380,12 @@
       margin-bottom: 0;
     }
 
-    .tchart-left .tchart-content {
-      color: #1a1a1a;
+    .tchart-edison .tchart-content {
+      color: #555;
     }
 
-    .tchart-right .tchart-content {
-      color: #666;
+    .tchart-newplan .tchart-content {
+      color: #1a1a1a;
     }
 
     .tchart-closing {
@@ -365,8 +405,14 @@
         grid-template-columns: 1fr;
       }
 
-      .tchart-left {
-        border-left: 3px solid var(--teal);
+      .tchart-edison {
+        border-radius: 4px 4px 0 0;
+      }
+
+      .tchart-newplan {
+        border-left: none;
+        border-top: 3px solid var(--teal);
+        border-radius: 0 0 4px 4px;
       }
 
       .tchart-divider {
@@ -608,61 +654,110 @@
       }
     }
 
-    /* ── FAQ ── */
-    .faq-list {
-      max-width: 48rem;
+    /* ── CONCERNS ── */
+    .concerns-inner {
+      max-width: 800px;
     }
 
-    .faq-item {
+    .concerns-inner .section-heading {
+      margin-bottom: 1.25rem;
+      max-width: 22ch;
+    }
+
+    .concerns-subheading {
+      font-size: clamp(1.05rem, 1.4vw, 1.3rem);
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+      max-width: 42rem;
+    }
+
+    .concern-item {
+      border-bottom: 1px solid var(--line);
+    }
+
+    .concern-item:first-of-type {
       border-top: 1px solid var(--line);
     }
 
-    .faq-question {
+    .concern-toggle {
+      width: 100%;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      width: 100%;
+      padding: 1.5rem 0;
       background: none;
       border: none;
-      padding: 1.5rem 0;
       cursor: pointer;
+      text-align: left;
       font-family: var(--font);
+      color: var(--text);
+    }
+
+    .concern-question {
       font-size: clamp(1.05rem, 1.4vw, 1.2rem);
       font-weight: 600;
-      text-align: left;
-      color: var(--text);
       letter-spacing: -0.01em;
-      line-height: 1.35;
+      line-height: 1.4;
+      padding-right: 1.5rem;
     }
 
-    .faq-icon {
+    .concern-icon {
       font-size: 1.5rem;
       font-weight: 300;
-      transition: transform 0.4s var(--ease);
+      color: #999;
       flex-shrink: 0;
-      margin-left: 1.5rem;
+      transition: transform 0.4s var(--ease);
     }
 
-    .faq-item.open .faq-icon {
+    .concern-toggle[aria-expanded="true"] .concern-icon {
       transform: rotate(45deg);
     }
 
-    .faq-answer {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.5s var(--ease);
+    .concern-answer {
+      padding: 0 0 2rem 0;
     }
 
-    .faq-item.open .faq-answer {
-      max-height: 24rem;
-    }
-
-    .faq-answer p {
-      padding-bottom: 1.75rem;
+    .concern-answer p {
       font-size: 1rem;
-      color: var(--text-muted);
-      line-height: 1.6;
+      line-height: 1.75;
+      color: #333;
+      margin-bottom: 0.875rem;
       max-width: 42rem;
+    }
+
+    .concern-sources {
+      font-size: 0.75rem;
+      color: #aaa;
+      font-style: italic;
+      margin-top: 1.25rem;
+      line-height: 1.6;
+      letter-spacing: 0.02em;
+    }
+
+    .concern-sources a {
+      color: #aaa;
+      text-decoration: underline;
+      text-decoration-color: #ccc;
+      text-underline-offset: 2px;
+      transition: color 0.2s var(--ease);
+    }
+
+    .concern-sources a:hover {
+      color: #666;
+    }
+
+    @media (max-width: 767px) {
+      .concern-question {
+        font-size: 1rem;
+      }
+
+      .concern-answer p {
+        font-size: 0.9375rem;
+      }
+
+      .concern-toggle {
+        padding: 1.25rem 0;
+      }
     }
 
     /* ── ABOUT / CONSULTANT ── */
@@ -904,7 +999,7 @@
       <div class="client-hero-text">
         <span class="section-label reveal">Your Status</span>
         <h1 class="section-heading reveal">You Made a Move.</h1>
-        <p class="section-intro reveal" data-city-insert>Most homeowners know Edison's rates are out of control. Most of them won't do anything about it. You did. Now we find out if your home qualifies.</p>
+        <p class="section-intro reveal">Most homeowners know Edison's rates are out of control. Most of them won't do anything about it. You did. Now we find out if your home qualifies.</p>
       </div>
       <video class="client-hero-video reveal" autoplay muted loop playsinline>
         <source src="Poweroutage.mp4" type="video/mp4">
@@ -915,14 +1010,54 @@
   <!-- What You're Leaving Behind -->
   <section>
     <div class="container">
-      <span class="section-label reveal">The Reality</span>
-      <h2 class="section-heading reveal">What You're Leaving Behind</h2>
-      <div class="leaving-behind-stats">
-        <p class="reveal"><strong>SCE rates have increased 83% in the last decade.</strong></p>
-        <p class="source reveal">CA Public Advocates Office</p>
-        <p class="reveal">More increases are already approved through 2028.</p>
-        <p class="reveal">The average SCE household has no rate cap, no backup power, and no alternative.</p>
-        <p class="kicker reveal">That's the plan you were on. The one you never agreed to.</p>
+      <div class="leaving-behind-inner">
+        <span class="section-label reveal">The Reality</span>
+        <h2 class="section-heading reveal">What You're Leaving Behind</h2>
+
+        <!-- Block 1: The Rate -->
+        <div class="leaving-block reveal">
+          <div class="leaving-stat">Your Edison bill in 2016 was roughly half of what it is today.</div>
+          <p class="leaving-context">Same house. Same appliances. SCE rates have increased 83% in the last decade.</p>
+          <p class="leaving-context">The CPUC approved a 9.1% increase for 2025. More increases are locked in through 2028.</p>
+          <p class="leaving-context">Edison's average annual increase over the last 10 years: 6%. The national average: 2.8%.</p>
+          <p class="leaving-context">Your rate with Edison has no cap. No ceiling. No maximum. It goes up when they say it goes up.</p>
+          <div class="leaving-source">
+            <a href="https://www.cpuc.ca.gov/-/media/cpuc-website/divisions/office-of-governmental-affairs-division/reports/2025/2025-sb-695-report_093025.pdf" target="_blank" rel="noopener">CA Public Advocates Office</a> ·
+            <a href="https://www.cpuc.ca.gov/news-and-updates/all-news/southern-california-edison-2025-general-rate-case" target="_blank" rel="noopener">CPUC 2025 Rate Case Decision</a> ·
+            <a href="https://www.energytoolbase.com/blog/utility-rates/electric-utility-bill-inflation-in-california/" target="_blank" rel="noopener">Energy Toolbase Rate Analysis</a>
+          </div>
+        </div>
+
+        <!-- Block 2: Wildfire Liability -->
+        <div class="leaving-block reveal">
+          <div class="leaving-stat">If your Edison bill is $300 a month, about $51 of it pays for wildfire lawsuits. Not your electricity.</div>
+          <p class="leaving-context">17% of every Edison bill goes to wildfire liability costs. That's not keeping your lights on. That's paying for fires Edison's equipment started — and the lawsuits that followed.</p>
+          <p class="leaving-context">After the 2025 Eaton Fire, the state expanded the wildfire fund by $18 billion. Half comes from ratepayers. Edison's first $1 billion in Eaton claims is covered by customer-funded self-insurance. Your premiums.</p>
+          <p class="leaving-context">Every major wildfire in California adds to your Edison bill. Whether it's near your home or not.</p>
+          <div class="leaving-source">
+            <a href="https://calmatters.org/environment/2024/12/pge-utilities-wildfire-prevention-customer-bills-california/" target="_blank" rel="noopener">CalMatters: Wildfire Prevention Costs</a> ·
+            <a href="https://laist.com/news/climate-environment/edison-payout-guide" target="_blank" rel="noopener">LAist: Edison Eaton Fire Payout Guide</a> ·
+            <a href="https://www.cpuc.ca.gov/industries-and-topics/electrical-energy/electric-rates/general-rate-case/southern-california-edison-grc-proceedings" target="_blank" rel="noopener">CPUC Wildfire Fund</a>
+          </div>
+        </div>
+
+        <!-- Block 4: What's Coming Next -->
+        <div class="leaving-block reveal">
+          <div class="leaving-stat">Demand is rising. Supply is shrinking. You pay the difference.</div>
+          <p class="leaving-context">AI data centers are projected to double their electricity demand by 2028. The Little Hoover Commission warned these costs could be passed to California households — not the tech companies causing the demand.</p>
+          <p class="leaving-context">California is retiring aging gas-fired power plants on a fixed timeline. The Scattergood Generating Station in LA closes by 2029. Replacement capacity is being built, but not fast enough to match demand growth.</p>
+          <p class="leaving-context">When demand outpaces supply, wholesale prices spike. Edison passes the cost through. There is no buffer between their costs and your bill.</p>
+          <div class="leaving-source">
+            <a href="https://calmatters.org/environment/2026/03/little-hoover-data-center-electricity/" target="_blank" rel="noopener">CalMatters: AI Data Center Costs</a> ·
+            <a href="https://www.caiso.com/about/news/energy-matters-blog/strengthening-the-grid-is-enhancing-summer-reliability" target="_blank" rel="noopener">CAISO Grid Outlook</a> ·
+            <a href="https://calmatters.org/environment/2025/12/data-center-energy-study-california/" target="_blank" rel="noopener">Little Hoover Commission Report</a>
+          </div>
+        </div>
+
+        <!-- Closing -->
+        <div class="leaving-closing reveal">
+          That's the plan you were on. The one you never agreed to.
+        </div>
       </div>
     </div>
   </section>
@@ -931,69 +1066,69 @@
   <div class="tchart-section">
     <div class="tchart-inner">
       <h2 class="tchart-heading reveal">The Two Plans</h2>
-      <p class="tchart-subheading reveal">One you chose. One you were on.</p>
+      <p class="tchart-subheading reveal">One you were on. One you chose.</p>
 
       <div class="tchart-grid reveal">
-        <!-- LEFT COLUMN -->
-        <div class="tchart-left">
-          <div class="tchart-col-header">Your New Plan</div>
+        <!-- LEFT COLUMN — EDISON -->
+        <div class="tchart-edison">
+          <div class="tchart-col-header">What You Were On</div>
 
           <div class="tchart-row">
             <div class="tchart-label">Monthly Rate</div>
-            <div class="tchart-content" id="tchart-rate-left">Fixed rate. <span id="rate-display">One monthly bill.</span> Same amount whether it's July or January.</div>
+            <div class="tchart-content">A time-of-use plan where you're charged different rates depending on the hour, the season, and how much you've already used. No way to know what your bill will be until it shows up.</div>
           </div>
 
           <div class="tchart-row">
             <div class="tchart-label">Rate Protection</div>
-            <div class="tchart-content">Your rate can increase by a maximum of 3.5% per year. That cap is written into your agreement.</div>
+            <div class="tchart-content">No cap on how much Edison can raise your rate. They've averaged over 8% a year for the last decade, and more increases are already approved through 2028. You find out after it happens.</div>
           </div>
 
           <div class="tchart-row">
             <div class="tchart-label">Power Outages</div>
-            <div class="tchart-content">Tesla Powerwall. 13.5 kWh battery. Kicks in automatically when the grid drops. Charges during the day to cover multi-day outages.</div>
+            <div class="tchart-content">When the grid goes down, your power goes with it. No backup. No estimate for when it comes back. You wait like everyone else.</div>
           </div>
 
           <div class="tchart-row">
             <div class="tchart-label">Warranty &amp; Maintenance</div>
-            <div class="tchart-content">Parts, labor, and workmanship — covered for 25 years. Sunrun monitors your system 24/7. If production drops, they know before you do. If something breaks, they fix it. No call from you. No invoice.</div>
+            <div class="tchart-content">There's nothing to maintain because there's nothing you own. But you're still paying for a grid that's aging, catching fire, and getting more expensive to prop up every year.</div>
           </div>
 
           <div class="tchart-row">
             <div class="tchart-label">Equipment &amp; Liability</div>
-            <div class="tchart-content">Hail, wind, equipment failure — all covered. Not on your homeowner's policy. Not your problem.</div>
+            <div class="tchart-content">You own nothing on Edison's side. No equipment. No asset. Just a bill every month for power you have no control over, at a price you didn't set.</div>
           </div>
         </div>
 
         <!-- MOBILE DIVIDER -->
         <div class="tchart-divider">vs.</div>
 
-        <!-- RIGHT COLUMN -->
-        <div class="tchart-right">
-          <div class="tchart-col-header">What You Were On</div>
+        <!-- RIGHT COLUMN — NEW PLAN -->
+        <div class="tchart-newplan">
+          <div class="tchart-col-header">Your New Plan</div>
 
           <div class="tchart-row">
             <div class="tchart-label">Monthly Rate</div>
-            <div class="tchart-content">TOU rate that changes by season, time of day, and usage tier. No way to predict your bill month to month.</div>
+            <div class="tchart-content" id="tchart-rate-right">One flat rate. Same in January, same in August. You know exactly what you're paying before the month starts.</div>
           </div>
 
           <div class="tchart-row">
             <div class="tchart-label">Rate Protection</div>
-            <div class="tchart-content">Edison has averaged over 8% annual increases for the last decade. No cap. No ceiling. More increases already approved through 2028.</div>
+            <div class="tchart-content">Your rate is locked with a 3.5% annual cap. It's written into your agreement. No surprises. No catching up to a number you didn't agree to.</div>
           </div>
 
           <div class="tchart-row">
             <div class="tchart-label">Power Outages</div>
-            <div class="tchart-content">Grid goes down, your power goes with it. No backup. No timeline for when it comes back.</div>
+            <div class="tchart-content">Tesla Powerwall battery that kicks in the moment the grid drops. Charges during the day so it's ready if the outage lasts more than one night. Your lights stay on.</div>
           </div>
 
           <div class="tchart-row">
             <div class="tchart-label">Warranty &amp; Maintenance</div>
-            <div class="tchart-content">You don't own the grid. You can't fix it. You can't call anyone about your rate. You just pay.</div>
+            <div class="tchart-content">Sunrun monitors your system around the clock. If something drops, they catch it. If something breaks, they fix it. Parts, labor, and workmanship covered for 25 years. No call from you. No bill.</div>
           </div>
 
           <div class="tchart-row">
             <div class="tchart-label">Equipment &amp; Liability</div>
-            <div class="tchart-content">You're still responsible for whatever they bill you, with zero protection when the grid fails or requires maintenance.</div>
+            <div class="tchart-content">Sunrun owns the system and insures it. Hail, wind, equipment failure — all covered by them. Not on your homeowner's policy. Not your liability.</div>
           </div>
         </div>
       </div>
@@ -1145,80 +1280,84 @@
     </div>
   </section>
 
-  <!-- Section 6: FAQ -->
+  <!-- Section 6: Common Concerns -->
   <section>
     <div class="container">
-      <span class="section-label reveal">Common Questions</span>
-      <h2 class="section-heading reveal">Questions During the Process</h2>
-      <div class="faq-list">
+      <div class="concerns-inner">
+        <span class="section-label reveal">Real Talk</span>
+        <h2 class="section-heading reveal">Honest Answers</h2>
+        <p class="concerns-subheading reveal">The concerns most people might have but not sure how to ask.</p>
 
-        <div class="faq-item reveal">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            <span>What if my home doesn't qualify?</span>
-            <span class="faq-icon">+</span>
+        <!-- Concern 1 -->
+        <div class="concern-item reveal">
+          <button class="concern-toggle" aria-expanded="false">
+            <span class="concern-question">How do I know my home is going to be taken care of?</span>
+            <span class="concern-icon">+</span>
           </button>
-          <div class="faq-answer">
-            <p>Not every home does — roughly 43–46% are approved. If yours doesn't qualify, there's no cost and no obligation. But it's always worth finding out.</p>
+          <div class="concern-answer" hidden>
+            <p>Under the agreement, Sunrun owns the equipment and insures it. That includes roof penetration coverage. If a leak happens because of the installation, Sunrun fixes it — not you. Not your homeowner's insurance. Sunrun.</p>
+            <p>This is one of the biggest differences between a PPA and buying a system yourself. If you purchased panels outright, the workmanship warranty on the roof typically expires after 10 years. Under Sunrun's program, roof protection is covered for the full 25 years because they own what's on your roof and they're responsible for it.</p>
+            <p>Before any work starts, Sunrun's engineering team inspects your roof to make sure it can handle the system. If your roof needs work first, that gets addressed before panels go up — not after.</p>
+            <div class="concern-sources">
+              <a href="https://www.sunrun.com/why-sunrun/your-guarantee" target="_blank" rel="noopener">Sunrun Guarantee &amp; Warranty Coverage</a> ·
+              <a href="https://www.ecowatch.com/solar/solar-panel-warranty" target="_blank" rel="noopener">Solar Panel Warranty Guide, 2026 — EcoWatch</a>
+            </div>
           </div>
         </div>
 
-        <div class="faq-item reveal">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            <span>How long does the whole process take?</span>
-            <span class="faq-icon">+</span>
+        <!-- Concern 2 -->
+        <div class="concern-item reveal">
+          <button class="concern-toggle" aria-expanded="false">
+            <span class="concern-question">Why is it worth knowing if I'm qualified?</span>
+            <span class="concern-icon">+</span>
           </button>
-          <div class="faq-answer">
-            <p>Typically 6–8 weeks from application to Permission to Operate. Permitting is the longest step and varies by city.</p>
+          <div class="concern-answer" hidden>
+            <p>Because qualifying is the only way to find out if you have another option at all. Right now you're in a permanent arrangement with Edison. There's no end date. No contract you signed. No rate cap. No exit clause. Edison can raise your rate every year — and they have. For the last decade straight.</p>
+            <p>If you qualify, you'd move into a 25-year agreement with a rate you agreed to, a 3.5% annual cap you can see in writing, and terms that transfer if you sell your home. Edison's arrangement is indefinite with no cap, no ceiling, and no terms at all.</p>
+            <p>Finding out you're qualified doesn't lock you into anything. It just tells you whether the option exists — a commitment with terms, versus the one you're already on without them.</p>
+            <div class="concern-sources">
+              <a href="https://www.cpuc.ca.gov/news-and-updates/all-news/southern-california-edison-2025-general-rate-case" target="_blank" rel="noopener">CPUC 2025 General Rate Case — SCE Approved Increases Through 2028</a> ·
+              <a href="https://www.energytoolbase.com/blog/utility-rates/electric-utility-bill-inflation-in-california/" target="_blank" rel="noopener">SCE Rate Escalation History — Energy Toolbase</a>
+            </div>
           </div>
         </div>
 
-        <div class="faq-item reveal">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            <span>Will my power go out during installation?</span>
-            <span class="faq-icon">+</span>
+        <!-- Concern 3 -->
+        <div class="concern-item reveal">
+          <button class="concern-toggle" aria-expanded="false">
+            <span class="concern-question">Why aren't people buying solar anymore?</span>
+            <span class="concern-icon">+</span>
           </button>
-          <div class="faq-answer">
-            <p>Briefly, yes. The crew handles everything and power is typically restored the same day.</p>
+          <div class="concern-answer" hidden>
+            <p>The 30% federal tax credit for homeowner-purchased systems expired December 31, 2025. Without it, the average solar and battery system in California costs $35,000 to $50,000. Financed, that's roughly $370 a month at 7% for 15 years — $25,000 in interest on top of the principal.</p>
+            <p>The battery alone runs about $15,000 installed and typically needs replacing around year 10 to 12. If you purchased the system that replacement is on you.</p>
+            <p>The reason most people lean toward this program is simple: you get the same panels, the same battery, and a lower rate than Edison — without spending $50,000, without taking on a loan, and without being responsible when something needs fixing or replacing. The savings start month one and the risk sits with Sunrun, not you.</p>
+            <p>The tax credit still exists for third-party-owned systems. Sunrun claims it and passes the value through as a lower rate. $0 upfront, maintenance and replacements included for 25 years.</p>
+            <div class="concern-sources">
+              <a href="https://nuwattenergy.com/en/truth-about-solar-2026" target="_blank" rel="noopener">Solar Without the Tax Credit in 2026 — NuWatt Energy</a> ·
+              <a href="https://www.solarwithwatts.com/eds-blog/california-solar-in-2026-purchase-vs-loan-vs-lease-vs-ppa-and-why-prepaid-leases-are-winning" target="_blank" rel="noopener">Purchase vs PPA California 2026 — Watts Home Services</a> ·
+              <a href="https://www.energysage.com/solar/solar-leases-vs-ppas/" target="_blank" rel="noopener">Solar Leases vs PPAs — EnergySage</a> ·
+              <a href="https://www.solar.com/learn/federal-solar-tax-credit/" target="_blank" rel="noopener">Federal Tax Credit Status 2026 — Solar.com</a>
+            </div>
           </div>
         </div>
 
-        <div class="faq-item reveal">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            <span>What if I need to sell my house?</span>
-            <span class="faq-icon">+</span>
+        <!-- Concern 4 -->
+        <div class="concern-item reveal">
+          <button class="concern-toggle" aria-expanded="false">
+            <span class="concern-question">My friend got solar and they still pay Edison every month.</span>
+            <span class="concern-icon">+</span>
           </button>
-          <div class="faq-answer">
-            <p>The agreement transfers to the new homeowner. As Edison rates keep climbing, solar becomes a selling point — not a complication.</p>
-          </div>
-        </div>
-
-        <div class="faq-item reveal">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            <span>What happens if something breaks?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>Sunrun owns the equipment and covers all maintenance, repairs, and replacements at no cost to you.</p>
-          </div>
-        </div>
-
-        <div class="faq-item reveal">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            <span>When do I stop paying Edison?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>After your system receives Permission to Operate, it goes live. Your Edison bill drops to the minimum monthly connection fee.</p>
-          </div>
-        </div>
-
-        <div class="faq-item reveal">
-          <button class="faq-question" onclick="toggleFaq(this)">
-            <span>What does the 3.5% annual cap mean?</span>
-            <span class="faq-icon">+</span>
-          </button>
-          <div class="faq-answer">
-            <p>Your rate can increase by a maximum of 3.5% per year. Compare that to Edison, which has averaged over 8% annual increases in recent years with no cap.</p>
+          <div class="concern-answer" hidden>
+            <p>That happens. And there are two reasons why.</p>
+            <p>First, the system was probably undersized — it doesn't produce enough energy to cover their usage, so they're still pulling from the grid every month. Sunrun's program is designed to produce 100–107% of your estimated electricity usage. The system proposed for your home produces more energy than you currently use, specifically so you're not in that situation.</p>
+            <p>Second, your friend's system may not have a battery. Under California's current net billing rules — NEM 3.0 — the grid pays almost nothing for excess solar you send back. The credit dropped by about 75% compared to the old program. Without a battery, your friend is sending cheap power to Edison during the day and buying expensive power back at night during peak hours at 58–74¢ per kWh.</p>
+            <p>Your system includes a Tesla Powerwall. Instead of giving excess power to Edison for pennies, the battery stores it and your home uses it during peak hours — when Edison charges the most. That's why your Edison bill drops to the minimum connection fee. Not because of net metering credits, but because you're barely touching the grid at all.</p>
+            <div class="concern-sources">
+              <a href="https://www.solar.com/learn/nem-3-0-proposal-and-impacts-for-california-homeowners/" target="_blank" rel="noopener">NEM 3.0 Impact on California Homeowners — Solar.com</a> ·
+              <a href="https://www.energysage.com/local-data/net-metering/sce/" target="_blank" rel="noopener">SCE Net Metering 2026 — EnergySage</a> ·
+              <a href="https://www.sce.com/save-money/rates-financing/sce-rate-advisory" target="_blank" rel="noopener">SCE Peak Rate Advisory</a>
+            </div>
           </div>
         </div>
 
@@ -1234,7 +1373,8 @@
       <div class="about-layout">
         <div class="about-image reveal"><img src="images/IMG_6645.jpg" alt="Caleb Grondel"></div>
         <div class="about-content reveal">
-          <p>I'm tracking your file personally. If the survey turns up anything unexpected, I'll call you before anyone else does. If you have questions at 10pm on a Tuesday, text me. This is my number, and I actually answer it.</p>
+          <p>I'm on this personally from here. If the survey turns up anything, you'll hear from me before anyone else. Questions at 10pm on a Tuesday — text me.</p>
+          <p>This is my number. I answer it.</p>
           <div class="consultant-contact">
             <div>
               <span class="contact-label">Call</span>
@@ -1319,41 +1459,27 @@
       track.scrollBy({ left: scrollAmt, behavior: 'smooth' });
     };
 
-    // URL parameter personalization (rate, monthly, city)
+
+    // Concerns accordion (one open at a time)
     (function () {
-      var params = new URLSearchParams(window.location.search);
-      var rate = params.get('rate');
-      var monthly = params.get('monthly');
-      var city = params.get('city');
+      var toggles = document.querySelectorAll('.concern-toggle');
+      toggles.forEach(function (toggle) {
+        toggle.addEventListener('click', function () {
+          var expanded = this.getAttribute('aria-expanded') === 'true';
+          var answer = this.nextElementSibling;
 
-      // T-chart rate
-      var rateDisplay = document.getElementById('rate-display');
-      if (rateDisplay && rate) {
-        var rateText = '$' + rate + '/kWh.';
-        if (monthly) {
-          rateText += ' $' + monthly + '/month with autopay.';
-        }
-        rateDisplay.textContent = rateText;
-      }
+          toggles.forEach(function (other) {
+            if (other !== toggle) {
+              other.setAttribute('aria-expanded', 'false');
+              other.nextElementSibling.hidden = true;
+            }
+          });
 
-      // City personalization
-      if (city) {
-        city = decodeURIComponent(city);
-        document.querySelectorAll('[data-city-insert]').forEach(function (el) {
-          el.textContent = el.textContent.replace('your home', 'your home in ' + city);
+          this.setAttribute('aria-expanded', String(!expanded));
+          answer.hidden = expanded;
         });
-      }
-    })();
-
-    // FAQ accordion
-    window.toggleFaq = function (btn) {
-      var item = btn.closest('.faq-item');
-      var wasOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item.open').forEach(function (el) {
-        el.classList.remove('open');
       });
-      if (!wasOpen) item.classList.add('open');
-    };
+    })();
 
   </script>
 
