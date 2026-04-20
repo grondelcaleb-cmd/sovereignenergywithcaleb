@@ -167,8 +167,37 @@
       padding-bottom: clamp(4rem, 8vw, 7rem);
     }
 
+    .client-hero .container {
+      display: flex;
+      align-items: center;
+      gap: clamp(2rem, 4vw, 4rem);
+    }
+
+    .client-hero-text {
+      flex: 1;
+    }
+
     .client-hero .section-heading {
       max-width: 24ch;
+    }
+
+    .client-hero-video {
+      flex: 1;
+      max-width: 750px;
+      border-radius: 8px;
+      object-fit: cover;
+    }
+
+    @media (max-width: 767px) {
+      .client-hero .container {
+        flex-direction: column;
+      }
+
+      .client-hero-video {
+        max-width: 100%;
+        max-height: 250px;
+        object-fit: cover;
+      }
     }
 
     /* ── COMPARISON TABLE ── */
@@ -784,9 +813,14 @@
   <!-- Section 1: Welcome -->
   <section class="client-hero no-border">
     <div class="container">
-      <span class="section-label reveal">Your Status</span>
-      <h1 class="section-heading reveal">Your Home Is in the Queue.</h1>
-      <p class="section-intro reveal">We've started the qualification process. Here's what we're looking at and what to expect over the next few weeks.</p>
+      <div class="client-hero-text">
+        <span class="section-label reveal">Your Status</span>
+        <h1 class="section-heading reveal">Your Home Is in the Queue.</h1>
+        <p class="section-intro reveal">We've started the qualification process. Here's what we're looking at and what to expect over the next few weeks.</p>
+      </div>
+      <video class="client-hero-video reveal" autoplay muted loop playsinline>
+        <source src="Poweroutage.mp4" type="video/mp4">
+      </video>
     </div>
   </section>
 
