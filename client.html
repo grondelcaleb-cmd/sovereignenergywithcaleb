@@ -259,118 +259,129 @@
       line-height: 1.35;
     }
 
-    /* ── PULL QUOTE ── */
-    .pull-quote {
-      max-width: 42rem;
-      margin-top: 4rem;
-      padding-top: 2.5rem;
+    /* ── T-CHART ── */
+    .tchart-section {
+      width: 100%;
+      padding: clamp(3rem, 8vw, 5rem) 0;
       border-top: 1px solid var(--line);
-      font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+    }
+
+    .tchart-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 clamp(1.5rem, 4vw, 3rem);
+    }
+
+    .tchart-heading {
+      font-size: clamp(2.25rem, 6vw, 5rem);
       font-weight: 600;
-      letter-spacing: -0.02em;
-      line-height: 1.35;
-      color: var(--text);
+      letter-spacing: -0.03em;
+      line-height: 1;
+      margin-bottom: 1rem;
+      text-align: center;
     }
 
-    /* ── COMPARISON TABLE ── */
-    .compare-table {
-      max-width: 56rem;
-    }
-
-    .compare-row {
-      display: grid;
-      grid-template-columns: 10rem 1fr 1fr;
-      gap: 1.5rem;
-      border-top: 1px solid var(--line);
-      padding: 1.75rem 0;
-      align-items: start;
-    }
-
-    .compare-header {
-      display: grid;
-      grid-template-columns: 10rem 1fr 1fr;
-      gap: 1.5rem;
-      padding-bottom: 1rem;
-    }
-
-    .compare-header-spacer {
-      /* empty first column */
-    }
-
-    .compare-col--approved {
-      font-size: 0.75rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--teal);
-    }
-
-    .compare-col--current {
-      font-size: 0.75rem;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
+    .tchart-subheading {
+      font-size: clamp(1.05rem, 1.4vw, 1.3rem);
       color: var(--text-muted);
+      text-align: center;
+      margin-bottom: clamp(2.5rem, 5vw, 4rem);
     }
 
-    .compare-row-label {
-      font-size: 0.75rem;
+    .tchart-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+    }
+
+    .tchart-left {
+      background: #fff;
+      padding: clamp(2rem, 4vw, 2.75rem);
+      border-left: 3px solid var(--teal);
+    }
+
+    .tchart-right {
+      background: #f2f2f2;
+      padding: clamp(2rem, 4vw, 2.75rem);
+    }
+
+    .tchart-col-header {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .tchart-left .tchart-col-header {
       font-weight: 700;
+      color: #1a1a1a;
+    }
+
+    .tchart-right .tchart-col-header {
+      font-weight: 400;
+      color: #888;
+    }
+
+    .tchart-label {
+      font-size: 0.68rem;
       letter-spacing: 0.15em;
       text-transform: uppercase;
-      color: var(--text);
-      padding-top: 0.15rem;
-    }
-
-    .compare-cell--approved {
-      font-size: 1.05rem;
+      color: #999;
+      margin-bottom: 0.5rem;
       font-weight: 600;
-      line-height: 1.45;
-      color: var(--text);
     }
 
-    .compare-cell--current {
-      font-size: 1.05rem;
-      font-weight: 400;
-      line-height: 1.45;
-      color: var(--text-muted);
+    .tchart-content {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 1.75rem;
+    }
+
+    .tchart-row:last-child .tchart-content {
+      margin-bottom: 0;
+    }
+
+    .tchart-left .tchart-content {
+      color: #1a1a1a;
+    }
+
+    .tchart-right .tchart-content {
+      color: #666;
+    }
+
+    .tchart-closing {
+      text-align: center;
+      font-size: clamp(1.1rem, 1.5vw, 1.2rem);
+      font-style: italic;
+      color: #888;
+      padding: clamp(2.5rem, 5vw, 3.5rem) 1.5rem 0;
+    }
+
+    .tchart-divider {
+      display: none;
     }
 
     @media (max-width: 767px) {
-      .compare-header {
-        display: none;
-      }
-
-      .compare-row {
+      .tchart-grid {
         grid-template-columns: 1fr;
-        gap: 0.75rem;
-        padding: 1.5rem 0;
       }
 
-      .compare-row-label {
-        margin-bottom: 0.25rem;
+      .tchart-left {
+        border-left: 3px solid var(--teal);
       }
 
-      .compare-cell--approved::before {
-        content: 'If Approved: ';
-        font-size: 0.65rem;
-        font-weight: 700;
+      .tchart-divider {
+        display: block;
+        text-align: center;
+        padding: 1rem 0;
+        font-size: 0.85rem;
+        color: #aaa;
         letter-spacing: 0.15em;
         text-transform: uppercase;
-        color: var(--teal);
-        display: block;
-        margin-bottom: 0.25rem;
-      }
-
-      .compare-cell--current::before {
-        content: 'Current Edison: ';
-        font-size: 0.65rem;
         font-weight: 600;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        color: var(--text-muted);
-        display: block;
-        margin-bottom: 0.25rem;
+      }
+
+      .tchart-content {
+        font-size: 0.95rem;
       }
     }
 
@@ -893,7 +904,7 @@
       <div class="client-hero-text">
         <span class="section-label reveal">Your Status</span>
         <h1 class="section-heading reveal">You Made a Move.</h1>
-        <p class="section-intro reveal">Most homeowners know Edison's rates are out of control. Most of them won't do anything about it. You did. Now we find out if your home qualifies.</p>
+        <p class="section-intro reveal" data-city-insert>Most homeowners know Edison's rates are out of control. Most of them won't do anything about it. You did. Now we find out if your home qualifies.</p>
       </div>
       <video class="client-hero-video reveal" autoplay muted loop playsinline>
         <source src="Poweroutage.mp4" type="video/mp4">
@@ -916,47 +927,100 @@
     </div>
   </section>
 
-  <!-- Section 2: The Program -->
-  <section>
-    <div class="container">
-      <span class="section-label reveal">The Program</span>
-      <h2 class="section-heading reveal">What Your Home Is Being Evaluated For</h2>
-      <p class="section-intro reveal">Not every home qualifies. Sunrun has to confirm that your roof, electrical panel, sun exposure, and city regulations all check out before they take on the investment. Here's what the program looks like if your home is approved.</p>
+  <!-- T-Chart: The Two Plans -->
+  <div class="tchart-section">
+    <div class="tchart-inner">
+      <h2 class="tchart-heading reveal">The Two Plans</h2>
+      <p class="tchart-subheading reveal">One you chose. One you were on.</p>
 
-      <div class="compare-table reveal">
-        <div class="compare-header">
-          <div class="compare-header-spacer"></div>
-          <div class="compare-col--approved">If Approved</div>
-          <div class="compare-col--current">Current Edison Plan</div>
+      <div class="tchart-grid reveal">
+        <!-- LEFT COLUMN -->
+        <div class="tchart-left">
+          <div class="tchart-col-header">Your New Plan</div>
+
+          <div class="tchart-row">
+            <div class="tchart-label">Monthly Rate</div>
+            <div class="tchart-content" id="tchart-rate-left">Fixed rate. <span id="rate-display">One monthly bill.</span> Same amount whether it's July or January.</div>
+          </div>
+
+          <div class="tchart-row">
+            <div class="tchart-label">Rate Protection</div>
+            <div class="tchart-content">Your rate can increase by a maximum of 3.5% per year. That cap is written into your agreement.</div>
+          </div>
+
+          <div class="tchart-row">
+            <div class="tchart-label">Performance Guarantee</div>
+            <div class="tchart-content">If your system produces less than 90% of the estimate, Sunrun pays you the difference. Guaranteed for 25 years.</div>
+          </div>
+
+          <div class="tchart-row">
+            <div class="tchart-label">Power Outages</div>
+            <div class="tchart-content">Tesla Powerwall. 13.5 kWh battery. Kicks in automatically when the grid drops. Charges during the day to cover multi-day outages.</div>
+          </div>
+
+          <div class="tchart-row">
+            <div class="tchart-label">Warranty &amp; Maintenance</div>
+            <div class="tchart-content">Parts, labor, and workmanship — covered for 25 years. Sunrun monitors your system 24/7. If production drops, they know before you do. If something breaks, they fix it. No call from you. No invoice.</div>
+          </div>
+
+          <div class="tchart-row">
+            <div class="tchart-label">Equipment &amp; Liability</div>
+            <div class="tchart-content">Sunrun owns the system. Sunrun insures the system. Hail, wind, equipment failure — all covered. Not on your homeowner's policy. Not your problem.</div>
+          </div>
+
+          <div class="tchart-row">
+            <div class="tchart-label">If You Move</div>
+            <div class="tchart-content">The agreement transfers to the new homeowner. As Edison rates keep climbing, solar becomes a selling point — not a complication.</div>
+          </div>
         </div>
 
-        <div class="compare-row">
-          <div class="compare-row-label">Monthly Cost</div>
-          <div class="compare-cell--approved">One flat rate. Same in January. Same in August.</div>
-          <div class="compare-cell--current">Changes by season, time of day, and tier. You never know what's coming.</div>
-        </div>
+        <!-- MOBILE DIVIDER -->
+        <div class="tchart-divider">vs.</div>
 
-        <div class="compare-row">
-          <div class="compare-row-label">Rate Protection</div>
-          <div class="compare-cell--approved">Locked rate with a maximum 3.5% annual cap</div>
-          <div class="compare-cell--current">No cap. Edison raises rates whenever approved by CPUC</div>
-        </div>
+        <!-- RIGHT COLUMN -->
+        <div class="tchart-right">
+          <div class="tchart-col-header">What You Were On</div>
 
-        <div class="compare-row">
-          <div class="compare-row-label">Power Outages</div>
-          <div class="compare-cell--approved">Tesla Powerwall backup — your lights stay on</div>
-          <div class="compare-cell--current">Grid goes down, your power goes with it</div>
-        </div>
+          <div class="tchart-row">
+            <div class="tchart-label">Monthly Rate</div>
+            <div class="tchart-content">TOU rate that changes by season, time of day, and usage tier. No way to predict your bill month to month.</div>
+          </div>
 
-        <div class="compare-row">
-          <div class="compare-row-label">Maintenance &amp; Liability</div>
-          <div class="compare-cell--approved">Sunrun monitors, maintains, warrantees, and insures everything. Something breaks, they fix it. No call, no invoice.</div>
-          <div class="compare-cell--current">You own nothing. You control nothing. You pay whatever they decide.</div>
+          <div class="tchart-row">
+            <div class="tchart-label">Rate Protection</div>
+            <div class="tchart-content">Edison has averaged over 8% annual increases for the last decade. No cap. No ceiling. More increases already approved through 2028.</div>
+          </div>
+
+          <div class="tchart-row">
+            <div class="tchart-label">Performance Guarantee</div>
+            <div class="tchart-content">Edison guarantees nothing. Not your rate. Not your reliability. Not your bill.</div>
+          </div>
+
+          <div class="tchart-row">
+            <div class="tchart-label">Power Outages</div>
+            <div class="tchart-content">Grid goes down, your power goes with it. No backup. No timeline for when it comes back.</div>
+          </div>
+
+          <div class="tchart-row">
+            <div class="tchart-label">Warranty &amp; Maintenance</div>
+            <div class="tchart-content">You don't own the grid. You can't fix it. You can't call anyone about your rate. You just pay.</div>
+          </div>
+
+          <div class="tchart-row">
+            <div class="tchart-label">Equipment &amp; Liability</div>
+            <div class="tchart-content">You own nothing on Edison's side either. But you're still responsible for whatever they bill you, with zero protection when the grid fails.</div>
+          </div>
+
+          <div class="tchart-row">
+            <div class="tchart-label">If You Move</div>
+            <div class="tchart-content">Edison follows you to the next house anyway. Same deal you never agreed to.</div>
+          </div>
         </div>
       </div>
-      <p class="pull-quote reveal">The right side of that chart is where you were yesterday. The left side is where you're headed.</p>
+
+      <div class="tchart-closing reveal">Same home. Same appliances. Different deal.</div>
     </div>
-  </section>
+  </div>
 
   <!-- Section 3: Timeline -->
   <section>
@@ -1274,6 +1338,32 @@
       var scrollAmt = (card.offsetWidth + 20) * dir;
       track.scrollBy({ left: scrollAmt, behavior: 'smooth' });
     };
+
+    // URL parameter personalization (rate, monthly, city)
+    (function () {
+      var params = new URLSearchParams(window.location.search);
+      var rate = params.get('rate');
+      var monthly = params.get('monthly');
+      var city = params.get('city');
+
+      // T-chart rate
+      var rateDisplay = document.getElementById('rate-display');
+      if (rateDisplay && rate) {
+        var rateText = '$' + rate + '/kWh.';
+        if (monthly) {
+          rateText += ' $' + monthly + '/month with autopay.';
+        }
+        rateDisplay.textContent = rateText;
+      }
+
+      // City personalization
+      if (city) {
+        city = decodeURIComponent(city);
+        document.querySelectorAll('[data-city-insert]').forEach(function (el) {
+          el.textContent = el.textContent.replace('your home', 'your home in ' + city);
+        });
+      }
+    })();
 
     // FAQ accordion
     window.toggleFaq = function (btn) {
