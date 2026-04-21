@@ -151,6 +151,99 @@
       margin-bottom: 1.5rem;
     }
 
+    /* ── STATUS PROGRESS BAR (hero) ── */
+    .status-progress {
+      margin-bottom: 28px;
+      padding: 18px 20px 16px;
+      background: #FFFFFF;
+      border: 1px solid #E5E7EB;
+      border-radius: 10px;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+    }
+
+    .status-progress__steps {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      position: relative;
+    }
+
+    .status-progress__steps::before {
+      content: "";
+      position: absolute;
+      top: 14px;
+      left: 8.33%;
+      right: 8.33%;
+      height: 2px;
+      background: #E5E7EB;
+      z-index: 0;
+    }
+
+    .sp-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .sp-step__node {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #F3F4F6;
+      color: #9CA3AF;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1;
+      border: 2px solid #FFFFFF;
+    }
+
+    .sp-step__label {
+      font-size: 12px;
+      color: #9CA3AF;
+      font-weight: 500;
+      text-align: center;
+      white-space: nowrap;
+      letter-spacing: 0.01em;
+    }
+
+    .sp-step--done .sp-step__node {
+      background: var(--teal);
+      color: #FFFFFF;
+    }
+
+    .sp-step--done .sp-step__label {
+      color: #1F2937;
+    }
+
+    .sp-step--current .sp-step__node {
+      background: #FFFFFF;
+      color: var(--teal);
+      border: 2px solid var(--teal);
+      box-shadow: 0 0 0 4px rgba(69, 185, 178, 0.18);
+    }
+
+    .sp-step--current .sp-step__label {
+      color: #1F2937;
+      font-weight: 600;
+    }
+
+    @media (max-width: 720px) {
+      .status-progress {
+        padding: 14px 12px;
+      }
+      .sp-step__label {
+        font-size: 11px;
+      }
+    }
+
     .section-heading {
       font-size: clamp(2.25rem, 6vw, 5rem);
       font-weight: 600;
@@ -1277,9 +1370,37 @@
   <section class="client-hero no-border">
     <div class="container">
       <div class="client-hero-text">
+        <div class="status-progress reveal" aria-label="Your application progress">
+          <ol class="status-progress__steps">
+            <li class="sp-step sp-step--done">
+              <span class="sp-step__node" aria-hidden="true">✓</span>
+              <span class="sp-step__label">Application</span>
+            </li>
+            <li class="sp-step sp-step--current" aria-current="step">
+              <span class="sp-step__node" aria-hidden="true">2</span>
+              <span class="sp-step__label">Site Survey</span>
+            </li>
+            <li class="sp-step">
+              <span class="sp-step__node" aria-hidden="true">3</span>
+              <span class="sp-step__label">Design</span>
+            </li>
+            <li class="sp-step">
+              <span class="sp-step__node" aria-hidden="true">4</span>
+              <span class="sp-step__label">Permits</span>
+            </li>
+            <li class="sp-step">
+              <span class="sp-step__node" aria-hidden="true">5</span>
+              <span class="sp-step__label">Install</span>
+            </li>
+            <li class="sp-step">
+              <span class="sp-step__node" aria-hidden="true">6</span>
+              <span class="sp-step__label">Powered On</span>
+            </li>
+          </ol>
+        </div>
         <div class="section-number reveal">01 / Your Status</div>
-        <h1 class="section-heading reveal">You Made a Move.</h1>
-        <p class="section-intro reveal">Most homeowners know Edison's rates are out of control. Most of them won't do anything about it. You did. Now we find out if your home qualifies.</p>
+        <h1 class="section-heading reveal">A Step in the Right Direction.</h1>
+        <p class="section-intro reveal">Most homeowners know their deal with Edison isn't fair. They just don't know what to do about it. You're finding out. If your home qualifies, you've got an exit. If it doesn't, you've got your answer. Either way, it's worth knowing.</p>
       </div>
       <video class="client-hero-video reveal" autoplay muted loop playsinline>
         <source src="Poweroutage.mp4" type="video/mp4">
