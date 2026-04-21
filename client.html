@@ -1104,9 +1104,38 @@
       line-height: 1.5;
     }
 
-    /* Callback result — highlight the wildfire number in Edison red */
-    .two-plans-section .bill-calc__result--callback .bill-calc__result-value {
+    /* Forecast result — two stacked label/value rows, both in Edison red */
+    .two-plans-section .bill-calc__forecast-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 12px;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--two-plans-border-soft);
+    }
+
+    .two-plans-section .bill-calc__forecast-row + .bill-calc__result-sub {
+      padding-top: 10px;
+    }
+
+    .two-plans-section .bill-calc__result--forecast .bill-calc__forecast-row:last-of-type {
+      border-bottom: none;
+    }
+
+    .two-plans-section .bill-calc__forecast-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--two-plans-text-muted);
+    }
+
+    .two-plans-section .bill-calc__forecast-value {
+      font-size: 22px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
       color: var(--edison);
+      font-variant-numeric: tabular-nums;
+      line-height: 1.1;
+      white-space: nowrap;
     }
 
     @media (max-width: 640px) {
@@ -1938,10 +1967,17 @@
               <div class="bill-calc__result-sub">Estimated using Edison's 10-year average rate increase of 8%.</div>
             </div>
 
-            <div class="bill-calc__result bill-calc__result--callback">
-              <div class="bill-calc__result-label">Of that, the wildfire liability portion</div>
-              <div class="bill-calc__result-value" data-output="wildfire">—</div>
-              <div class="bill-calc__result-sub">17% of every Edison bill (see Section 02).</div>
+            <div class="bill-calc__result bill-calc__result--forecast">
+              <div class="bill-calc__result-label">5-Year Forecast</div>
+              <div class="bill-calc__forecast-row">
+                <span class="bill-calc__forecast-label">Monthly bill in 5 years</span>
+                <span class="bill-calc__forecast-value" data-output="fiveYearMonthly">—</span>
+              </div>
+              <div class="bill-calc__forecast-row">
+                <span class="bill-calc__forecast-label">Total over the next 5 years</span>
+                <span class="bill-calc__forecast-value" data-output="fiveYearForecast">—</span>
+              </div>
+              <div class="bill-calc__result-sub">Assuming Edison's 10-year average rate increase of 8% continues.</div>
             </div>
           </div>
         </div>
@@ -2395,7 +2431,8 @@
       var outputs = {
         annual: document.querySelector('[data-output="annual"]'),
         fiveYear: document.querySelector('[data-output="fiveYear"]'),
-        wildfire: document.querySelector('[data-output="wildfire"]')
+        fiveYearMonthly: document.querySelector('[data-output="fiveYearMonthly"]'),
+        fiveYearForecast: document.querySelector('[data-output="fiveYearForecast"]')
       };
 
       trigger.addEventListener('click', function () {
@@ -2417,21 +2454,30 @@
         if (isNaN(bill) || bill < 1) {
           outputs.annual.textContent = '—';
           outputs.fiveYear.textContent = '—';
-          outputs.wildfire.textContent = '—';
+          outputs.fiveYearMonthly.textContent = '—';
+          outputs.fiveYearForecast.textContent = '—';
           return;
         }
 
         if (bill > 2000) bill = 2000;
 
         var annual = bill * 12;
+        // Last 5 years: today + 4 years back, each 8% smaller than the next
         var backCoef = 1;
         for (var i = 1; i <= 4; i++) backCoef += 1 / Math.pow(1.08, i);
         var fiveYearTotal = annual * backCoef;
-        var wildfire = fiveYearTotal * 0.17;
+
+        // Monthly bill in 5 years (after 5 compounded 8% increases)
+        var fiveYearMonthly = bill * Math.pow(1.08, 5);
+
+        // Total over next 5 years: years 1-5 forward, each 8% higher than the previous
+        var fiveYearForecast = 0;
+        for (var j = 1; j <= 5; j++) fiveYearForecast += 12 * bill * Math.pow(1.08, j);
 
         outputs.annual.textContent = formatMoney(annual);
         outputs.fiveYear.textContent = formatMoney(fiveYearTotal, true);
-        outputs.wildfire.textContent = formatMoney(wildfire, true);
+        outputs.fiveYearMonthly.textContent = formatMoney(fiveYearMonthly) + '/mo';
+        outputs.fiveYearForecast.textContent = formatMoney(fiveYearForecast, true);
       });
 
       function formatMoney(n, roundToHundred) {
