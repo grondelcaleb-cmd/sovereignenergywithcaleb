@@ -413,6 +413,87 @@
       }
     }
 
+    /* ── FACT CARD: killer line + expandable details ── */
+    .fact-killer {
+      font-size: 17px;
+      line-height: 1.5;
+      font-weight: 500;
+      color: #1F2937;
+      margin: 12px 0 18px;
+    }
+
+    .fact-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: #FFFFFF;
+      border: 1px solid #E5E7EB;
+      border-radius: 999px;
+      color: #1F2937;
+      font-family: inherit;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+    }
+
+    .fact-toggle:hover,
+    .fact-toggle:focus-visible {
+      border-color: var(--teal);
+      color: var(--teal);
+      outline: none;
+    }
+
+    .fact-toggle__icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      font-size: 16px;
+      line-height: 1;
+      font-weight: 700;
+    }
+
+    .fact-details {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      margin-top: 0;
+      transition:
+        max-height 0.4s ease,
+        opacity 0.3s ease,
+        margin-top 0.4s ease;
+    }
+
+    .fact-details[aria-hidden="false"] {
+      max-height: 1000px;
+      opacity: 1;
+      margin-top: 16px;
+    }
+
+    .fact-details > p {
+      margin: 0 0 12px;
+      color: #4B5563;
+      line-height: 1.6;
+    }
+
+    .fact-details > p:last-child {
+      margin-bottom: 0;
+    }
+
+    @media (max-width: 720px) {
+      .fact-killer {
+        font-size: 16px;
+      }
+      .fact-toggle {
+        font-size: 12px;
+        padding: 7px 12px;
+      }
+    }
+
     /* ── RATE CHART ── */
     .rate-chart-container {
       max-width: 700px;
@@ -766,6 +847,31 @@
     }
 
     .two-plans-section .col.edison .row-body { color: var(--two-plans-text-muted); }
+
+    /* SOURCE CITATION ROW */
+    .two-plans-section .section-sources {
+      max-width: 900px;
+      margin: -16px auto 40px;
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.8;
+      color: var(--two-plans-text-dim);
+      letter-spacing: 0.02em;
+    }
+
+    .two-plans-section .section-sources a {
+      color: var(--two-plans-text-muted);
+      text-decoration: underline;
+      text-decoration-color: var(--two-plans-border);
+      text-underline-offset: 3px;
+      transition: color 0.15s ease, text-decoration-color 0.15s ease;
+    }
+
+    .two-plans-section .section-sources a:hover,
+    .two-plans-section .section-sources a:focus-visible {
+      color: var(--two-plans-text);
+      text-decoration-color: var(--accent);
+    }
 
     /* CLOSING LINE */
     .two-plans-section .closer { text-align: center; padding: 16px 0 0; }
@@ -1370,6 +1476,9 @@
   <section class="client-hero no-border">
     <div class="container">
       <div class="client-hero-text">
+        <div class="section-number reveal">01 / Your Status</div>
+        <h1 class="section-heading reveal">A Step in the Right Direction.</h1>
+        <p class="section-intro reveal">Most homeowners know their deal with Edison isn't fair. They just don't know what to do about it. You're finding out. If your home qualifies, you've got an exit. If it doesn't, you've got your answer. Either way, it's worth knowing.</p>
         <div class="status-progress reveal" aria-label="Your application progress">
           <ol class="status-progress__steps">
             <li class="sp-step sp-step--done">
@@ -1398,9 +1507,6 @@
             </li>
           </ol>
         </div>
-        <div class="section-number reveal">01 / Your Status</div>
-        <h1 class="section-heading reveal">A Step in the Right Direction.</h1>
-        <p class="section-intro reveal">Most homeowners know their deal with Edison isn't fair. They just don't know what to do about it. You're finding out. If your home qualifies, you've got an exit. If it doesn't, you've got your answer. Either way, it's worth knowing.</p>
       </div>
       <video class="client-hero-video reveal" autoplay muted loop playsinline>
         <source src="Poweroutage.mp4" type="video/mp4">
@@ -1413,16 +1519,22 @@
     <div class="container">
       <div class="leaving-behind-inner">
         <div class="section-number reveal">02 / The Reality</div>
-        <h2 class="section-heading reveal">What You're Leaving Behind</h2>
+        <h2 class="section-heading reveal">The Numbers Don't Lie.</h2>
 
         <!-- Block 1: The Rate -->
         <div class="leaving-block reveal">
           <div class="fact-label">Fact #1</div>
           <div class="leaving-stat">Your Edison bill in 2016 was roughly half of what it is today.</div>
-          <p class="leaving-context">Same house. Same appliances. SCE rates have increased 83% in the last decade.</p>
-          <p class="leaving-context">The CPUC approved a 9.1% increase for 2025. More increases are locked in through 2028.</p>
-          <p class="leaving-context">Edison's average annual increase over the last 10 years: 6%. The national average: 2.8%.</p>
-          <p class="leaving-context">Your rate with Edison has no cap. No ceiling. No maximum. It goes up when they say it goes up.</p>
+          <p class="fact-killer">Same house. Same appliances. SCE rates have increased 83% in the last decade.</p>
+          <button class="fact-toggle" type="button" data-fact-toggle aria-expanded="false" aria-controls="fact-1-details">
+            <span class="fact-toggle__label">See the data</span>
+            <span class="fact-toggle__icon" aria-hidden="true">+</span>
+          </button>
+          <div class="fact-details" id="fact-1-details" aria-hidden="true">
+            <p>The CPUC approved a 9.1% increase for 2025. More increases are locked in through 2028.</p>
+            <p>Edison's average annual increase over the last 10 years: 6%. The national average: 2.8%.</p>
+            <p>Your rate with Edison has no cap. No ceiling. No maximum. It goes up when they say it goes up.</p>
+          </div>
           <div class="leaving-source">
             <a href="https://www.cpuc.ca.gov/-/media/cpuc-website/divisions/office-of-governmental-affairs-division/reports/2025/2025-sb-695-report_093025.pdf" target="_blank" rel="noopener">CA Public Advocates Office</a> ·
             <a href="https://www.cpuc.ca.gov/news-and-updates/all-news/southern-california-edison-2025-general-rate-case" target="_blank" rel="noopener">CPUC 2025 Rate Case Decision</a> ·
@@ -1484,9 +1596,16 @@
         <div class="leaving-block reveal">
           <div class="fact-label">Fact #2</div>
           <div class="leaving-stat">For every $300 paid to Edison, $51 of that is for wildfire lawsuits — not electricity.</div>
-          <p class="leaving-context">17% of every Edison bill goes to wildfire liability costs. That's not keeping your lights on. That's paying for fires Edison's equipment started — and the lawsuits that followed.</p>
-          <p class="leaving-context">After the 2025 Eaton Fire, the state expanded the wildfire fund by $18 billion. Half comes from ratepayers. Edison's first $1 billion in Eaton claims is covered by customer-funded self-insurance. Your premiums.</p>
-          <p class="leaving-context">Every major wildfire in California adds to your Edison bill. Whether it's near your home or not.</p>
+          <p class="fact-killer">17% of every Edison bill goes to wildfire liability costs — not electricity.</p>
+          <button class="fact-toggle" type="button" data-fact-toggle aria-expanded="false" aria-controls="fact-2-details">
+            <span class="fact-toggle__label">See the data</span>
+            <span class="fact-toggle__icon" aria-hidden="true">+</span>
+          </button>
+          <div class="fact-details" id="fact-2-details" aria-hidden="true">
+            <p>That's paying for fires Edison's equipment started — and the lawsuits that followed.</p>
+            <p>After the 2025 Eaton Fire, the state expanded the wildfire fund by $18 billion. Half comes from ratepayers. Edison's first $1 billion in Eaton claims is covered by customer-funded self-insurance. Your premiums.</p>
+            <p>Every major wildfire in California adds to your Edison bill. Whether it's near your home or not.</p>
+          </div>
           <div class="leaving-source">
             <a href="https://calmatters.org/environment/2024/12/pge-utilities-wildfire-prevention-customer-bills-california/" target="_blank" rel="noopener">CalMatters: Wildfire Prevention Costs</a> ·
             <a href="https://laist.com/news/climate-environment/edison-payout-guide" target="_blank" rel="noopener">LAist: Edison Eaton Fire Payout Guide</a> ·
@@ -1494,13 +1613,20 @@
           </div>
         </div>
 
-        <!-- Block 4: What's Coming Next -->
+        <!-- Block 3: What's Coming Next -->
         <div class="leaving-block reveal">
           <div class="fact-label">Fact #3</div>
           <div class="leaving-stat">Demand is rising. Supply is shrinking. You pay the difference.</div>
-          <p class="leaving-context">AI data centers are projected to double their electricity demand by 2028. The Little Hoover Commission warned these costs could be passed to California households — not the tech companies causing the demand.</p>
-          <p class="leaving-context">California is retiring aging gas-fired power plants on a fixed timeline. The Scattergood Generating Station in LA closes by 2029. Replacement capacity is being built, but not fast enough to match demand growth.</p>
-          <p class="leaving-context">When demand outpaces supply, wholesale prices spike. Edison passes the cost through. There is no buffer between their costs and your bill.</p>
+          <p class="fact-killer">Edison solves its problems with your money.</p>
+          <button class="fact-toggle" type="button" data-fact-toggle aria-expanded="false" aria-controls="fact-3-details">
+            <span class="fact-toggle__label">See the data</span>
+            <span class="fact-toggle__icon" aria-hidden="true">+</span>
+          </button>
+          <div class="fact-details" id="fact-3-details" aria-hidden="true">
+            <p>AI data centers are expected to double their electricity demand by 2028. The Little Hoover Commission reported those costs are most likely to be passed to California households, not the tech companies driving the growth. That cost flows to your bill.</p>
+            <p>California is also retiring older gas plants — Scattergood in LA closes by 2029. New capacity is coming online, but not fast enough to match demand. When supply tightens, Edison raises Time-of-Use rates during peak hours to manage the grid.</p>
+            <p>When demand outpaces supply, wholesale prices rise. Edison passes those changes through to customer bills. Your bill tracks the market.</p>
+          </div>
           <div class="leaving-source">
             <a href="https://calmatters.org/environment/2026/03/little-hoover-data-center-electricity/" target="_blank" rel="noopener">CalMatters: AI Data Center Costs</a> ·
             <a href="https://www.caiso.com/about/news/energy-matters-blog/strengthening-the-grid-is-enhancing-summer-reliability" target="_blank" rel="noopener">CAISO Grid Outlook</a> ·
@@ -1510,7 +1636,7 @@
 
         <!-- Closing -->
         <div class="leaving-closing reveal">
-          That's the plan you were on. The one you never agreed to.
+          This is the plan you are on.
         </div>
       </div>
     </div>
@@ -1527,11 +1653,11 @@
       <!-- HERO PHRASES (no dollars) -->
       <div class="hero-row">
         <div class="hero-col edison">
-          <div class="hero-label edison">What Edison Was Giving You</div>
+          <div class="hero-label edison">What You Were On</div>
           <div class="hero-phrase">
-            A different bill every month.<span class="trend">↗</span>
+            A different bill every month.
           </div>
-          <p class="hero-sub">Higher every summer. Rising every year. Different every time it shows up.</p>
+          <p class="hero-sub">SCE has raised rates an average of 8% a year for the last decade.</p>
         </div>
 
         <div class="hero-col plan">
@@ -1543,7 +1669,7 @@
               <path d="M8 11V7a4 4 0 0 1 8 0v4"></path>
             </svg>
           </div>
-          <p class="hero-sub">Same in January. Same in August. Locked for 25 years.</p>
+          <p class="hero-sub">Your rate is locked with a 3.5% annual cap for 25 years.</p>
         </div>
       </div>
 
@@ -1596,7 +1722,6 @@
           <span>S</span><span>O</span><span>N</span><span>D</span>
         </div>
 
-        <p class="chart-caption">Same house. Same appliances. Two completely different experiences.</p>
       </div>
 
       <!-- T-CHART -->
@@ -1610,27 +1735,22 @@
 
           <div class="row">
             <div class="row-label"><span class="label">01 / Monthly Rate</span><span class="row-mark">↗</span></div>
-            <p class="row-body">A time-of-use plan where you're charged different rates depending on the hour, the season, and how much you've already used. No way to know what your bill will be until it shows up.</p>
+            <p class="row-body">A time-of-use plan — different rates by hour, season, and how much you've used. You find out what you paid when the bill shows up.</p>
           </div>
 
           <div class="row">
             <div class="row-label"><span class="label">02 / Rate Protection</span><span class="row-mark">↗</span></div>
-            <p class="row-body">No cap on how much Edison can raise your rate. They've averaged over 8% a year for the last decade, and more increases are already approved through 2028. You find out after it happens.</p>
+            <p class="row-body">No cap on rate increases. Edison has averaged over 8% a year for the last decade. More increases are already approved through 2028.</p>
           </div>
 
           <div class="row">
             <div class="row-label"><span class="label">03 / Power Outages</span><span class="row-mark">✕</span></div>
-            <p class="row-body">When the grid goes down, your power goes with it. No backup. No estimate for when it comes back. You wait like everyone else.</p>
+            <p class="row-body">When the grid goes down, your power goes with it. No backup. The lights stay off until the grid comes back.</p>
           </div>
 
           <div class="row">
-            <div class="row-label"><span class="label">04 / Warranty &amp; Maintenance</span><span class="row-mark">✕</span></div>
-            <p class="row-body">There's nothing to maintain because there's nothing you own. But you're still paying for a grid that's aging, catching fire, and getting more expensive to prop up every year.</p>
-          </div>
-
-          <div class="row">
-            <div class="row-label"><span class="label">05 / Equipment &amp; Liability</span><span class="row-mark">✕</span></div>
-            <p class="row-body">You own nothing on Edison's side. No equipment. No asset. Just a bill every month for power you have no control over, at a price you didn't set.</p>
+            <div class="row-label"><span class="label">04 / Warranty &amp; Coverage</span><span class="row-mark">✕</span></div>
+            <p class="row-body">No warranty. No coverage. You own nothing on Edison's side — just a bill for a grid that keeps getting more expensive.</p>
           </div>
         </div>
 
@@ -1643,35 +1763,41 @@
 
           <div class="row">
             <div class="row-label"><span class="label">Monthly Rate</span></div>
-            <p class="row-body">One flat rate. Same in January, same in August. You know exactly what you're paying before the month starts.</p>
+            <p class="row-body">One flat rate. Same every month. You know what you owe before the month starts.</p>
           </div>
 
           <div class="row">
             <div class="row-label"><span class="label">Rate Protection</span></div>
-            <p class="row-body">Your rate is locked with a 3.5% annual cap. It's written into your agreement. No surprises. No catching up to a number you didn't agree to.</p>
+            <p class="row-body">Your rate is locked with a 3.5% annual cap, written into your agreement. No surprises. No catching up.</p>
           </div>
 
           <div class="row">
             <div class="row-label"><span class="label">Power Outages</span></div>
-            <p class="row-body">Tesla Powerwall battery that kicks in the moment the grid drops. Charges during the day so it's ready if the outage lasts more than one night. Your lights stay on.</p>
+            <p class="row-body">A Tesla Powerwall kicks in the moment the grid drops. It recharges during the day. Your lights stay on.</p>
           </div>
 
           <div class="row">
-            <div class="row-label"><span class="label">Warranty &amp; Maintenance</span></div>
-            <p class="row-body">Sunrun monitors your system around the clock. If something drops, they catch it. If something breaks, they fix it. Parts, labor, and workmanship covered for 25 years. No call from you. No bill.</p>
-          </div>
-
-          <div class="row">
-            <div class="row-label"><span class="label">Equipment &amp; Liability</span></div>
-            <p class="row-body">Sunrun owns the system and insures it. Hail, wind, equipment failure — all covered by them. Not on your homeowner's policy. Not your liability.</p>
+            <div class="row-label"><span class="label">Warranty &amp; Coverage</span></div>
+            <p class="row-body">25-year warranty on parts, labor, and workmanship. Sunrun owns the system and insures it. Hail, wind, equipment failure — covered on their policy, not yours.</p>
           </div>
         </div>
       </div>
 
+      <!-- SOURCE CITATIONS -->
+      <p class="section-sources">
+        <a href="https://www.sunrun.com/plans-pricing" target="_blank" rel="noopener">Sunrun PPA Terms</a>
+        ·
+        <a href="https://www.tesla.com/powerwall" target="_blank" rel="noopener">Tesla Powerwall</a>
+        ·
+        <a href="https://www.cpuc.ca.gov/-/media/cpuc-website/divisions/office-of-governmental-affairs-division/reports/2025/2025-sb-695-report_093025.pdf" target="_blank" rel="noopener">CA Public Advocates Office</a>
+        ·
+        <a href="https://www.cpuc.ca.gov/news-and-updates/all-news/southern-california-edison-2025-general-rate-case" target="_blank" rel="noopener">CPUC 2025 Rate Case</a>
+      </p>
+
       <!-- CLOSING LINE -->
       <div class="closer">
-        <p class="closer-line">Same home. Same appliances.<br><span class="accent">Different deal.</span></p>
-        <p class="closer-sub">The one you chose. The one you keep.</p>
+        <p class="closer-line">Same home.<br><span class="accent">Different math.</span></p>
+        <p class="closer-sub">The one you chose. The one you'll keep.</p>
       </div>
 
     </div>
@@ -2021,6 +2147,22 @@
         });
       });
     })();
+
+    // Fact card toggles (independent; multiple may be open)
+    document.querySelectorAll('[data-fact-toggle]').forEach(function (btn) {
+      var target = document.getElementById(btn.getAttribute('aria-controls'));
+      if (!target) return;
+      btn.addEventListener('click', function () {
+        var isOpen = btn.getAttribute('aria-expanded') === 'true';
+        var next = !isOpen;
+        btn.setAttribute('aria-expanded', String(next));
+        target.setAttribute('aria-hidden', String(!next));
+        var label = btn.querySelector('.fact-toggle__label');
+        var icon = btn.querySelector('.fact-toggle__icon');
+        if (label) label.textContent = next ? 'Hide the data' : 'See the data';
+        if (icon) icon.textContent = next ? '−' : '+';
+      });
+    });
 
   </script>
 
