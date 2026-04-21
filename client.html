@@ -907,6 +907,222 @@
       .two-plans-section .chart-head { flex-direction: column; align-items: flex-start; }
     }
 
+    /* =========================================================
+       SECTION 03 — BILL CALCULATOR (v9)
+       Additive. No existing rules modified.
+       ========================================================= */
+
+    .two-plans-section .bill-calc {
+      max-width: 720px;
+      margin: 0 auto 48px;
+      text-align: center;
+    }
+
+    /* Trigger link */
+    .two-plans-section .bill-calc__trigger {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      border: none;
+      padding: 10px 4px;
+      color: var(--accent-dark);
+      font-family: inherit;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      cursor: pointer;
+      text-decoration: underline;
+      text-decoration-color: var(--accent);
+      text-decoration-thickness: 1.5px;
+      text-underline-offset: 4px;
+      transition:
+        color 0.2s var(--ease),
+        text-decoration-color 0.2s var(--ease);
+    }
+
+    .two-plans-section .bill-calc__trigger:hover,
+    .two-plans-section .bill-calc__trigger:focus-visible {
+      color: var(--two-plans-text);
+      text-decoration-color: var(--two-plans-text);
+      outline: none;
+    }
+
+    .two-plans-section .bill-calc__trigger-arrow {
+      display: inline-block;
+      transition: transform 0.2s var(--ease);
+    }
+
+    .two-plans-section .bill-calc__trigger:hover .bill-calc__trigger-arrow {
+      transform: translateX(4px);
+    }
+
+    .two-plans-section .bill-calc__trigger[aria-expanded="true"] .bill-calc__trigger-arrow {
+      transform: rotate(90deg);
+    }
+
+    /* Panel */
+    .two-plans-section .bill-calc__panel {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      margin-top: 0;
+      transition:
+        max-height 0.4s ease,
+        opacity 0.3s ease,
+        margin-top 0.4s ease;
+      text-align: left;
+    }
+
+    .two-plans-section .bill-calc__panel[aria-hidden="false"] {
+      max-height: 900px;
+      opacity: 1;
+      margin-top: 24px;
+    }
+
+    /* Input group */
+    .two-plans-section .bill-calc__input-group {
+      background: var(--card-bg);
+      border: 1px solid var(--two-plans-border);
+      border-radius: 12px;
+      padding: 24px;
+      box-shadow: var(--shadow-soft);
+      margin-bottom: 20px;
+    }
+
+    .two-plans-section .bill-calc__label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--two-plans-text-muted);
+      margin-bottom: 12px;
+    }
+
+    .two-plans-section .bill-calc__label-sub {
+      font-weight: 400;
+      text-transform: none;
+      letter-spacing: 0;
+      color: var(--two-plans-text-dim);
+      margin-left: 4px;
+    }
+
+    .two-plans-section .bill-calc__input-wrap {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 2px solid var(--two-plans-border);
+      transition: border-color 0.2s var(--ease);
+      padding-bottom: 6px;
+    }
+
+    .two-plans-section .bill-calc__input-wrap:focus-within {
+      border-color: var(--accent);
+    }
+
+    .two-plans-section .bill-calc__currency {
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--two-plans-text-muted);
+      line-height: 1;
+    }
+
+    .two-plans-section .bill-calc__input {
+      flex: 1;
+      font-family: inherit;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--two-plans-text);
+      background: transparent;
+      border: none;
+      outline: none;
+      padding: 0;
+      line-height: 1.2;
+      min-width: 0;
+    }
+
+    .two-plans-section .bill-calc__input::placeholder {
+      color: var(--two-plans-text-dim);
+      font-weight: 500;
+    }
+
+    .two-plans-section .bill-calc__hint {
+      font-size: 12px;
+      color: var(--two-plans-text-dim);
+      margin: 10px 0 0;
+      font-style: italic;
+    }
+
+    /* Results */
+    .two-plans-section .bill-calc__results {
+      background: var(--card-bg);
+      border: 1px solid var(--two-plans-border);
+      border-radius: 12px;
+      padding: 8px 24px;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .two-plans-section .bill-calc__result {
+      padding: 18px 0;
+      border-bottom: 1px solid var(--two-plans-border-soft);
+    }
+
+    .two-plans-section .bill-calc__result:last-child {
+      border-bottom: none;
+    }
+
+    .two-plans-section .bill-calc__result-label {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--two-plans-text-muted);
+      margin-bottom: 6px;
+    }
+
+    .two-plans-section .bill-calc__result-value {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.01em;
+      color: var(--two-plans-text);
+      line-height: 1.1;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .two-plans-section .bill-calc__result-sub {
+      font-size: 12px;
+      color: var(--two-plans-text-dim);
+      margin-top: 6px;
+      line-height: 1.5;
+    }
+
+    /* Callback result — highlight the wildfire number in Edison red */
+    .two-plans-section .bill-calc__result--callback .bill-calc__result-value {
+      color: var(--edison);
+    }
+
+    @media (max-width: 640px) {
+      .two-plans-section .bill-calc__input-group,
+      .two-plans-section .bill-calc__results {
+        padding: 20px;
+      }
+      .two-plans-section .bill-calc__currency,
+      .two-plans-section .bill-calc__input {
+        font-size: 24px;
+      }
+      .two-plans-section .bill-calc__result-value {
+        font-size: 24px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .two-plans-section .bill-calc__trigger-arrow,
+      .two-plans-section .bill-calc__panel {
+        transition: none;
+      }
+    }
+
     /* ── TIMELINE ── */
     .timeline {
       max-width: 42rem;
@@ -1670,6 +1886,60 @@
         </div>
       </div>
 
+      <!-- BILL CALCULATOR -->
+      <div class="bill-calc">
+        <button
+          class="bill-calc__trigger"
+          type="button"
+          aria-expanded="false"
+          aria-controls="bill-calc-panel"
+        >
+          <span class="bill-calc__trigger-text">Run the numbers on your own bill</span>
+          <span class="bill-calc__trigger-arrow" aria-hidden="true">→</span>
+        </button>
+
+        <div class="bill-calc__panel" id="bill-calc-panel" aria-hidden="true">
+          <div class="bill-calc__input-group">
+            <label for="bill-calc-input" class="bill-calc__label">
+              Your current Edison bill
+              <span class="bill-calc__label-sub">(per month)</span>
+            </label>
+            <div class="bill-calc__input-wrap">
+              <span class="bill-calc__currency" aria-hidden="true">$</span>
+              <input
+                type="text"
+                id="bill-calc-input"
+                class="bill-calc__input"
+                inputmode="decimal"
+                placeholder="290"
+                autocomplete="off"
+                aria-describedby="bill-calc-hint"
+              >
+            </div>
+            <p id="bill-calc-hint" class="bill-calc__hint">Nothing is saved. It's just math.</p>
+          </div>
+
+          <div class="bill-calc__results" aria-live="polite">
+            <div class="bill-calc__result">
+              <div class="bill-calc__result-label">Annual cost</div>
+              <div class="bill-calc__result-value" data-output="annual">—</div>
+            </div>
+
+            <div class="bill-calc__result">
+              <div class="bill-calc__result-label">Last 5 years with Edison</div>
+              <div class="bill-calc__result-value" data-output="fiveYear">—</div>
+              <div class="bill-calc__result-sub">Estimated using Edison's 10-year average rate increase of 8%.</div>
+            </div>
+
+            <div class="bill-calc__result bill-calc__result--callback">
+              <div class="bill-calc__result-label">Of that, the wildfire liability portion</div>
+              <div class="bill-calc__result-value" data-output="wildfire">—</div>
+              <div class="bill-calc__result-sub">17% of every Edison bill (see Section 02).</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
       <!-- T-CHART -->
       <div class="tchart">
         <!-- EDISON: busy -->
@@ -2107,6 +2377,63 @@
         if (icon) icon.textContent = next ? '−' : '+';
       });
     });
+
+    // Bill calculator (Section 03)
+    (function () {
+      var trigger = document.querySelector('.bill-calc__trigger');
+      var panel = document.getElementById('bill-calc-panel');
+      var input = document.getElementById('bill-calc-input');
+      if (!trigger || !panel || !input) return;
+
+      var outputs = {
+        annual: document.querySelector('[data-output="annual"]'),
+        fiveYear: document.querySelector('[data-output="fiveYear"]'),
+        wildfire: document.querySelector('[data-output="wildfire"]')
+      };
+
+      trigger.addEventListener('click', function () {
+        var isOpen = trigger.getAttribute('aria-expanded') === 'true';
+        var next = !isOpen;
+        trigger.setAttribute('aria-expanded', String(next));
+        panel.setAttribute('aria-hidden', String(!next));
+        trigger.querySelector('.bill-calc__trigger-text').textContent =
+          next ? 'Hide the math' : 'Run the numbers on your own bill';
+        if (next) {
+          setTimeout(function () { input.focus(); }, 150);
+        }
+      });
+
+      input.addEventListener('input', function () {
+        var raw = input.value.replace(/[^0-9.]/g, '');
+        var bill = parseFloat(raw);
+
+        if (isNaN(bill) || bill < 1) {
+          outputs.annual.textContent = '—';
+          outputs.fiveYear.textContent = '—';
+          outputs.wildfire.textContent = '—';
+          return;
+        }
+
+        if (bill > 2000) bill = 2000;
+
+        var annual = bill * 12;
+        var backCoef = 1;
+        for (var i = 1; i <= 4; i++) backCoef += 1 / Math.pow(1.08, i);
+        var fiveYearTotal = annual * backCoef;
+        var wildfire = fiveYearTotal * 0.17;
+
+        outputs.annual.textContent = formatMoney(annual);
+        outputs.fiveYear.textContent = formatMoney(fiveYearTotal, true);
+        outputs.wildfire.textContent = formatMoney(wildfire, true);
+      });
+
+      function formatMoney(n, roundToHundred) {
+        var rounded = roundToHundred
+          ? Math.round(n / 100) * 100
+          : Math.round(n);
+        return '$' + rounded.toLocaleString('en-US');
+      }
+    })();
 
   </script>
 
