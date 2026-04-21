@@ -955,17 +955,25 @@
       outline: none;
     }
 
+    /* Swap label based on expanded state */
+    .two-plans-section .bill-calc__trigger .bill-calc__trigger-open { display: none; }
+    .two-plans-section .bill-calc__trigger .bill-calc__trigger-closed { display: inline; }
+
+    .two-plans-section .bill-calc__trigger[aria-expanded="true"] .bill-calc__trigger-closed { display: none; }
+    .two-plans-section .bill-calc__trigger[aria-expanded="true"] .bill-calc__trigger-open { display: inline; }
+
     .two-plans-section .bill-calc__trigger-arrow {
       display: inline-block;
-      transition: transform 0.2s var(--ease);
-    }
-
-    .two-plans-section .bill-calc__trigger:hover .bill-calc__trigger-arrow {
-      transform: translateX(4px);
+      margin-left: 8px;
+      transition: transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
     }
 
     .two-plans-section .bill-calc__trigger[aria-expanded="true"] .bill-calc__trigger-arrow {
-      transform: rotate(90deg);
+      transform: rotate(180deg);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .two-plans-section .bill-calc__trigger-arrow { transition: none; }
     }
 
     /* Panel */
@@ -1104,37 +1112,36 @@
       line-height: 1.5;
     }
 
-    /* Forecast result — two stacked label/value rows, both in Edison red */
-    .two-plans-section .bill-calc__forecast-row {
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 12px;
-      padding: 10px 0;
-      border-bottom: 1px solid var(--two-plans-border-soft);
+    /* Forecast block — distinct pivot from backward-looking outputs */
+    .two-plans-section .bill-calc__result--forecast {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--two-plans-border);
     }
 
-    .two-plans-section .bill-calc__forecast-row + .bill-calc__result-sub {
-      padding-top: 10px;
-    }
-
-    .two-plans-section .bill-calc__result--forecast .bill-calc__forecast-row:last-of-type {
+    /* Drop the bottom border on the row directly above the forecast to avoid double lines */
+    .two-plans-section .bill-calc__result:has(+ .bill-calc__result--forecast) {
       border-bottom: none;
     }
 
-    .two-plans-section .bill-calc__forecast-label {
+    /* Forecast items stack eyebrow-above-value like the top outputs */
+    .two-plans-section .bill-calc__forecast-item {
+      margin-top: 16px;
+    }
+
+    .two-plans-section .bill-calc__forecast-item + .bill-calc__forecast-item {
+      margin-top: 12px;
+    }
+
+    .two-plans-section .bill-calc__forecast-item-label {
       font-size: 13px;
       font-weight: 500;
       color: var(--two-plans-text-muted);
+      margin-bottom: 6px;
     }
 
-    .two-plans-section .bill-calc__forecast-value {
-      font-size: 22px;
-      font-weight: 700;
-      letter-spacing: -0.01em;
+    .two-plans-section .bill-calc__result-value--red {
       color: var(--edison);
-      font-variant-numeric: tabular-nums;
-      line-height: 1.1;
       white-space: nowrap;
     }
 
@@ -1930,8 +1937,9 @@
           aria-expanded="false"
           aria-controls="bill-calc-panel"
         >
-          <span class="bill-calc__trigger-text">Run the numbers on your own bill</span>
-          <span class="bill-calc__trigger-arrow" aria-hidden="true">→</span>
+          <span class="bill-calc__trigger-label bill-calc__trigger-closed">Run the numbers on your own bill</span>
+          <span class="bill-calc__trigger-label bill-calc__trigger-open">Hide the math</span>
+          <span class="bill-calc__trigger-arrow" aria-hidden="true">↓</span>
         </button>
 
         <div class="bill-calc__panel" id="bill-calc-panel" aria-hidden="true">
@@ -1969,14 +1977,17 @@
 
             <div class="bill-calc__result bill-calc__result--forecast">
               <div class="bill-calc__result-label">5-Year Forecast</div>
-              <div class="bill-calc__forecast-row">
-                <span class="bill-calc__forecast-label">Monthly bill in 5 years</span>
-                <span class="bill-calc__forecast-value" data-output="fiveYearMonthly">—</span>
+
+              <div class="bill-calc__forecast-item">
+                <div class="bill-calc__forecast-item-label">Monthly bill in 5 years</div>
+                <div class="bill-calc__result-value bill-calc__result-value--red" data-output="fiveYearMonthly">—</div>
               </div>
-              <div class="bill-calc__forecast-row">
-                <span class="bill-calc__forecast-label">Total over the next 5 years</span>
-                <span class="bill-calc__forecast-value" data-output="fiveYearForecast">—</span>
+
+              <div class="bill-calc__forecast-item">
+                <div class="bill-calc__forecast-item-label">Total over the next 5 years</div>
+                <div class="bill-calc__result-value bill-calc__result-value--red" data-output="fiveYearForecast">—</div>
               </div>
+
               <div class="bill-calc__result-sub">Assuming Edison's 10-year average rate increase of 8% continues.</div>
             </div>
           </div>
@@ -2440,8 +2451,6 @@
         var next = !isOpen;
         trigger.setAttribute('aria-expanded', String(next));
         panel.setAttribute('aria-hidden', String(!next));
-        trigger.querySelector('.bill-calc__trigger-text').textContent =
-          next ? 'Hide the math' : 'Run the numbers on your own bill';
         if (next) {
           setTimeout(function () { input.focus(); }, 150);
         }
