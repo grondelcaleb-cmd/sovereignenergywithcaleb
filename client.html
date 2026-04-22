@@ -359,10 +359,10 @@
       position: relative;
       min-height: 360px;
       background: #ffffff;
-      border: 1px solid #E5E7EB;
+      border: none;
       border-radius: 12px;
-      padding: 24px;
-      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
+      padding: 28px;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
     }
 
     .gallery-card {
@@ -396,10 +396,22 @@
     }
 
     .gallery-source {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
       color: #6B7280;
       font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
+      text-transform: none;
+      letter-spacing: 0;
+    }
+
+    .gallery-google-g {
+      flex-shrink: 0;
+      transform: translateY(-0.5px);
+    }
+
+    .gallery-date {
+      color: #6B7280;
     }
 
     .gallery-quote {
@@ -417,17 +429,42 @@
       display: flex;
       align-items: center;
       gap: 12px;
-      padding-top: 12px;
-      border-top: 1px solid #E5E7EB;
+      padding-top: 16px;
     }
 
+    /* Avatar wrapper — can contain an <img> OR render an initial letter */
     .gallery-avatar {
-      width: 40px;
-      height: 40px;
+      position: relative;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      flex-shrink: 0;
+      background: var(--teal);
+      color: #ffffff;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 600;
+      font-size: 18px;
+      line-height: 1;
+      overflow: hidden;
+    }
+
+    .gallery-avatar::before {
+      content: attr(data-initial);
+    }
+
+    .gallery-avatar img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
       border-radius: 50%;
       object-fit: cover;
-      flex-shrink: 0;
-      background: #F3F4F6;
+    }
+
+    .gallery-avatar:has(img)::before {
+      content: '';
     }
 
     .gallery-attribution-text {
@@ -1978,14 +2015,22 @@
           <figure class="gallery-card is-active" role="listitem" aria-hidden="false" data-index="0">
             <div class="gallery-rating">
               <span class="gallery-stars" aria-label="5 out of 5 stars">★★★★★</span>
-              <span class="gallery-source">Verified Google Review</span>
+              <span class="gallery-source">
+                <svg class="gallery-google-g" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true">
+                  <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                  <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                  <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                  <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                </svg>
+                Google review &middot; <span class="gallery-date">2025</span>
+              </span>
             </div>
             <blockquote class="gallery-quote">Moved into the neighborhood in November and had 2 neighbors refer us to Caleb. We loved working with him, and Sunrun got it done without many issues. The system has been on a couple months now and it's working just like he said, so we are glad it got turned on before summer time. Got the smart thermostat with Vivint too with the install which we really like.</blockquote>
             <div class="gallery-attribution">
-              <img class="gallery-avatar" src="images/reviews/luiz1.jpg" alt="Louis Evans install" />
+              <div class="gallery-avatar" data-initial="L" aria-hidden="true"></div>
               <div class="gallery-attribution-text">
                 <div class="gallery-name">Louis Evans</div>
-                <div class="gallery-stage">Southern California &middot; Installed &amp; running</div>
+                <div class="gallery-stage">Southern California</div>
               </div>
             </div>
           </figure>
@@ -1994,14 +2039,22 @@
           <figure class="gallery-card" role="listitem" aria-hidden="true" data-index="1">
             <div class="gallery-rating">
               <span class="gallery-stars" aria-label="5 out of 5 stars">★★★★★</span>
-              <span class="gallery-source">Verified Google Review</span>
+              <span class="gallery-source">
+                <svg class="gallery-google-g" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true">
+                  <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                  <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                  <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                  <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                </svg>
+                Google review &middot; <span class="gallery-date">2024</span>
+              </span>
             </div>
             <blockquote class="gallery-quote">We own a care home and were referred by a friend to work with Caleb Grondel. The process was easy and Caleb made it very clear and answered all my questions. Our Care home requires back up power and we are excited for what the Tesla Powerwall can do for our home. We are saving money compared to what we are paying Southern California Edison right now.</blockquote>
             <div class="gallery-attribution">
-              <img class="gallery-avatar" src="images/reviews/lifestyle1.jpg" alt="Lifestyle Board & Care install" />
+              <div class="gallery-avatar" data-initial="L" aria-hidden="true"></div>
               <div class="gallery-attribution-text">
                 <div class="gallery-name">Lifestyle Board &amp; Care</div>
-                <div class="gallery-stage">Southern California &middot; Installed &amp; running</div>
+                <div class="gallery-stage">Southern California</div>
               </div>
             </div>
           </figure>
@@ -2010,14 +2063,22 @@
           <figure class="gallery-card" role="listitem" aria-hidden="true" data-index="2">
             <div class="gallery-rating">
               <span class="gallery-stars" aria-label="5 out of 5 stars">★★★★★</span>
-              <span class="gallery-source">Verified Google Review</span>
+              <span class="gallery-source">
+                <svg class="gallery-google-g" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true">
+                  <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                  <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                  <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                  <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                </svg>
+                Google review &middot; <span class="gallery-date">2024</span>
+              </span>
             </div>
             <blockquote class="gallery-quote">We met Caleb not too long ago and the process has been amazing. We have even referred him to many friends and they say the same thing. We would not have done it if we did not trust Caleb. Sunrun did a great job too with the installation — it was done in a day and they cleaned up everything.</blockquote>
             <div class="gallery-attribution">
-              <img class="gallery-avatar" src="images/reviews/angel1.jpg" alt="Angel I. install" />
+              <div class="gallery-avatar" data-initial="A" aria-hidden="true"></div>
               <div class="gallery-attribution-text">
                 <div class="gallery-name">Angel I.</div>
-                <div class="gallery-stage">Southern California &middot; Installed &amp; running</div>
+                <div class="gallery-stage">Southern California</div>
               </div>
             </div>
           </figure>
@@ -2026,14 +2087,22 @@
           <figure class="gallery-card" role="listitem" aria-hidden="true" data-index="3">
             <div class="gallery-rating">
               <span class="gallery-stars" aria-label="5 out of 5 stars">★★★★★</span>
-              <span class="gallery-source">Verified Google Review</span>
+              <span class="gallery-source">
+                <svg class="gallery-google-g" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true">
+                  <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                  <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                  <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                  <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                </svg>
+                Google review &middot; <span class="gallery-date">2024</span>
+              </span>
             </div>
             <blockquote class="gallery-quote">Caleb Grondel was our consultant and he made sure we were taken care of. He walked us through all of the details as well as changes that came up. Since the power would be out during the installation, he made sure we were reimbursed for a hotel room so I could continue to work. Overall, a great experience with Caleb and the installers.</blockquote>
             <div class="gallery-attribution">
-              <img class="gallery-avatar" src="images/reviews/jacinta1.jpg" alt="Jacinta B. install" />
+              <div class="gallery-avatar" data-initial="J" aria-hidden="true"></div>
               <div class="gallery-attribution-text">
                 <div class="gallery-name">Jacinta B.</div>
-                <div class="gallery-stage">Southern California &middot; Installed &amp; running</div>
+                <div class="gallery-stage">Southern California</div>
               </div>
             </div>
           </figure>
@@ -2042,14 +2111,22 @@
           <figure class="gallery-card" role="listitem" aria-hidden="true" data-index="4">
             <div class="gallery-rating">
               <span class="gallery-stars" aria-label="5 out of 5 stars">★★★★★</span>
-              <span class="gallery-source">Verified Google Review</span>
+              <span class="gallery-source">
+                <svg class="gallery-google-g" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="13" height="13" aria-hidden="true">
+                  <path fill="#4285F4" d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z"/>
+                  <path fill="#34A853" d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z"/>
+                  <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
+                  <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
+                </svg>
+                Google review &middot; <span class="gallery-date">2024</span>
+              </span>
             </div>
             <blockquote class="gallery-quote">Working with Caleb from Sunrun has been a wonderful experience. Caleb is very knowledgeable about rooftop solar systems. He earned my trust 100%. Our solar system was installed professionally in just a day and a half. I highly recommend Caleb to anyone.</blockquote>
             <div class="gallery-attribution">
-              <img class="gallery-avatar" src="images/reviews/benny1.jpg" alt="Benny G. install" />
+              <div class="gallery-avatar" data-initial="B" aria-hidden="true"></div>
               <div class="gallery-attribution-text">
                 <div class="gallery-name">Benny G.</div>
-                <div class="gallery-stage">Southern California &middot; Installed &amp; running</div>
+                <div class="gallery-stage">Southern California</div>
               </div>
             </div>
           </figure>
