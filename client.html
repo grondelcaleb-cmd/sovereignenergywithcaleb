@@ -375,12 +375,17 @@
       margin: 0;
       opacity: 0;
       visibility: hidden;
-      transition: opacity 300ms ease;
+      transform: translateX(16px);
+      transition:
+        opacity 700ms cubic-bezier(0.4, 0, 0.2, 1),
+        transform 700ms cubic-bezier(0.4, 0, 0.2, 1),
+        visibility 700ms;
     }
 
     .gallery-card.is-active {
       opacity: 1;
       visibility: visible;
+      transform: translateX(0);
     }
 
     .gallery-rating {
@@ -2025,7 +2030,6 @@
   <nav>
     <div class="container">
       <a href="/" class="logo">Sovereign Energy with Caleb</a>
-      <a href="#top" class="btn btn-sm">Back to Home</a>
     </div>
   </nav>
 
@@ -2035,7 +2039,7 @@
       <div class="client-hero-text">
         <div class="section-number reveal">01 / Your Status</div>
         <h1 class="section-heading reveal">A Step in the Right Direction.</h1>
-        <p class="section-intro reveal">Most homeowners know their deal with Edison isn't fair. They just don't know what to do about it. You're finding out. If your home qualifies, you've got an exit. If it doesn't, you've got your answer. Either way, it's worth knowing.</p>
+        <p class="section-intro reveal">You already know the deal with Edison. What you don't know yet is whether your home qualifies for something different. A few weeks of checks, and you'll have your answer. Either way, it's worth knowing.</p>
         <div class="status-progress reveal" aria-label="Your application progress">
           <ol class="status-progress__steps">
             <li class="sp-step sp-step--done">
@@ -2892,7 +2896,7 @@
 
       var activeIndex = 0;
       var intervalId = null;
-      var INTERVAL_MS = 4000;
+      var INTERVAL_MS = 5000;
 
       function setActive(index) {
         activeIndex = (index + cards.length) % cards.length;
