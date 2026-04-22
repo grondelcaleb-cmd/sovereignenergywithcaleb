@@ -2235,9 +2235,17 @@
           </div>
         </div>
 
-        <!-- Edison Rate Chart -->
-        <div class="rate-chart-container reveal">
-          <div class="rate-chart-title">SCE Average Residential Rate (¢/kWh)</div>
+        <!-- Edison Rate Chart (collapsible) -->
+        <div class="rate-chart-collapsible reveal">
+          <button class="fact-toggle" type="button" data-fact-toggle
+            data-label-closed="View chart" data-label-open="Hide chart"
+            aria-expanded="false" aria-controls="rate-chart-details">
+            <span class="fact-toggle__label">View chart</span>
+            <span class="fact-toggle__icon" aria-hidden="true">+</span>
+          </button>
+          <div class="fact-details" id="rate-chart-details" aria-hidden="true">
+            <div class="rate-chart-container">
+              <div class="rate-chart-title">SCE Average Residential Rate (¢/kWh)</div>
           <svg class="rate-chart" viewBox="0 0 700 300" xmlns="http://www.w3.org/2000/svg" aria-label="Line chart showing SCE residential rates rising from 17.5 cents per kilowatt-hour in 2015 to 34.5 cents in 2026, with a dashed projection line to 40 cents by 2028.">
             <line x1="60" y1="40" x2="660" y2="40" stroke="#eee" stroke-width="1"/>
             <line x1="60" y1="100" x2="660" y2="100" stroke="#eee" stroke-width="1"/>
@@ -2282,7 +2290,9 @@
             <text x="647" y="34" text-anchor="middle" fill="#e63946" font-size="9" font-family="system-ui, -apple-system, sans-serif" opacity="0.6">projected</text>
             <text x="599" y="63" text-anchor="middle" fill="#e63946" font-size="11" font-weight="600" font-family="system-ui, -apple-system, sans-serif">34.5¢</text>
           </svg>
-          <div class="rate-chart-source">Sources: SCE Rate Advisory · CPUC General Rate Case Filings · U.S. Energy Information Administration</div>
+              <div class="rate-chart-source">Sources: SCE Rate Advisory · CPUC General Rate Case Filings · U.S. Energy Information Administration</div>
+            </div>
+          </div>
         </div>
 
         <!-- Block 2: Wildfire Liability -->
@@ -2450,13 +2460,13 @@
           </div>
 
           <div class="row">
-            <div class="row-label"><span class="label">03 / Power Outages</span><span class="row-mark">✕</span></div>
+            <div class="row-label"><span class="label">03 / Reliability</span><span class="row-mark">✕</span></div>
             <p class="row-body">When the grid goes down, your power goes with it. No backup. The lights stay off until the grid comes back.</p>
           </div>
 
           <div class="row">
             <div class="row-label"><span class="label">04 / Warranty &amp; Coverage</span><span class="row-mark">✕</span></div>
-            <p class="row-body">No warranty. No coverage. You own nothing on Edison's side — just a bill for a grid that keeps getting more expensive.</p>
+            <p class="row-body">No protections. Maintenance, upgrades, storm repairs — added to your bill. Just a bill for a grid that keeps getting more expensive.</p>
           </div>
         </div>
 
@@ -2477,7 +2487,7 @@
           </div>
 
           <div class="row">
-            <div class="row-label"><span class="label">03 / Power Outages</span></div>
+            <div class="row-label"><span class="label">03 / Reliability</span></div>
             <p class="row-body">A Tesla Powerwall kicks in the moment the grid drops. It recharges during the day. Your lights stay on.</p>
           </div>
 
@@ -2856,6 +2866,8 @@
     document.querySelectorAll('[data-fact-toggle]').forEach(function (btn) {
       var target = document.getElementById(btn.getAttribute('aria-controls'));
       if (!target) return;
+      var labelClosed = btn.dataset.labelClosed || 'See the data';
+      var labelOpen = btn.dataset.labelOpen || 'Hide the data';
       btn.addEventListener('click', function () {
         var isOpen = btn.getAttribute('aria-expanded') === 'true';
         var next = !isOpen;
@@ -2863,7 +2875,7 @@
         target.setAttribute('aria-hidden', String(!next));
         var label = btn.querySelector('.fact-toggle__label');
         var icon = btn.querySelector('.fact-toggle__icon');
-        if (label) label.textContent = next ? 'Hide the data' : 'See the data';
+        if (label) label.textContent = next ? labelOpen : labelClosed;
         if (icon) icon.textContent = next ? '−' : '+';
       });
     });
