@@ -1455,6 +1455,63 @@
       max-width: 36rem;
     }
 
+    /* ── PROCESS: mobile collapse for steps 4–6 ── */
+    .process-toggle {
+      display: none;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin: 16px auto 0;
+      padding: 10px 18px;
+      background: transparent;
+      border: 1px solid #E5E7EB;
+      border-radius: 999px;
+      color: var(--teal);
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 150ms ease, border-color 150ms ease;
+    }
+
+    .process-toggle:hover {
+      background: #F9FAFB;
+      border-color: #D1D5DB;
+    }
+
+    .process-toggle .process-toggle-open { display: none; }
+    .process-toggle .process-toggle-closed { display: inline; }
+
+    .process-toggle[aria-expanded="true"] .process-toggle-closed { display: none; }
+    .process-toggle[aria-expanded="true"] .process-toggle-open { display: inline; }
+
+    .process-toggle-arrow {
+      display: inline-block;
+      transition: transform 200ms cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    .process-toggle[aria-expanded="true"] .process-toggle-arrow {
+      transform: rotate(180deg);
+    }
+
+    @media (max-width: 720px) {
+      .process-toggle {
+        display: inline-flex;
+      }
+
+      .process-more {
+        display: none;
+      }
+
+      .timeline:has(.process-toggle[aria-expanded="true"]) .process-more {
+        display: block;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .process-toggle-arrow { transition: none; }
+    }
+
     /* ── INCLUDED GRID ── */
     .included-grid {
       display: grid;
@@ -2537,65 +2594,49 @@
           </div>
         </div>
 
-        <div class="timeline-step reveal">
-          <div class="timeline-marker">4</div>
-          <div class="timeline-content">
-            <h3>System Design &amp; Permitting</h3>
-            <p>If approved, Sunrun engineers finalize your system layout and submit for city approval. This is the longest step — typically 4–6 weeks.</p>
+        <div class="process-more" id="process-more">
+
+          <div class="timeline-step reveal">
+            <div class="timeline-marker">4</div>
+            <div class="timeline-content">
+              <h3>System Design &amp; Permitting</h3>
+              <p>If approved, Sunrun engineers finalize your system layout and submit for city approval. This is the longest step — typically 4–6 weeks.</p>
+            </div>
           </div>
+
+          <div class="timeline-step reveal">
+            <div class="timeline-marker">5</div>
+            <div class="timeline-content">
+              <h3>Installation Day</h3>
+              <p>The crew arrives, installs everything, and cleans up. Most installs are completed in a single day.</p>
+            </div>
+          </div>
+
+          <div class="timeline-step reveal">
+            <div class="timeline-marker">6</div>
+            <div class="timeline-content">
+              <h3>Final Inspection &amp; PTO</h3>
+              <p>The city inspects the system and grants Permission to Operate. Once approved, your system goes live and your Edison bill drops to the minimum connection fee.</p>
+            </div>
+          </div>
+
         </div>
 
-        <div class="timeline-step reveal">
-          <div class="timeline-marker">5</div>
-          <div class="timeline-content">
-            <h3>Installation Day</h3>
-            <p>The crew arrives, installs everything, and cleans up. Most installs are completed in a single day.</p>
-          </div>
-        </div>
-
-        <div class="timeline-step reveal">
-          <div class="timeline-marker">6</div>
-          <div class="timeline-content">
-            <h3>Final Inspection &amp; PTO</h3>
-            <p>The city inspects the system and grants Permission to Operate. Once approved, your system goes live and your Edison bill drops to the minimum connection fee.</p>
-          </div>
-        </div>
+        <button class="process-toggle" type="button" aria-expanded="false" aria-controls="process-more">
+          <span class="process-toggle-label process-toggle-closed">See steps 4–6</span>
+          <span class="process-toggle-label process-toggle-open">Hide steps 4–6</span>
+          <span class="process-toggle-arrow" aria-hidden="true">↓</span>
+        </button>
 
       </div>
     </div>
   </section>
 
-  <!-- Section 4: What's Included -->
-  <section>
-    <div class="container">
-      <div class="section-number reveal">06 / What's Included</div>
-      <h2 class="section-heading reveal">What's Included If Your Home Qualifies</h2>
-      <div class="included-grid">
-        <div class="included-card reveal">
-          <h3>Monitoring</h3>
-          <p>Sunrun watches your system 24/7. If production drops, they know before you do.</p>
-        </div>
-        <div class="included-card reveal">
-          <h3>Maintenance</h3>
-          <p>Something breaks. Sunrun fixes it. You don't call anyone. You don't pay anything.</p>
-        </div>
-        <div class="included-card reveal">
-          <h3>Warranty</h3>
-          <p>Full equipment coverage for the life of your agreement. Not a year. Not five years. The whole thing.</p>
-        </div>
-        <div class="included-card reveal">
-          <h3>Insurance</h3>
-          <p>Hail, wind, equipment failure — Sunrun covers damage to your system. Not your homeowner's policy.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- Section 6: Common Concerns -->
+  <!-- Section 06: Honest Answers -->
   <section>
     <div class="container">
       <div class="concerns-inner">
-        <div class="section-number reveal">07 / Honest Answers</div>
+        <div class="section-number reveal">06 / Honest Answers</div>
         <h2 class="section-heading reveal">Honest Answers</h2>
         <p class="concerns-subheading reveal">The concerns most people might have but not sure how to ask.</p>
 
@@ -2670,6 +2711,32 @@
           </div>
         </div>
 
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 07: What's Included -->
+  <section>
+    <div class="container">
+      <div class="section-number reveal">07 / What's Included</div>
+      <h2 class="section-heading reveal">What's Included If Your Home Qualifies</h2>
+      <div class="included-grid">
+        <div class="included-card reveal">
+          <h3>Monitoring</h3>
+          <p>Sunrun watches your system 24/7. If production drops, they know before you do.</p>
+        </div>
+        <div class="included-card reveal">
+          <h3>Maintenance</h3>
+          <p>Something breaks. Sunrun fixes it. You don't call anyone. You don't pay anything.</p>
+        </div>
+        <div class="included-card reveal">
+          <h3>Warranty</h3>
+          <p>Full equipment coverage for the life of your agreement. Not a year. Not five years. The whole thing.</p>
+        </div>
+        <div class="included-card reveal">
+          <h3>Insurance</h3>
+          <p>Hail, wind, equipment failure — Sunrun covers damage to your system. Not your homeowner's policy.</p>
+        </div>
       </div>
     </div>
   </section>
@@ -2800,6 +2867,16 @@
         if (icon) icon.textContent = next ? '−' : '+';
       });
     });
+
+    // Process (Section 05) — mobile collapse toggle for steps 4–6
+    (function () {
+      var toggle = document.querySelector('.process-toggle');
+      if (!toggle) return;
+      toggle.addEventListener('click', function () {
+        var isExpanded = toggle.getAttribute('aria-expanded') === 'true';
+        toggle.setAttribute('aria-expanded', isExpanded ? 'false' : 'true');
+      });
+    })();
 
     // Hero review gallery (Section 01) — 5-card auto-advancing carousel
     (function () {
